@@ -1,0 +1,92 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-right">
+              <audio controls #audio1 style="margin: 3px auto; width: 165px; display: block;">
+                <source src="">
+              </audio>
+              <p class="text-center">Audio Hukumnama</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+              <div class="input-group date datepicker" style="margin: 0 auto;">
+                <input type="text" class="form-control" name="hukum_date" placeholder="Select a date" id="hukum_date"
+                  [(bsValue)]="hukum_date" [maxDate]="today" bsDatepicker [bsConfig]="{ isAnimated: true }" #datepicker
+                  (bsValueChange)="handleChangeDate($event)">
+                <!-- <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }"> -->
+                <div class="input-group-addon" (click)="showDatepicker()">
+                  <i class="fa fa-calendar"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 text-left">
+              <audio controls #audio2 style="margin: 3px auto; width: 165px; display: block;">
+                <source src="">
+              </audio>
+              <p class="text-center">Katha of Hukumnama</p>
+            </div>
+          </div>
+
+          <h3 *ngIf="hukumdata?.hukum_message" class="text-center">{{hukumdata?.hukum_message}}</h3>
+          <div *ngIf="!(hukumdata?.hukum_message)">
+
+            <div class="timee">
+              {{hukumdata?.hukamdatetime}}
+            </div>
+            <div class="punjabi_fonts">
+              <div class="punjabi_fonts_center" style="font-size: 20px;">
+                {{hukumdata?.titlePunjabi}}
+              </div>
+              <div class="punjabi_fonts_left" style="font-size: 20px;">
+                {{hukumdata?.contentPunjabi}}
+              </div>
+              <div class="punjabi_fonts_full_width" style="color: #052649;">
+                <div class="punjabi_fonts_full_left">
+                  {{hukumdata?.leftFooterPunjabi}}
+                </div>
+                <div class="punjabi_fonts_full_right">
+                  {{hukumdata?.rightFooterPunjabi}}
+                </div>
+              </div>
+              <div class="punjabi_fonts_full_width" style="color: #052649;">
+                <div class="punjabi_fonts_left viakhiya">
+                  {{hukumdata?.viyakhyaPunjabi}}
+                </div>
+              </div>
+            </div>
+            <div class="english_viakhya">
+              <div class="english_viakhya_title">
+                {{hukumdata?.titleEnglish}}
+              </div>
+              <div class="english_viakhya_cont">
+                {{hukumdata?.contentEnglish}}
+              </div>
+              <div class="english_viakhya_full_width">
+                <div class="english_viakhya_full_left">
+                  {{hukumdata?.leftFooterEnglish}}
+                </div>
+                <div class="english_viakhya_full_right">
+                  {{hukumdata?.rightFooterEnglish}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

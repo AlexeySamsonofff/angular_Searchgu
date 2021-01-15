@@ -1,0 +1,147 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div>Home &gt;&gt; Sikh Gurus&gt;&gt; Guru Har Kishan Sahib Ji</div>
+          <h2 class="no-top">Sri Guru HarKishan Sahib Ji</h2>
+          <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td align="center" valign="middle" width="160">
+                  <p align="center">
+                    <img src="assets/img/res/guru8.jpg" border="0" height="198" width="150"></p>
+                </td>
+                <td colspan="2">
+                  <table border="0" cellpadding="4" cellspacing="1" bgcolor="#CCCCCC">
+                    <tbody>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">FATHER </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">Guru Har Rai Ji </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">MOTHER </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">Krishan Kaur ji </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">DATE OF BIRTH </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">01/07/1656 </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">PLACE OF BIRTH </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">Kiratpur Sahib, Ropar </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">WIFE </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">None </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">CHILDREN </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">None </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">AGE, YEAR &amp; TIME AT GUR GADHI </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF"> 10/06/1661, 2 year and 6 months.</td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">REGIMS </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">Aurangjeb </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left"> CONTRIBUTION OF BANIES </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">None </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">AGE </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">8 </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">JYOTI-JOT DAY </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">03/30/1664 </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">JYOTI JOT PLACE </p>
+                        </td>
+                        <td width="25%" bgcolor="#FFFFFF">
+                          <p align="left">Delhi </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p align="left">&nbsp; </p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" valign="top">
+                  <div [innerHtml]="html | safeHtml"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <div class="navig_right_left">
+            <table width="100%" border="0" cellspacing="0" cellpadding="4">
+              <tbody>
+                <tr>
+                  <td><a [routerLink]="['/gurus']">Index</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

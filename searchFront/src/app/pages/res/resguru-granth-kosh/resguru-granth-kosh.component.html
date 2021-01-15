@@ -1,0 +1,102 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div class="browse-letters center">
+            <span class="bold xl-text">
+              <span *ngFor="let alpha of alphas; let i = index">
+                <!-- <a routerLink="['guru-granth-kosh/do-search//alpha']">{{alpha}}</a>&nbsp;      -->
+                <a (click)="goToggkview(alpha)">{{alpha}}</a>&nbsp;
+              </span>
+            </span>&nbsp;
+            <br>
+          </div>
+          <p class="bold center small-bottom">Browse by letter</p>
+          <h2 class="no-top maroon center">Guru Granth Kosh</h2>
+          <hr>
+          <p class="black center">
+            <strong>Sri Guru Granth Kosh</strong> by Dr Gurcharan Singh is a dictionary of Sikh Scriptures
+            and
+            books on Sikh Religion.
+          </p>
+          <p class="red bold center">
+            You can either type in the word you are looking for in the box below or browse by letter
+          </p>
+          <h3 class="no-top maroon center">Sri Guru Granth Kosh</h3>
+          <div class="center">
+            <form action="" method="post" name="frmResourcesSearch" class="general-page-auto-search" id="myForm">
+
+              <div class="row">
+                <input type="hidden" name="table_name" id="table_name" value="GurShabad Ratanakar Mahankosh">
+
+                <div class="col-sm-3 col-xs-6 col-sm-offset-4">
+                  <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                    <input type="text" class="form-control browse-search tt-input" #searchText id="outText"
+                      name="keyword" value="" [(ngModel)]="q" (keypress)="onKey($event);" autocomplete="off"
+                      spellcheck="false" dir="auto"
+                      style="position: relative; vertical-align: top; background-color: white;">
+                    <pre aria-hidden="true"
+                      style="position: absolute; visibility: hidden; white-space: pre; font-family: Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                    <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100;"
+                      (clickOutside)="hideAutoset($event)" *ngIf="allWords.length>0 && show_autoset && q!==''">
+                      <div class="tt-dataset tt-dataset-0">
+                        <div class="tt-suggestion tt-selectable" *ngFor="let word of allWords; let i=index"
+                          (click)="q=word.word;show_autoset=false;handleSearch()">
+                          {{word.word}}
+                        </div>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+                <div class="col-sm-1 col-xs-6">
+                  <button class="btn search-btn bl" type="button" (click)="do_search()">Search</button>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 20px;">
+                <div class="punjabi-keypad">
+
+                  <div class="keypad_container">
+                    <div style="margin-bottom:10px">
+                      <button id="toggle_keyboard" class="btn btn-primary" (click)="showKeyboard=!showKeyboard">Show
+                        Keyboard</button>&nbsp;&nbsp;
+                      <span style="margin:5px 0 0 0">You can use either Virtual or Physical
+                        Keyboard for Gurmukhi Unicode</span>
+                    </div>
+                    <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+
+                      <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+          <p class="bold small-bottom center">Browse by letter</p>
+          <div class="browse-letters center">
+            <span class="bold xl-text">
+              <span *ngFor="let alpha of alphas; let i = index">
+                <!-- <a routerLink="['guru-granth-kosh/do-search//alpha']">{{alpha}}</a>&nbsp;      -->
+                <a (click)="goToggkview(alpha)">{{alpha}}</a>&nbsp;
+              </span>
+            </span>&nbsp;
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

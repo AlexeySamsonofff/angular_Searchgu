@@ -1,0 +1,196 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banners/banner01.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <h3 class="small-bottom bold center no-top"><strong>Sri Guru Granth Sahib Darpan</strong></h3>
+          <hr>
+          <div>
+            <h5>Sri Guru Granth Sahib Darpan
+            </h5>
+            <h5 class="blue">Siri Guru Granth Darpan by Professor Sahib Singh Gurmukhi text to Punjabi
+              (Gurmukhi)
+              translation of
+              all of Siri Guru Granth Sahib.
+            </h5>
+          </div>
+          <div class="subhead bold">
+            <div class="row">
+              <div class="col-md-3 col-sm-4"></div>
+              <div class="col-md-7 col-sm-4">
+                <a [routerLink]="['/sri-guru-granth-darpan/page']">Browse Page
+                  by Page Sri Guru
+                  Granth Sahib Darpan </a>
+              </div>
+            </div>
+          </div>
+          <p></p>
+
+
+          <h3 class="maroon small-bottom center">Sri Guru Granth Darpan</h3>
+          <form method="post" name="frmResourcesSearch" id="myForm" class="general-page-auto-search">
+            <div class="center">
+              <input type="hidden" name="table_name" id="table_name" value="Sri Guru Granth Darpan">
+              <div class="row mb-2" style="margin-bottom: 20px;">
+                <div class="col-sm-3 col-xs-6 col-sm-offset-4">
+                  <input type="text" class="form-control browse-search" id="keyword" name="keyword" id="outText"
+                    [(ngModel)]="keyword" #searchText (keypress)="onKey($event);">
+                </div>
+                <div class="col-sm-1 col-xs-6">
+                  <button class="btn search-btn bl" type="button" (click)="doSearch()">Search</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="punjabi-keypad">
+                  <!-- <div class="table-responsive">
+                                                  <table width="80%" bordercolor="#333300" border="2" align="center">
+                                                       <tbody>
+                                                            <tr>
+                                                                 <td bgcolor="#EDE8D5" bordercolor="#EDE8D5">
+                                                                      <table class="table" cellpadding="5"
+                                                                           cellspacing="0">
+
+                                                                           <tbody>
+                                                                                <tr *ngFor="let tr of keys; let tri = index" align="center">
+                                                                                     <td *ngFor="let td of tr; let tdi = index" width="32"><a
+                                                                                               (click)="pad(td)">{{td}}</a>
+                                                                                     </td>
+                                                                                </tr>
+
+                                                                           </tbody>
+                                                                      </table>
+                                                                 </td>
+                                                            </tr>
+                                                       </tbody>
+                                                  </table>
+                                             </div> -->
+
+                  <div class="keypad_container">
+                    <div style="margin-bottom:10px">
+                      <button id="toggle_keyboard" class="btn btn-primary" (click)="showKeyboard=!showKeyboard">Show
+                        Keyboard</button>&nbsp;&nbsp;
+                      <span style="margin:5px 0 0 0">You can use either Virtual or
+                        Physical
+                        Keyboard for Gurmukhi Unicode</span>
+                    </div>
+                    <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+                      <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+                    </div>
+                  </div>
+
+                </div>
+
+                <br>
+                <p class="blue"><strong>SAHIB SINGH, PROFESSOR (1892-1977)</strong>, grammarian
+                  and theologian, was born on 16
+                  <img src="https://www.searchgurbani.com/static/images/content/sahib.jpg" alt="SAHIB SINGH, PROFESSOR"
+                    align="right" height="294" width="274">February 1892 in a Hindu family of the village of
+                  Phattevali in Sialkot district of
+                  undivided
+                  Punjab. He was originally named Natthu Ram by his father, Hiranand, who
+                  kept a small shop in the village.
+                  Soon the
+                  family shifted to Tharpal, another village in the same district. As a
+                  youth, Natthu Rain was apprenticed to
+                  the
+                  village Maulawi, Hayat Shah, son of the famous Punjabi poet, Hasham, upon
+                  whom his royal patron, Ranjit
+                  Sirigh, the
+                  Maharaja of the Punjab, had settled a permanent jagir.Winning a scholarship
+                  at his middle standard
+                  examination,
+                  Natthu Ram joined the high school at Pasrur where he received in 1906 the
+                  rites of the Khalsa and his new
+                  name Sahib
+                  Singh. The untimely death of his father made the situation hard for him,
+                  yet he managed to plough through
+                  first Dyal
+                  Sirigh College, Lahore, and then the Government College, Lahore. At the
+                  latter, he obtained his bachelor's
+                  degree.
+                  In 1917, he joined as a lecturer in Sanskrit at Guru Nanak Khalsa College,
+                  Gujranwala. </p>
+                <p class="blue"> Sahib Sihgh, now commonly known as Professor Sahib Singh, took
+                  part in the Gurdwara Reform
+                  movement in
+                  the twenties of the century. He was appointed joint secretary of the
+                  Shiromani Gurdwara Parbandhak Committee
+                  in
+                  1921. During this period he suffered jail twice-once during the Guru ka
+                  Bagh agitation (1922) and then in
+                  the Jaito
+                  morcha (1924). In 1927 he returned briefly to his college in Gujranwala
+                  which he soon quit to join the
+                  Khalsa
+                  College at Amritsar. From 1929 to 1952 he remained at Khalsa College
+                  producing a succession of learned works
+                  and
+                  commentaries on the Sikh sacred texts. Retiring from the Khalsa College,
+                  Amritsar, after many a long year of
+                  unbroken and luminous scholarly work, he became principal of the Shahid
+                  Sikh missionary College. He also
+                  worked as
+                  principal at the Gurmat College, Patiala.</p>
+                <p class="blue"> Professor Sahib Singh was known for his erudition and assiduous
+                  pursuit of scholarship. Nearly
+                  50 of
+                  his works were published between 1927 and 1977. These included exposition
+                  of several of the Sikh sacred
+                  texts and
+                  his monumental 10-volume commentary on Sikh Scripture, Sri Guru Granth
+                  Sahib Darpan, published during
+                  1962-64. A
+                  most original and earlier work was his Gurbani Viakaran, a textual grammar
+                  of the Guru Granth Sahib. No
+                  exegetical
+                  work since the publication of this book in 1932 has been possible without
+                  resort to the fundamental
+                  principles
+                  enunciated in it, especially those concerning the interpretation of vowel
+                  endings in inflexions of nouns and
+                  verbs.
+                  Sahib Singh made a notable contribution to Punjabi prose through his essays
+                  on moral and spiritual themes,
+                  religious
+                  philosophy and issues in history arid biography.<br>
+                  Sahib Singh's contribution to Sikh studies and Punjabi letters received
+                  wide recognition in his own
+                  lifetime. The
+                  Punjabi Sahitya Akademi, Ludhiana, honoured him in 1970 with a life
+                  fellowship, and Punjabi University,
+                  Patiala,
+                  conferred upon him, in 1971, the degree of Doctor of Literature (honoris
+                  causa). Earlier, the Shiromani
+                  Gurdwara
+                  Parbandhak Committee had made award to him for his Gurbani Viakaran, and
+                  the Government of Patiala and East
+                  Punjab
+                  States Union had honoured him in 1952 marking his services to Punjabi
+                  literature.</p>
+                <p class="blue"> Professor Sahib Sihgh died of Parkinson's disease at Amritsar
+                  on 29 October 1977. <br>
+
+
+                </p>
+                <div align="center">
+                  <!--<p class="blue"><a href="-->
+                  <!--sri-guru-granth-darpan/sahib-singh"><strong>Glimpses from the life-->
+                  <!--            Professor Sahib Singh</strong></a></p>-->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

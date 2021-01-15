@@ -1,0 +1,56 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="page-content" style="padding-top: 30px;">
+                <div class="container-fluid">
+                    <div class="contents">
+                        <div style="background-color:#fceaaa" align="center">
+                            <h3 class="top-heading no-top">Maansarovar - Words</h3>
+                        </div>
+
+                        <div class="browse-letters center">
+                            <span class="bold xl-text">
+                                 <span *ngFor="let alpha of alphas; let i = index">
+                                      <a (click)="goTomaansarovarWord(alpha)">{{alpha}}</a>&nbsp;
+                                 </span>
+                            </span>
+                       </div>
+                        <p class="bold center small-bottom">Browse by letter</p>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>Words found for '{{keyword}}'</strong>
+                            </div>
+                            <div class="col-md-9 text-right">
+                                <a [routerLink]="['/maansarovar']" class="button">Search Page</a>
+                            </div>
+                            <br>
+                            <div>
+                                <a *ngFor="let item of pageInfo.words; let i=index" style="" 
+                                [routerLink]="['/maansarovar/quotations/' + item.word]"
+                                    class="word">{{item.word}}&nbsp;&nbsp;&nbsp;</a> 
+                            </div>
+                            <div class="clearer"></div>
+                        </div>
+                        <!--end-->
+                        <br>
+                        <div class="browse-letters center">
+                            <span class="bold xl-text">
+                                 <span *ngFor="let alpha of alphas; let i = index">
+                                      <a (click)="goTomaansarovarWord(alpha)">{{alpha}}</a>&nbsp;
+                                 </span>
+                            </span>
+                       </div>
+                        <p class="bold center small-bottom">Browse by letter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

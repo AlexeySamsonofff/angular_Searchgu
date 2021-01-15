@@ -1,0 +1,31 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="container-fluid" id="banner">
+                <img src="../../../assets/img/banner.jpg" class="img-responsive">
+            </div>
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div>Home &gt;&gt; Sikh Gurus &gt;&gt; Guru Nanak Dev Ji</div>
+                    <div [innerHtml]="html | safeHtml"></div>
+                    <hr>
+                    <div class="navig_right_left">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                            <tbody><tr>
+                                <td><a [routerLink]="['/gurus']">Index</a></td>
+                                <td align="center"><a [routerLink]="['/gurus/gurunanak7']">Back</a><a [routerLink]="['/gurus']"></a></td>
+                                <td align="right"><a [routerLink]="['/gurus/gurunanak9']">Next</a></td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

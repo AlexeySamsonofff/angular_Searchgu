@@ -1,0 +1,145 @@
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body">
+          <app-border></app-border>
+          <div class="main-body">
+               <div class="container-fluid" id="banner">
+                    <img src="../../../assets/img/banner.jpg" class="img-responsive">
+               </div>
+               <div class="page-content">
+                    <div class="container-fluid">
+                         <div class="browse-letters center">
+                              <span class="bold xl-text">
+                                   <span *ngFor="let alpha of alphas; let i = index">
+                                        <a (click)="goTomahanView(alpha)">{{alpha}}</a>&nbsp;
+                                   </span>
+                              </span>
+                         </div>
+                         <p class="bold center small-bottom">Browse by letter</p>
+                         <h3 class="no-top maroon center">Encyclopedia of Sikh Literature</h3>
+                         <h6 class="blue bold no-top"><strong>Gur Shabad Ratanakar Mahankosh</strong> by Kahan Singh
+                              Nabha, popularly known as <strong>Mahankosh</strong>
+                              is a not only the first dictionary of Sikh Scripture and books on Sikh Religion on western
+                              concept of lexis but also
+                              a classical reference book of Sikh History, Philosophy and contemporary Sikh States . Even
+                              after a century of its
+                              compilation, it still remains a unique reference document.</h6>
+
+                         <p class="red bold center">You can either type in the word you are looking for in the box below
+                              or browse by letter</p>
+
+                         <div class="center">
+                              
+                              <h3 class="maroon small-bottom center">GurShabad Ratanakar Mahankosh</h3>
+
+                              <form name="frmResourcesSearch" class="general-page-auto-search" id="myForm">
+                                   <div class="row">
+                                        <input type="hidden" name="table_name" id="table_name"
+                                             value="GurShabad Ratanakar Mahankosh">
+
+                                        <div class="col-sm-3 col-xs-6 col-sm-offset-4">
+                                             <span class="twitter-typeahead"
+                                                  style="position: relative; display: inline-block;">
+                                                  <input type="text" class="form-control browse-search tt-input"
+                                                       #searchText
+                                                       id="outText" name="keyword" value="" [(ngModel)]="q"
+                                                       (keypress)="onKey($event);" 
+                                                       autocomplete="off"
+                                                       spellcheck="false" dir="auto"
+                                                       style="position: relative; vertical-align: top; background-color: white;">
+                                                  <pre aria-hidden="true"
+                                                       style="position: absolute; visibility: hidden; white-space: pre; font-family: Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                                                  <div class="tt-menu"
+                                                       style="position: absolute; top: 100%; left: 0px; z-index: 100;"
+                                                       (clickOutside)="hideAutoset($event)"
+                                                       *ngIf="allWords.length>0 && show_autoset && q!==''">
+                                                       <div class="tt-dataset tt-dataset-0">
+                                                            <div class="tt-suggestion tt-selectable"
+                                                                 *ngFor="let word of allWords; let i=index"
+                                                                 (click)="q=word.word;show_autoset=false;handleSearch()">
+                                                                 {{word.word}}
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </span>
+                                        </div>
+                                        <div class="col-sm-1 col-xs-6">
+                                             <button class="btn search-btn bl" type="button" (click)="do_search()">Search</button>
+                                        </div>
+                                   </div>
+
+                                   <div class="row" style="margin-top: 20px;">
+                                        <div class="punjabi-keypad">
+
+                                             <div class="keypad_container">
+                                                  <div style="margin-bottom:10px">
+                                                       <button id="toggle_keyboard" class="btn btn-primary"
+                                                            (click)="showKeyboard=!showKeyboard">Show
+                                                            Keyboard</button>&nbsp;&nbsp;
+                                                       <span style="margin:5px 0 0 0">You can use either Virtual or
+                                                            Physical Keyboard for Gurmukhi Unicode</span>
+                                                  </div>
+                                                  <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+
+                                                       <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </form>
+
+                         </div>
+
+                         <p class="blue">It was first published in 1930 after many years of painstaking research from
+                              1912 to 1927. Mahan
+                              Kosh as it is generally called is a model encyclopaedia. It modestly claims in it subtitle
+                              to be an
+                              encyclopaedia of Sikh literature, but it is, in fact, much more. Its remarkable coverage
+                              and exemplary accuracy
+                              has a multitude of entries ranging from brief definitions of difficult words from the
+                              scriptures and tradition,
+                              through descriptive notes on various doctrines, individuals and institutions to accounts
+                              of the Gurus. It gives
+                              careful treatment of ter-minology, which has dropped out of usage or changed its meaning.
+                         </p>
+                         <p class="blue">The Mahan Kosh is indispensable for any serious student of Sikh studies, its
+                              qualities undimmed by
+                              over half a century which has passed since it first appeared in print. Bhai Kahn Singh
+                              ranks as one of the
+                              modern world's greatest encyclopaedists. The fact that he chose to present all his work in
+                              Punjabi has limited
+                              his contribution to those who are able to read Punjabi, and although his reputation
+                              extends much farther, it is
+                              largely confined to the general area of Sikh studies. This does him less than justice. The
+                              range of his
+                              coverage, the meticulous care with which he collected and arranged his material, a
+                              scrupulous concern for
+                              accuracy and the succinct nature of his presentation, distinguishes his work. These are
+                              the qualities of a great
+                              encyclopaedist and their manifest presence in the works of Bhai Kahn Singh qualifies him
+                              as one of the truly
+                              great theologians. </p>
+                         <p class="blue">
+                              <a class="blue" routerLink="['/mahan-kosh/kahan_singh_nabha">
+                                   <strong>A Tribute to Bhai Kahn Singh Nabha</strong>
+                              </a>
+                         </p>
+
+                         <p class="bold small-bottom center">Browse by letter</p>
+                         <div class="browse-letters center">
+                              <span class="bold xl-text">
+                                   <span *ngFor="let alpha of alphas; let i = index">
+                                        <a (click)="goTomahanView(alpha)">{{alpha}}</a>&nbsp;
+                                   </span>
+                              </span>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

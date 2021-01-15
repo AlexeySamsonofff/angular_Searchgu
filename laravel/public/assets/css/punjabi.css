@@ -1,0 +1,114 @@
+
+/*=================== for punjabi keyboard =======================*/
+#Table2{width:97%; margin:0px -10px 0px -10px;}
+@media (min-width: 992px) {
+	#Table2{width:97%; margin:0px 10px 0px 10px;}
+}
+.feedback{ padding:3px; margin-left:10px; vertical-align:middle}
+.feedback img{vertical-align:middle; cursor:pointer}
+#divComments{ display:none}
+
+
+.dbl {
+	BORDER-RIGHT: #ffffff 2px outset;
+	BORDER-TOP: #ffffff 2px outset;
+	BORDER-LEFT: #ffffff 2px outset;
+	BORDER-BOTTOM: #ffffff 2px outset;
+	font-family : Verdana,Arial,sans-serif;
+	/*BACKGROUND-COLOR: #dcdcdc;*/
+	font-size: 12px;
+	BACKGROUND-COLOR: #ede8d5;
+	width: 35px;
+	TEXT-ALIGN: center;
+	TEXT-DECORATION: none;
+	CURSOR: default;
+}
+.act {
+	BORDER-RIGHT: #ffffff 2px outset; 
+	BORDER-TOP: #ffffff 2px outset;
+	BORDER-LEFT: #ffffff 2px outset; 
+	BORDER-BOTTOM: #ffffff 2px outset; 
+	font-family : Verdana,Arial,sans-serif;
+	font-size: 12px;
+	/*BACKGROUND-COLOR: #cccccc; */
+	width: 35px;
+	BACKGROUND-COLOR: #CAB99D;
+	TEXT-ALIGN: center;
+	height: 40px;
+	padding-top: 5px;
+	CURSOR: default;
+}
+.key_green{
+	color:green;
+	font-size: 50%;
+}
+td {
+}
+@media (min-width: 768px) {
+	.dbl {
+		BORDER-RIGHT: #ffffff 2px outset;
+		BORDER-TOP: #ffffff 2px outset;
+		font-size: 150%;
+		BORDER-LEFT: #ffffff 2px outset;
+		BORDER-BOTTOM: #ffffff 2px outset;
+		font-family : Verdana,Arial,sans-serif;
+		/*BACKGROUND-COLOR: #dcdcdc;*/
+		BACKGROUND-COLOR: #ede8d5;
+		TEXT-ALIGN: center;
+		TEXT-DECORATION: none;
+		CURSOR: default;
+	}
+	.act {
+		BORDER-RIGHT: #ffffff 2px outset;
+		BORDER-TOP: #ffffff 2px outset;
+		font-size: 150%;
+		BORDER-LEFT: #ffffff 2px outset;
+		BORDER-BOTTOM: #ffffff 2px outset;
+		font-family : Verdana,Arial,sans-serif;
+		/*BACKGROUND-COLOR: #cccccc; */
+		BACKGROUND-COLOR: #CAB99D;
+		TEXT-ALIGN: center;
+		height: 40px;
+		padding-top: 5px;
+		CURSOR: default;
+	}
+}
+
+.btext {
+	COLOR: blue; TEXT-DECORATION: none
+}
+#transl{position:relative;z-index:100;top:151px; float:right; width:165px;}
+#convrtBtn{float:left;position:relative;top:151px;left:20px;z-index:100;}
+#outText2{ height:200px;width:97%;overflow:hidden; margin:0px 10px 0px 10px; font-size:20px;font-family:Arial,Helvetica,sans-serif; line-height:1.5em; resize:none;} 
+/*#outText{ height:200px;width:97%; font-size:20px;font-family:Arial,Helvetica,sans-serif; resize:none;line-height:1.5em; direction:ltr; margin:0px 0px 0px 0px;overflow:hidden; }*/
+/*#outText{ height:200px;width:97%; font-size:20px;font-family:Arial,Helvetica,sans-serif; resize:none; direction:ltr; margin:0px 0px 0px 0px;overflow:hidden; }*/
+
+.hidden{display:none;}
+.toLeft{float:left;}
+.toRight{float:right;}
+.mright{margin-right:10px;}
+.clear{clear:both;}
+.mleft6{
+	margin-left:15px;
+}
+.cursor:hover{
+    /*BACKGROUND-COLOR:#FF9933;*/
+	background-color: #fdfd96;
+}
+.cursor:active{
+    BACKGROUND-COLOR:#FF9933;
+}
+#key14:hover,#key15:hover,#key59:hover,#key28:hover,#key53:hover,#key42:hover,#key57:hover,#key58:hover,#key54:hover,#key55:hover{
+    BACKGROUND-COLOR:#FF9933;
+}
+/* small devices(phones) */
+.keypad_container{
+	width: 100%;
+	margin:auto;
+}
+@media (min-width: 1200px){
+	.keypad_container {
+		width: 75%;
+		margin:auto;
+	}
+}

@@ -1,0 +1,112 @@
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body">
+          <app-border></app-border>
+          <div class="main-body">
+               <div class="container-fluid" id="banner">
+                    <img src="../../../assets/img/banner.jpg" class="img-responsive">
+               </div>
+               <div class="page-content">
+                    <div class="container-fluid">
+                         <h3 class="small-bottom bold center no-top"><strong>Faridkot Wala Teeka</strong></h3>
+                         <hr>
+                         <h5><strong>Faridkot Wala Teeka</strong></h5>
+                         <p class="blue"> Faridkot Wala Teeka is classical exegesis of Sri Guru Granth Sahib in ‘Braj
+                              Bhasha’ by a
+                              team of scholars of Nirmala Sect. It was the first attempt in this field prompted by
+                              Rulers of Faridkot State in 19
+                              th century. For all future attempts in this field, it became an ideal prototype. As it was
+                              patronized by the Rulers
+                              of Faridkot State, it came to be known as ‘Faridkot Wala Teeka’. </p>
+                         <p class="blue"> Teekas (commentaries) on Guru Granth Sahib have been written in one form or
+                              other ever since the
+                              compilation of Guru Granth Sahib. However, the first formal Teeka in line with the
+                              traditional interpretation of
+                              Sikh scriptures was written by Sant Giani Badan Singh Ji of Dera Sekhwan at the request
+                              and encouragement of
+                              Maharaja Bikram Singh of Faridkot. It took him six and a half years to complete it. It was
+                              completed in 1883. This
+                              Teeka was reviewed by a committee appointed by Mahant Shamer Singh of Patna. After
+                              incorporating the comments of
+                              this committee, the first edition of this Teeka was published [funded] by the Maharaja
+                              Balvir Singh of Faridkot in
+                              1906 which was printed by the Wazir Hind Press (started by Bhai Vir Singh) at Amritsar.
+                              The second edition of this
+                              Teeka was published by Maharaja Harinder Singh of Faridkot in 1928. This Teeka is known as
+                              the "Faridkoti
+                              Teeka." </p>
+                         <p class="blue"> Pandit Tara Singh Narotam, the contemporary of the author of Faridkoti Teeka,
+                              also started the Teeka,
+                              but he died when he finished it up to Basant Rag. Then some people borrowed it from his
+                              heir just to review the
+                              draft, but never returned it. Only the Teeka of Sri Rag is available from his draft which
+                              is in the possesion of
+                              very few researchers and scholars at this time. It is not generally available.</p>
+                         <p class="red"><em>- Ref. Gurmat Sahit Vivechan (Punjabi, published by Punjab Languages
+                                   Department). This is an
+                                   extremely useful book on the history of Gurmat literature. It contains 25 essays by
+                                   top-notch scholars.</em></p>
+                         <div class="subhead bold">
+                              <div class="row">
+                                   <div class="col-md-1 col-sm-1"></div>
+                                   <div class="col-md-6 col-sm-5">
+                                        <a [routerLink]="['/faridkot-wala-teeka/page']">Browse Page by
+                                             Page Faridkot Wala Teeka </a>
+                                   </div>
+                                   <div class="col-md-5 col-sm-5">
+                                        <a [routerLink]="['/faridkot-wala-teeka/chapters']">Chapter
+                                             Index Faridkot Wala Teeka </a>
+                                   </div>
+                              </div>
+                         </div>
+                         <p></p>
+                         <div class="center">
+                              <h3 class="maroon small-bottom center">Faridkot Wala Teeka</h3>
+                              <form method="post" name="frmResourcesSearch" class="general-page-auto-search"
+                                   id="myForm">
+                                   <div class="row">
+                                        <input type="hidden" name="table_name" id="table_name"
+                                             value="Sri Nanak Prakash">
+
+                                        <div class="col-sm-3 col-xs-6 col-sm-offset-4">
+                                             <input type="text" class="form-control browse-search" id="outText"
+                                                  name="keyword" value="" [(ngModel)]="q" #searchText
+                                                  (keypress)="onKey($event);">
+                                        </div>
+                                        <div class="col-sm-1 col-xs-6">
+                                             <button class="btn search-btn bl" (click)="do_search()">Search</button>
+                                        </div>
+                                   </div>
+
+                                   <div class="row" style="margin-top: 20px;">
+                                        <div class="punjabi-keypad">
+
+                                             <div class="keypad_container">
+                                                  <div style="margin-bottom:10px">
+                                                       <button id="toggle_keyboard" class="btn btn-primary"
+                                                            (click)="showKeyboard=!showKeyboard">Show
+                                                            Keyboard</button>&nbsp;&nbsp;
+                                                       <span style="margin:5px 0 0 0">You can use either Virtual or
+                                                            Physical
+                                                            Keyboard for Gurmukhi Unicode</span>
+                                                  </div>
+                                                  <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+                                                       <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </form>
+                         </div>
+                         <br>
+                    </div>
+                    <div align="center" id="amrit_keetrtan">
+                    </div>
+               </div>
+          </div>
+     </div>
+     <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

@@ -1,0 +1,49 @@
+<div class="comp-container">
+  <div class="home-body" id="banner">
+    <div class="row" style="padding-top: 20px;">
+      <div class="col-md-6 text-left">
+        <button (click)="print()" class="btn btn-default print-hidden"><i class="fa fa-print"></i> Print Page</button>
+      </div>
+      <div class="col-md-6 text-right">
+        SearchGurbani.com
+      </div>
+    </div>
+    <div class="page-content" style="padding-top: 30px;">
+      <div class="container-fluid">
+        <div class="contents">
+          <h3 class="top-heading no-top">Indian Classical Music and Sikh Kirtan</h3>
+
+          <div class="utility-bar2">
+            <div class="utility-bar2">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 center">
+                  <div class="bold">
+                    Displaying Page {{ pageno }} of {{ maxPage }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="page">
+              <div class="page_data" *ngFor="let line of pageInfo.lines; let i = index">
+                <p class="blue" [innerHtml]="display(line?.text)">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="utility-bar2">
+          <div class="utility-bar2">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 center">
+                <div class="bold">
+                  Displaying Page {{ pageno }} of {{ maxPage }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

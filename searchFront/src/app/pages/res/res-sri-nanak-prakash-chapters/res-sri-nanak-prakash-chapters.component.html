@@ -1,0 +1,44 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="page-content" style="padding-top: 30px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="contents">
+                                <div class="options no-top top-heading center" align="">
+                                    <h3 class="bold small-bottom no-top"><h3 class="bold small-bottom no-top">Sri Nanak Prakash - {{chapterId!=0?'Section '+chapterId:''}} Chapter Index</h3>
+                                    </h3>
+                                </div>
+                                <br>
+                                <div class="chapter_index">
+
+                                    <div class="section_title">
+                                        <span class="col_sl_no">No.</span>
+                                        <span class="col_section_name">Chapter Name</span>
+                                        <span class="col_page_no">Page No.</span><br class="clearer">
+                                    </div>
+                                    <a *ngFor="let item of page_info.chapters; let i = index" [routerLink]="['/sri-nanak-prakash/page/'+item.page_id+'/volume/'+chapterId]">
+                                        <div class="section_line line" [ngClass]="i%2==0?'row1':'row-1'">
+                                            <span class="col_sl_no">{{item.chapter_id}}</span>
+                                            <span class="col_section_name">{{item.chapter_name}}</span>
+                                            <span class="col_page_no">{{item.page_id}}</span>
+                                            <div class="clearer"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

@@ -1,0 +1,407 @@
+<div class="search_panel">
+  <div class="search-box">
+    <h3 class="top-heading bold no-top"> INSTANT GURBANI SEARCH</h3>
+    <p class="bold">Instantly search Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran,
+      Sri Dasam Granth , Kabit Bhai Gurdas and Bhai Nand Lal Bani by typing your keywords:</p>
+    <form id="myForm">
+      <div class="form-group row" style="margin-bottom:5">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <label>Find results with text</label>
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                <input type="text" value="" name="SearchData" id="outText" *ngIf="language==='PUNJABI'" [(ngModel)]="q"
+                  #searchText (ngModelChange)="handleSearchChange()" class="search-input form-control tt-input"
+                  autocomplete="off" (keypress)="onKey($event);"
+                  style="display: block; position: relative; vertical-align: top; background-color: transparent;"
+                  spellcheck="false" dir="auto">
+                <input type="text" value="" name="SearchData" id="outText_ascii" *ngIf="language!=='PUNJABI'"
+                  [(ngModel)]="q" (ngModelChange)="handleSearchChange()"
+                  [ngStyle]="{'font-family': language==='PUNJABI-ASC'?'WebAkharThick':''}"
+                  class="search-input form-control tt-input" autocomplete="off"
+                  style="display: block; position: relative; vertical-align: top; background-color: transparent;"
+                  spellcheck="false" dir="auto">
+
+                <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100;"
+                  (clickOutside)="hideAutoset($event)"
+                  *ngIf="isautocomplete && allwords.length>0 && show_autoset && q!==''">
+                  <div class="tt-dataset tt-dataset-0">
+                    <div class="tt-suggestion tt-selectable" [ngClass]="language==='PUNJABI-ASC'?'punjabi_fonts':''"
+                      *ngFor="let word of allwords; let i=index"
+                      (click)="q=word.word;show_autoset=false;handleSearch()">
+                      {{word.word}}
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div style="display:flex; margin:7px 0 7px 0">
+                <input type="checkbox" id="autocomplete" class="btn search-btn" name="autocomplete"
+                  style="border-radius: 0;" [(ngModel)]="isautocomplete">
+                <label style="margin-bottom:0">autocomplete</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <label>Return Results</label>
+          <select name="Searchtype" class="form-control" id="Searchtype" [(ngModel)]="searchType"
+            (ngModelChange)="handleSearchTypeChange()">
+            <option *ngFor="let type of allSearchTypes; let i = index" value="{{type.value}}">{{type.label}}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <label>Find results in language</label>
+          <select name="language" class="form-control" id="language" [(ngModel)]="language"
+            (ngModelChange)="handleLanguageChange()">
+            <option *ngFor="let lan of allLanguages" value="{{lan.value}}">{{lan.label}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <div style="display:flex;justify-content:flex-end;margin:7px 0 7px 0">
+      <li style="list-style-type:none">
+        <input type="button" (click)="handleSearch()" value="Search" name="SubmitSearch" id="SubmitSearch" class="btn"
+          [ngStyle]="{'background': footerColor}" style="margin:10px 10px 0 0; color: white;">
+        <input type="reset" (click)="handleReset()" value="Reset" name="reset_search" id="reset_search" class="btn"
+          [ngStyle]="{'background': footerColor}" style="margin:10px 10px 0 0; color: white;">
+        <input type="button" (click)="handleClear()" value="Clear" name="clear_search" id="clear_search" class="btn"
+          [ngStyle]="{'background': footerColor}" style="margin:10px 10px 0 0; color: white;">
+        <a [routerLink]="['/scriptures/search']" *ngIf="showAdvance">
+          <input type="submit" value="Advanced Search" name="advanced_search" id="advanced_search" class="btn"
+            [ngStyle]="{'background': footerColor}" style="margin:10px 10px 0 0; color: white;">
+        </a>
+      </li>
+    </div>
+  </div>
+</div>
+
+<div class="keypad_container" *ngIf="language==='PUNJABI'">
+  <!-- <div class="keypad_container"> -->
+  <div style="margin-bottom:10px">
+    <button id="toggle_keyboard" class="btn btn-primary" (click)="showKeyboard=!showKeyboard">Show Keyboard</button>
+    <span style="margin:5px 0 0 0;padding: 1rem;">You can use either Virtual or Physical Keyboard for Gurmukhi
+      Unicode</span>
+  </div>
+  <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+    <!--    <form id="myForm">-->
+    <!--        <textarea id="outText2" class="hidden" name="message"></textarea>-->
+    <!--        <lt-mirror style="display: none;"><lt-highlighter contenteditable="false" style="display: none;"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="width: 834.188px !important; height: 205px !important; margin-top: 1px !important; margin-left: 11px !important;"><canvas class="lt-highlighter__canvas" width="0" height="0" style="display: none; margin-top: 0px !important; margin-left: 0px !important;"></canvas></lt-div></lt-highlighter><lt-div spellcheck="false" class="lt-mirror__wrapper" data-lt-scroll-top="0" data-lt-scroll-left="0" style="border: 1px solid rgb(187, 187, 187) !important; border-radius: 0px !important; direction: ltr !important; font: 400 20px/30px Arial, Helvetica, sans-serif !important; font-feature-settings: normal !important; font-kerning: auto !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 0px 10px !important; padding: 5px 0px 0px !important; text-align: start !important; text-decoration: none solid rgb(0, 0, 0) !important; text-indent: 0px !important; text-transform: none !important; word-spacing: 0px !important; overflow-wrap: break-word !important; width: 834.188px !important; height: 200px !important;"><lt-div class="lt-mirror__canvas" style="margin-top: 0px !important; margin-left: 0px !important; width: 834.188px !important; height: 200px !important;">ਆਆਆ੧</lt-div></lt-div></lt-mirror>-->
+    <!--        <textarea id="outText" onkeypress="KeyPress(event);" name="message" spellcheck="false" data-gramm="false"></textarea>-->
+    <!--    </form>-->
+
+    <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+
+  </div>
+</div>
+
+
+<div class="card mb-4" id="result_div" *ngIf="showSearchResult">
+  <div class="card-body">
+    <!-- Nav tabs -->
+    <div>
+      <!--            <p class="bold">Select the Scriptures to search for</p>-->
+      <h2>Search Results</h2>
+    </div>
+    <div class="panel with-nav-tabs panel-primary">
+      <div class="panel-heading">
+        <ul class="nav nav-tabs nav-justified">
+          <li class="nav-item" [ngClass]="active_tab==='ggs'?'active':''">
+            <a class="nav-link border border-primary active" (click)="change_tab('ggs')">Sri Guru Granth
+              Sahib</a>
+          </li>
+          <li class="nav-item" [ngClass]="active_tab==='ak'?'active':''">
+            <a class="nav-link" (click)="change_tab('ak')">Amrit Keertan</a>
+          </li>
+          <li class="nav-item" [ngClass]="active_tab==='bgv'?'active':''">
+            <a class="nav-link" (click)="change_tab('bgv')">Bhai Gurdas Vaaran</a>
+          </li>
+          <li class="nav-item" [ngClass]="active_tab==='dg'?'active':''">
+            <a class="nav-link" (click)="change_tab('dg')">Sri Dasam Granth Sahib</a>
+          </li>
+          <li class="nav-item" [ngClass]="active_tab==='ks'?'active':''">
+            <a class="nav-link" (click)="change_tab('ks')">Kabit Savaiye</a>
+          </li>
+          <li class="nav-item" [ngClass]="active_tab==='bnl'?'active':''">
+            <a class="nav-link" (click)="change_tab('bnl')">Bhai Nand Lal</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Tab panes -->
+      <div class="panel-body">
+        <div class="tab-content">
+          <!-- <div id="ggs" class="tab-pane" [ngClass]="active_tab==='ggs'?'active in':'fade'"> -->
+
+          <!-- ggs -->
+          <div *ngIf="addFilter">
+            <button *ngIf="active_tab==='ggs'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_ggs"
+              style="margin-bottom:10px" aria-expanded="false">Additional
+              Filters</button>
+            <div id="filer_ggs" *ngIf="active_tab==='ggs'" class="collapse" aria-expanded="false">
+
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">Find
+                  results
+                  from text
+                  written by
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <select name="author" id="author" [(ngModel)]="selected_author">
+                    <option value="">Any Author</option>
+                    <option *ngFor="let author of allAuthors" value="{{author.ID}}">
+                      {{author.author}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">Find
+                  results
+                  from text
+                  related to
+                  raag
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <select name="raag" id="raag" [(ngModel)]="selected_raag">
+                    <option value="">Any Raag</option>
+                    <option *ngFor="let raag of allRaags" value="{{raag.id}}">{{raag.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" name="page_to" type="text" max="1430" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+            <!-- ak -->
+            <button *ngIf="active_tab==='ak'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_ak"
+              style="margin-bottom:10px" aria-expanded="true">Additional
+              Filters</button>
+            <div *ngIf="active_tab==='ak'" id="filer_ak" class="collapse in" aria-expanded="true" style="">
+
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">Find
+                  results
+                  from text
+                  written by
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <select name="author" id="author" [(ngModel)]="selected_author">
+                    <option value="">Any Author</option>
+                    <option *ngFor="let author of allAuthors" value="{{author.ID}}">
+                      {{author.author}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">Find
+                  results
+                  from text
+                  related to
+                  raag
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <select name="raag" id="raag" [(ngModel)]="selected_raag">
+                    <option value="">Any Raag</option>
+                    <option *ngFor="let raag of allRaags" value="{{raag.id}}">{{raag.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" name="page_to" max="1040" type="text" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+            <!-- bgv -->
+            <button *ngIf="active_tab==='bgv'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_bgv"
+              style="margin-bottom:10px" aria-expanded="true">Additional
+              Filters</button>
+            <div *ngIf="active_tab==='bgv'" id="filer_bgv" class="collapse in" aria-expanded="true">
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" max="41" name="page_to" type="text" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+            <!-- dg -->
+            <button *ngIf="active_tab==='dg'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_dg"
+              style="margin-bottom:10px" aria-expanded="true">Additional
+              Filters</button>
+            <div *ngIf="active_tab==='dg'" id="filer_dg" class="collapse in" aria-expanded="true" style="">
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" max="2820" name="page_to" type="text" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+            <!-- ks -->
+            <button *ngIf="active_tab==='ks'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_ks"
+              style="margin-bottom:10px" aria-expanded="true">Additional
+              Filters</button>
+            <div *ngIf="active_tab==='ks'" id="filer_ks" class="collapse in" aria-expanded="true" style="">
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" max="675" name="page_to" type="text" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+            <!-- bnl -->
+            <button *ngIf="active_tab==='bnl'" class="btn btn-primary" data-toggle="collapse" data-target="#filer_bnl"
+              style="margin-bottom:10px" aria-expanded="true">Additional Filters</button>
+            <div *ngIf="active_tab==='bnl'" id="filer_bnl" class="collapse in" aria-expanded="true">
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">Search from
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <select name="bnlSelect" class="form-control" [(ngModel)]="bnlSelect">
+                    <option value="">All Categories</option>
+                    <option *ngFor="let raag of allBnlCategory" value="{{raag.name.replace(' ', '_')}}">{{raag.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+
+                <div class="col-xs-12 col-sm-6">Find results from page between
+                </div>
+                <div class="col-xs-12 col-sm-6" style="flex-direction: row">
+                  <input size="5" name="page_from" type="text" [(ngModel)]="page_from">
+                  &nbsp;and&nbsp;
+                  <input size="5" max="150" name="page_to" type="text" [(ngModel)]="page_to">
+                  <input type="button" (click)="handleSearch()" value="Search" name="SubSearch"
+                    class="btn search-btn subsearch" style="margin-left: 10px;border-radius: 0; font-size: 12px">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="ggs" class="tab-pane active in">
+            <table class="table table-striped" [svData]="search_result" #sv="svDataTable" [svRowsOnPage]="10"
+              svSortBy="name" svSortOrder="asc">
+              <thead>
+                <tr>
+                  <td>
+                    <div class="row">
+                      <sv-bootstrap-paginator previousText="Previous" nextText="Next" [rowsOnPageSet]="[10, 25, 50]">
+                      </sv-bootstrap-paginator>
+                    </div>
+                    <div class="row">
+                      Showing {{ sv.rowsOnPage *(sv.activePage - 1) + 1 }} to
+                      {{ min(sv.rowsOnPage *(sv.activePage), search_result.length) }} of {{ search_result.length}}
+                      entries
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <div class="row">
+                      <div class="col-xs-1">
+                        <sv-default-sorter by="id">ID</sv-default-sorter>
+                      </div>
+                      <div class="col-xs-1" *ngIf="active_tab!=='bgv' && active_tab!=='ks' && active_tab!=='bnl'">
+                      </div>
+                      <div class="col-xs-5">Phonetic Roman</div>
+                      <div class="col-xs-4">Gurmukhi Unicode</div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let item of sv.data; let i = index">
+
+                  <td>
+                    <div class="row" style="padding: 5px 0px">
+                      <div class="col-xs-1">{{ sv.rowsOnPage *(sv.activePage - 1)  + i + 1 }}</div>
+                      <div class="col-xs-1" *ngIf="active_tab!=='bgv' && active_tab!=='ks' && active_tab!=='bnl'">
+                        <img (click)="item.open=!item.open"
+                          [src]="item.open?'../../../assets/img/details_close.png':'../../../assets/img/details_open.png'"
+                          style="width: 20px;" />
+                      </div>
+                      <div class="col-xs-5">
+                        <a [routerLink]="['/' + item.shabadlink]">{{ item.translit }}</a>
+                      </div>
+                      <div class="col-xs-4">
+                        {{ item.punjabi }}
+                      </div>
+                    </div>
+                    <div class="col-xs-12" style="padding: 5px 0px; background: white;" *ngIf="item.open">
+                      <a [routerLink]="['/' + item.pageLink]">Go to page</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr *ngIf="sv.data.length===0">
+                  <td>
+                    <div class="row text-center" style="padding: 5px 0px">
+                      Sorry, we couldn't find any matching results !
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4">
+                    <sv-bootstrap-paginator [rowsOnPageSet]="[10, 25, 50]"></sv-bootstrap-paginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

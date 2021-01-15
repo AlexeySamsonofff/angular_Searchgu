@@ -1,0 +1,19 @@
+<footer class="print-hidden">
+    <div class="">
+        <div class="main-footer" [ngStyle] = "{'background': backColor}">
+            <ul class="inline-block">
+                <li><a [routerLink]="['/home']">Home</a></li>
+                <li><a [routerLink]="['/preferences']">Site Preferences</a></li>
+                <li><a [routerLink]="['/unicode']">Unicode Fonts</a></li>
+                <!-- <li><a [routerLink]="['/guestbook/index']">Guestbook</a></li> -->
+                <li><a [routerLink]="['/feedback']">Feedback</a></li>
+                <li><a [routerLink]="['/sitemap']">Sitemap</a></li>
+                <li class="last"><b>
+                  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=RN6N7BTG9T5NE" style="color: white;">
+                    Donate to SearchGurbani</a></b>
+                  </li>
+            </ul>
+        </div>
+    </div>
+    <button (click)="topPage()" [style.background-color]="backColor" id="myBtn" title="Go to top">Top</button>
+</footer>

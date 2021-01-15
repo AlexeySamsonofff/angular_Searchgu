@@ -1,0 +1,64 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="page-content" style="padding-top: 30px;">
+      <div class="container-fluid">
+        <h3 class="no-top small-bottom">Sri Guru Granth Kosh</h3>
+        <div class="browse-letters center">
+          <span class="bold xx-text">
+            <span *ngFor="let alpha of alphas; let i = index">
+              <a (click)="setKeyword(alpha)">{{alpha}}</a>&nbsp;
+            </span>
+          </span>
+          <br>
+        </div>
+        <p class="bold center small-bottom">Browse by letter</p>
+
+        <p class="bold">Here are the results for the letter {{keyword}} from Sri Guru Granth Kosh
+        </p>
+        <p class="bold">
+          <span class="pull-left">Showing words to {{page_info.search_results_info['showing_to']}} of
+            {{page_info.search_results_info['total_results'] }}</span>
+          <span class="pull-right">
+            <a [routerLink]="['/guru-granth-kosh']" class="btn btn-search-page btn-default">Search Page</a>
+          </span>
+        </p>
+
+        <div class="clearfix"></div>
+        <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;"
+          nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25"
+          [totalItems]="page_info.search_results_info['total_results']"></pagination>
+
+        <div *ngFor="let line of page_info.lines; let i = index"
+          style="display: flex; flex-wrap: wrap;flex-direction: column;" class="line"
+          [ngClass]="i%2===0?'row1':'row-1'">
+          <div class='word'>
+            <span class='lang_1b'><a (click)="goToGgsSearch(line.word)">{{line.word}}</a></span> - <span
+              class='lang_2'>{{line.roman}}</span> - <span class='lang_3'>{{line.hindi}}</span>
+          </div>
+          <div class='description lang_1a'>{{line.description}}</div>
+          <div class='description lang_3a'>{{line.roman_desc}}</div>
+        </div>
+        <div class='line row1' *ngIf="page_info?.lines?.length===0"><label>No words found</label></div>
+        <div class="clearer"></div>
+        <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;"
+          nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25"
+          [totalItems]="page_info.search_results_info['total_results']"></pagination>
+        <p class="bold small-bottom center">Browse by letter</p>
+        <div class="browse-letters center">
+          <span class="bold xx-text">
+            <span *ngFor="let alpha of alphas; let i = index">
+              <a (click)="setKeyword(alpha)">{{alpha}}</a>&nbsp;
+            </span>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

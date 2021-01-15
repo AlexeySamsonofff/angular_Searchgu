@@ -1,0 +1,47 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body" id="banner">
+        <app-border></app-border>
+        <div class="container-fluid">
+        </div>
+    </div>
+
+    
+    <div class="page-content" style="margin-top: 20px;">
+        <div class="container-fluid">
+            <div class="contents">
+                <div style="background-color:#fceaaa;" align="center">
+                    <h3 class="no-top bold">Amrit
+                        Keertan - Shabads</h3>
+                    <span class="bold xx-text">
+                        <a *ngFor="let char of chars; let i = index" (click)="reload(char)" class="">{{char}}&nbsp;&nbsp;</a>
+                    </span>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="chapter_index">
+                <div class="section_title">
+                    <span class="col_sl_no">No.</span>
+                    <span class="col_section_name">Shabad Title</span>
+                    <span class="col_page_no">Page No.</span><br class="clearer">
+                </div>
+                <div class="section_line line" [ngClass]="{'row1':i%2===0, 'row-1':i%2===1}" *ngFor="let item of chapters, let i = index">
+                    <span class="col_sl_no">{{i + 1}}</span>
+                    <a [routerLink]="['/amrit-keertan/shabad/' + item.shabad_id + '/' + item.shabad_name|formatUrl]">
+                      <span class="col_section_name">{{item.shabad_punjabi}}</span>
+                    </a>
+                    <a [routerLink]="['/amrit-keertan/page/' + item.pageno]">
+                      <span class="col_page_no">{{item.pageno}}</span>
+                    </a>
+                    <div class="clearer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+    <app-copyright></app-copyright>
+</div>

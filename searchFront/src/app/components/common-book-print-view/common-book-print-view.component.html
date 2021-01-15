@@ -1,0 +1,44 @@
+<div class="page-content" style="padding-top: 30px;">
+  <div class="container-fluid">
+    <div class="contents">
+      <div class="row" style="padding: 10px 0px">
+        <div class="col-md-2 text-left">
+          <button (click)="print()" class="btn btn-default print-hidden"><i class="fa fa-print"></i> Print Page</button>
+        </div>
+        <div class="col-md-10 text-right">
+          SearchGurbani.com
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="col-md-12 top-heading no-top">{{ title }}</h3>
+      </div>
+
+      <div class="utility-bar2">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="displaying_page_default">
+              <h5 class="bold center">Displaying Page {{pageno}} of {{maxPage}} from Volume
+                {{volumeno}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page">
+        <div class="line" [ngClass]="i%2===0?'row1':'row-1'" style="display: block;" *ngFor="let item of pageInfo.lines; let i = index">
+          <p class="lang_1b" [style.font-size.px]="fontSize"
+          style="font-size: 20px;font-weight: bold;" [ngClass]="'text-' + textAlign" [innerHtml]="displayContent(item[display_field])"></p>
+        </div>
+      </div>
+      <div class="utility-bar2">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="displaying_page_default">
+              <h5 class="bold center">Displaying Page {{pageno}} of {{maxPage}} from Volume
+                {{volumeno}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+#vaar_index {
+    width: 80%;
+    margin: 0 auto;
+    a{
+        display: block;
+        float: left;
+        width: 5%;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 8px;
+    }
+}
+
+.col_sl_no {
+    float: left;
+    text-align: center;
+    width: 15%;
+}
+
+.vaar_index .col_section_name {
+    float: left;
+}
+.col_section_name {
+    width: 70%;
+}

@@ -1,0 +1,255 @@
+<div class="comp-container">
+  <app-background class="hidden-print" [backColor]="backgroundImg"></app-background>
+
+  <app-header class="hidden-print"></app-header>
+  <app-menu class="hidden-print" [menuBack]="param"></app-menu>
+  <div class="home-body" id="banner">
+    <app-border class="hidden-print"></app-border>
+    <div class="page-content" style="padding-top: 30px;">
+      <div class="container-fluid">
+        <div class="row hidden-print">
+          <div class="col-md-4">
+            <h3 class="no-top small-bottom">Sri Guru Granth Sahib World</h3>
+          </div>
+          <div class="col-md-4 text-center">
+            <h6 class="text-bold">Displaying page {{cur_page}} <span> of
+              {{maxCount}}</span></h6>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-12 utility_buttons">
+                <a class="btn btn-next" (click)="display.split=!display.split;save_preference()"
+                  [style.background]="display?.split?activeBg:footerColor" style="color: white;">Split</a>
+                <a class="btn btn-next" (click)="display.center=!display.center;save_preference()"
+                  [style.background]="display?.center?activeBg:footerColor" style="color: white;">Center</a>
+                <span id="social-sharing" (click)="changeSocialView()">
+                  <button type="button" name="social_sharing" id="social_sharing" class="btn btn-next social-sharing"
+                    data-social="off" [style.background]="social_flag?activeBg:footerColor"
+                    style="color: white;">{{social_string}}</button>
+                </span>
+                <a (click)="print()" style="margin-left: 5px;">
+                  <i class="fa fa-print" title="Print this page"></i>
+                </a>
+                <a (click)="copyText()" style="margin-left: 5px;"><i class="fa fa-copy"></i></a>
+                <!-- <a style="margin-left: 5px;"><i class="fa fa-code"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-print">
+          <div class="col-md-6">
+            <div class="row" style="padding-top: 5px;">
+              <div class="col-xs-12">
+                <div class="ang-paginate">
+                  <div class="ang-search">
+                    <form name="goto_page" id="goto_page" action="">
+                      Goto Ang&nbsp;<input type="number" name="page_no" [(ngModel)]="cur_page" id="page_no"
+                        class="form-control" style="display: inline-block;" maxlength="5" value="1">&nbsp;
+                      <button class="btn btn-next" (click)="getPageInfo()" [ngStyle]="{'background': footerColor}"
+                        style="color: white;">Go</button>
+                      <button class="btn btn-next" *ngIf="cur_page>first_page" [ngStyle]="{'background': footerColor}"
+                        style="color: white;" (click)="goBegin()">Begin</button>
+                      <button class="btn btn-next" *ngIf="cur_page>first_page" [ngStyle]="{'background': footerColor}"
+                        style="color: white;" (click)="goBack()">Back</button>
+                      <button class="btn btn-next" *ngIf="cur_page<maxCount" [ngStyle]="{'background': footerColor}"
+                        style="color: white;" (click)="goNext()">Next</button>
+                      <button class="btn btn-next" *ngIf="cur_page<maxCount" [ngStyle]="{'background': footerColor}"
+                        style="color: white;" (click)="goLast()">Last</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 text-right hidden-print">
+            <ul class="list-inline">
+              <li><a class="btn btn-next" (click)="showFont=!showFont" style="color: white;"
+                  [style.background]="footerColor">Font</a></li>
+              <li><a class="btn btn-next" (click)="openTiModal(titemplate)" style="color: white;"
+                  [style.background]="footerColor">Transliteration</a></li>
+              <li><a class="btn btn-next" (click)="togglePunjabi()" style="color: white;"
+                  [style.background]="selected_langs.indexOf(54)>-1?activeBg:footerColor">Gurmukhi</a></li>
+              <li><a class="btn btn-next" (click)="openTaModal(tatemplate)" style="color: white;"
+                  [style.background]="footerColor">Translation</a></li>
+              <li><a class="btn btn-next" (click)="resetLangs()" style="color: white;"
+                  [style.background]="footerColor">Reset</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix hidden-print"></div>
+        <div class="row hidden-print" *ngIf="showFont" style="margin: 0;padding: 5px" [ngStyle]="{'background': activeBg}">
+          <div class="row">
+            <div class="col-xs-6 col-md-2">
+              <label>Gurmukhi:</label>
+            </div>
+            <div class="col-xs-6 col-md-5">
+              <input type="range" min="5" max="50" [(ngModel)]="font.gurmukhi.size" title="Size"
+                (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-2">
+              <input type="color" [(ngModel)]="font.gurmukhi.color" (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-3">
+              <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('gurmukhi')"
+                style="color: white">Reset</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-2">
+              <label> Transliteration:</label>
+            </div>
+            <div class="col-xs-6 col-md-5">
+              <input type="range" min="5" max="50" [(ngModel)]="font.transliteration.size" title="Size"
+                (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-2">
+              <input type="color" [(ngModel)]="font.transliteration.color" (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-3">
+              <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('transliteration')"
+                style="color: white">Reset</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-2">
+              <label> Translation:</label>
+            </div>
+            <div class="col-xs-6 col-md-5">
+              <input type="range" min="5" max="50" [(ngModel)]="font.translation.size" title="Size"
+                (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-2">
+              <input type="color" [(ngModel)]="font.translation.color" (ngModelChange)="save_preference()">
+            </div>
+            <div class="col-xs-6 col-md-3">
+              <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('translation')"
+                style="color: white">Reset</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="ang-content" *ngIf="!display.split">
+          <div *ngFor="let item of page_info.lines; let i = index"
+            style="display: flex; flex-wrap: wrap;flex-direction: column;" class="content-block"
+            [ngClass]="i%2===0?'row1':'row-1'" [class.text-center]="display.center">
+            <p class="world-main-text" [style.font-size.px]="font.gurmukhi.size" [style.color]="font.gurmukhi.color"
+              *ngIf="selected_langs.indexOf(54)>-1">{{item.text}}</p>
+            <div *ngFor="let it of item.ti; let ti=index">
+              <p class="world-other-text" [style.font-size.px]="font.transliteration.size" [style.color]="font.transliteration.color"
+                *ngIf="selected_langs.indexOf(it.language_id)>-1">{{ it.text }}</p>
+            </div>
+            <div class="divider"></div>
+            <div *ngFor="let it of item.ta; let ta=index">
+              <p *ngIf="selected_langs.indexOf(it.language_id)>-1" [style.font-size.px]="font.translation.size"
+                [style.color]="font.translation.color">
+                {{ it.text}}
+              </p>
+            </div>
+            <div class="row text-right hidden-print" *ngIf="social_flag">
+              <share-buttons [theme]="'default'" [description]="item.text"
+                [include]="['facebook','twitter','telegram','whatsapp','sms','email']" [show]="6" [showIcon]="true"
+                [showText]="false" [size]="-4" [url]="getShareLink(item)" [autoSetMeta]="false">
+              </share-buttons>
+            </div>
+            <p class="line-info" *ngIf="staticPreference?staticPreference.show_attributes:true">
+              {{item.attributes}}
+            </p>
+          </div>
+        </div>
+        <div class="ang-content" *ngIf="display.split">
+          <div class="split-block" *ngIf="selected_langs.indexOf(54)>-1" [class.text-center]="display.center"
+            style="display: flex; flex-wrap: wrap;flex-direction: column;">
+            <p class="world-main-text" [style.font-size.px]="font.gurmukhi.size" [style.color]="font.gurmukhi.color"
+              *ngFor="let item of page_info.lines; let i = index">{{item.text}}</p>
+          </div>
+          <div *ngFor="let it of transliterations; let i = index" class="split-block">
+            <div *ngFor="let item of page_info.lines" [class.text-center]="display.center"
+              style="display: flex; flex-wrap: wrap;flex-direction: column;">
+              <p [style.font-size.px]="font.transliteration.size" [style.color]="font.transliteration.color"
+                *ngIf="selected_langs.indexOf(item.ti[i].language_id)>-1">{{ item.ti[i].text }}</p>
+            </div>
+          </div>
+          <div *ngFor="let it of translations; let i = index" class="split-block">
+            <div [class.text-center]="display.center" *ngFor="let item of page_info.lines"
+              style="display: flex; flex-wrap: wrap;flex-direction: column;">
+              <p class="world-other-text" *ngIf="selected_langs.indexOf(item.ta[i].language_id)>-1"
+                [style.font-size.px]="font.translation.size" [style.color]="font.translation.color">
+                {{ item.ta[i].text}}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row hidden-print">
+          <div class="col-xs-12">
+            <div class="ang-paginate">
+              <div class="ang-search">
+                <form name="goto_page" id="goto_page" action="">
+                  Goto Ang&nbsp;<input type="number" name="page_no" [(ngModel)]="cur_page" id="page_no"
+                    class="form-control" style="display: inline-block;" maxlength="5" value="1">&nbsp;
+                  <button class="btn btn-next" (click)="getPageInfo()" [ngStyle]="{'background': footerColor}"
+                    style="color: white;">Go</button>
+                  <button class="btn btn-next" *ngIf="cur_page>first_page" [ngStyle]="{'background': footerColor}"
+                    style="color: white;" (click)="goBegin()">Begin</button>
+                  <button class="btn btn-next" *ngIf="cur_page>first_page" [ngStyle]="{'background': footerColor}"
+                    style="color: white;" (click)="goBack()">Back</button>
+                  <button class="btn btn-next" *ngIf="cur_page<maxCount" [ngStyle]="{'background': footerColor}"
+                    style="color: white;" (click)="goNext()">Next</button>
+                  <button class="btn btn-next" *ngIf="cur_page<maxCount" [ngStyle]="{'background': footerColor}"
+                    style="color: white;" (click)="goLast()">Last</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-content text-center">
+      Adapted from BaniDB v2 : Acknowledgement: Khalis Foundation
+    </div>
+  </div>
+
+  <ng-template #titemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Transliteration Choose Languages</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul style="list-style: none;">
+        <li *ngFor="let item of transliterations; let i = index">
+          <div class="input-group">
+            <input [(ngModel)]="item.select" type="checkbox" [id]="'ti-' + item.id" (ngModelChange)="updateLanguages(item)" />
+            <label style="padding-left: 5px;" [for]="'ti-'+item.id">{{item.language}}</label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+
+  <ng-template #tatemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Translation Choose Languages</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul style="list-style: none;">
+        <li *ngFor="let item of translations; let i = index">
+          <div class="input-group">
+            <input [(ngModel)]="item.select" type="checkbox" [id]="'ta-' + item.id" (ngModelChange)="updateLanguages(item)">
+            <label style="padding-left: 5px;" [for]="'ta-'+item.id">{{item.language}}</label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+
+  <app-footer class="hidden-print" [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright class="hidden-print"></app-copyright>

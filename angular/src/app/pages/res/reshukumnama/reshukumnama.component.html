@@ -1,0 +1,41 @@
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body">
+          <app-border></app-border>
+          <div class="page-content">
+               <h3 class="top-heading">Hukumnama - Raag Index</h3>
+               <div class="contents">
+                    <div class="chapter_index">
+                         <div class="section_title">
+                         <span class="col_section_name">Raag/Hukumnama Title</span>
+                         <span class="col_page_no">Page No.</span><br class="clearer">
+                         </div>
+                        
+                         <div *ngFor="let item of parentChapters">
+                         <a class="accordion" (click)="selected_chapter = item">
+                              <div class="section_title ">
+                                   <span class="col_section_name">{{item.raag}}</span>
+                                   <span class="col_page_no">&nbsp;</span>
+                              </div>
+                         </a>
+                         <div class="panel1" [ngClass]="item.raag===selected_chapter.raag?'expanded':''" *ngIf="item.childs.length>0">
+                              <div class="sub_chapter_name" id="content_2" *ngFor="let child of item.childs; let i = index">
+                                   <a [routerLink]="['/hukumnama/ang/' + child.pageno]">
+                                        <div class="section_line line" [ngClass]="i%2==1?'row-1':'row1'">
+                                        <span class="col_section_name">{{child.title}}</span>
+                                        <span class="col_page_no">{{child.pageno.split('.')[0]}}</span>
+                                        <div class="clearer"></div>
+                                        </div>
+                                   </a>
+                              </div>
+                         </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <app-footer [backColor] = "footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

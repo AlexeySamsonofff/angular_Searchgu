@@ -1,0 +1,16 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body" id="banner">
+    <app-border></app-border>
+    <div class="container-fluid" id="banner">
+      <img src="../../../assets/img/banners/banner01.jpg" class="img-responsive">
+    </div>
+    <app-common-share-page [page_info]="page_info" [title]="'Sri Guru Granth Sahib'" [footerColor]="footerColor">
+    </app-common-share-page>
+
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

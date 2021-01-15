@@ -1,0 +1,50 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="container-fluid" id="banner">
+                <img src="../../../assets/img/banners/banner01.jpg" class="img-responsive">
+            </div>
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="contents">
+                                <div id="sri_guru_granth_darpan_search_page">
+                                    <div class="abc">
+                                        <h2 class="top-heading no-top">Sri Guru Granth Darpan</h2>
+
+                                        <div class="subhead">
+                                            Showing from {{ page_info.search_results_info?.showing_from}}  to  {{ page_info.search_results_info?.showing_to }} of {{page_info.search_results_info?.total_results}} occurrences of {{keyword}} in Sri Guru Granth Darpan
+                                        </div>
+                                        <p class="pagination_links"></p>
+                                        <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                                        lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25" [totalItems]="page_info.occurrences_count"></pagination>
+
+                                        <div *ngFor="let item of page_info.occurrences; let i = index">
+                                            <a
+                                                [routerLink]="['/sri-guru-granth-darpan/page/' + item.page_id + '/highlight/']">
+                                                Sri Guru Granth Darpan  {{item.volume_id != 0 ? "Section " + item.volume_id + ", " : ""}} Page {{item.page_id}}
+                                            </a>
+                                        </div>
+                                        <div *ngIf="page_info.occurrences.length==0" class='rw_result_count_name'><label>No occurrences found</label></div>
+                                        <div class="clearer"></div>
+
+                                        <p class="pagination_links"></p>
+                                        <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                                        lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25" [totalItems]="page_info.occurrences_count"></pagination>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

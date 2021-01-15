@@ -1,0 +1,19 @@
+.page_no {
+  width: 15%;
+}
+
+@media (max-width: 720px) {
+  .page_no {
+    width: 76%;
+    margin-bottom: 5px;
+  }
+}
+
+.round {
+  padding: 3px 7px;
+  border-radius: 50%;
+}
+
+.audio_active {
+  background: green!important;
+}

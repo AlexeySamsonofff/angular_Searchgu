@@ -1,0 +1,33 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="page-content">
+      <div class="container-fluid" style="padding: 5px 0px">
+        <h3>Sundar Gutka</h3>
+        <p class="blue" style="font-size: 16px;">
+          Sunder Gutka is a collection of Banis or hymns that form the core of a complete Sikh Daily Prayer. These sacred hymns contain a power to transform our lives completely by bringing an unmatched spiritual elevation in even the most ordinary of minds. Gurbani or the Divine Word contains the instructions and divine guidance revealed directly by God through the Gurus and other pious saintly beings. They show the righteous path of life and give direction to the wandering souls in quest of finding the real meaning of life. These hymns deliver a message which is of eternal relevance irrespective of the caste, creed, religion, age or location of a person.
+        </p>
+        <p style="font-size: 14px;">Please click on Baani name to explore:</p>
+        <div *ngFor="let line of page_info.lines; let i = index"
+          style="display: flex; flex-wrap: wrap;flex-direction: column;" class="line"
+          [ngClass]="i%2===0?'row1':'row-1'">
+          <div class='word' *ngIf="line.url">
+            <span class='lang_1b'>
+              <a [routerLink]="['/' + line.url]">{{line.punjabi}}</a></span> - <span class='lang_2'>{{line.english}}</span>
+          </div>
+          <div *ngIf="!line.url">
+            <h4>
+              {{ line.english }}
+            </h4>
+          </div>
+          <div class='description lang_1a'>{{ line.description }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

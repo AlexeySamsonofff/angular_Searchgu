@@ -1,0 +1,49 @@
+.abs-top {
+    position: absolute;
+    top: 0;
+    left: 21px;
+    background: url(../../../assets/img/border_top_bot.jpg) repeat-x;
+    height: 21px;
+    width: calc(100% - 42px);
+}
+.abs-bottom {
+    position: absolute;
+    bottom: -21px;
+    left: 21px;
+    background: url(../../../assets/img/border_top_bot.jpg) repeat-x;
+    height: 21px;
+    width: calc(100% - 42px);
+}
+.abs-left {
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    background: url(../../../assets/img/border_right_left.jpg) repeat-y;
+    width: 21px;
+    height: 100%;
+}
+.abs-right {
+    position: absolute;
+    top: 21px;
+    right: 21px;
+    background: url(../../../assets/img/border_right_left.jpg) repeat-y;
+    width: 21px;
+    height: 100%;
+}
+
+@media (max-width : 720px) {
+  .abs-top {
+    left: 5px;
+    width: calc(100% - 10px);
+  }
+  .abs-bottom {
+    left: 5px;
+    width: calc(100% - 10px);
+  }
+  .abs-left {
+    left: 5px;
+  }
+  .abs-right {
+    right: 5px;
+  }
+}

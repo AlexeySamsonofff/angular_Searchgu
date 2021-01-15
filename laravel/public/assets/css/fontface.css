@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'WebAkharThick';
+    src: url('../fonts/WebAkharThick.eot');
+    src: url('../fonts/WebAkharThick.eot?#iefix') format('eot'),
+    url('../fonts/WebAkharThick.woff') format('woff'),
+    url('../fonts/WebAkharThick.ttf') format('truetype'),
+    url('../fonts/WebAkharThick.svg#webfontYlivuWlh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** Gurmukhi text font faces **/
+@font-face {
+    font-family: 'WebAkharSlim';
+    src: url('../fonts/gurmukhi/webakharslim-webfont.eot');
+    src: url('../fonts/gurmukhi/webakharslim-webfont.eot?#iefix') format('eot'),
+    url('../fonts/gurmukhi/webakharslim-webfont.woff') format('woff'),
+    url('../fonts/gurmukhi/webakharslim-webfont.ttf') format('truetype'),
+    url('../fonts/gurmukhi/webakharslim-webfont.svg#webfontYlivuWlh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.punjabi_fonts {
+    color: #000;
+    font-family: WebAkharSlim;
+    font-size: 18px;
+    font-weight: 700;
+}

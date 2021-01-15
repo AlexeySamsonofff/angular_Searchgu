@@ -1,0 +1,14 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+
+    <app-commonrespage [pageInfo]="pageInfo" [title]="'Sri Gur Pratap Suraj Granth'" [book_lang]="book_lang"
+            [baseUrl]="'sri-gur-pratap-suraj-granth'" [display_field]="display_field" [volumeno]="volume_id" [firstPage]="pageno"
+            [maxPage]="maxPage" [footerColor]="footerColor" (getPageInfo)="get_page_info($event)"></app-commonrespage>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

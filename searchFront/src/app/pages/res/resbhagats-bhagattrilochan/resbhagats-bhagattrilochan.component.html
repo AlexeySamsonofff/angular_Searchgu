@@ -1,0 +1,31 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="container-fluid" id="banner">
+      <img src="assets/img/banner.jpg" class="img-responsive">
+    </div>
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="contents">
+
+          <div [innerHtml]="html | safeHtml"></div>
+
+          <div class="green"><strong><a [routerLink]="['/bhagats']">Bhagats Index </a></strong></div>
+
+        </div><!-- .main-body ends -->
+        <div class="center copyright">
+          ©2004
+          - 2020.<a href="http://www.allaboutsikhs.com">Gateway
+            to Sikhism. </a>All rights reserved.
+        </div>
+      </div><!-- #wrapper ends -->
+
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

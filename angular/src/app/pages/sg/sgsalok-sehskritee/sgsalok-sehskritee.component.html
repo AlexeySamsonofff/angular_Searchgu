@@ -1,0 +1,13 @@
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body">
+          <app-border></app-border>
+          <app-common-nosocial-pagebypage [page_info]="page_info" [max_page]="max_page" (goPage)="gotoPage($event)"
+         [title]="'Salok Sehskritee'" [footerColor]="footerColor">
+         </app-common-nosocial-pagebypage>
+     </div>
+     <app-footer [backColor] = "footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

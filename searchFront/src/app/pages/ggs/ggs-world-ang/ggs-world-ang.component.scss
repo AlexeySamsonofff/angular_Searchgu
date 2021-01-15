@@ -1,0 +1,18 @@
+#page_no {
+  width: 15%;
+}
+
+@media (max-width: 720px) {
+  #page_no {
+    width: 76%;
+    margin-bottom: 5px;
+  }
+}
+
+.split-block:nth-child(even){
+  background: #ffecec;
+}
+
+.split-block:nth-child(odd){
+  background: #fff;
+}

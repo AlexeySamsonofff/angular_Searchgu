@@ -1,0 +1,17 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="page-content">
+            <h4 class="bold top-20">Bhai Gurdas Vaaran Advanced Search</h4>
+            <app-advance-search [scripture]="'bgv'" [maxPage]="'40'" [footerColor]="footerColor"></app-advance-search>
+        </div>
+    </div>
+
+
+    <app-footer [backColor] = "footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

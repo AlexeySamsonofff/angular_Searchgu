@@ -1,0 +1,118 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="container-fluid" id="banner">
+                <img src="../../../assets/img/banner.jpg" class="img-responsive">
+            </div>
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div>Home &gt;&gt; Sikh Gurus &gt;&gt; Guru Angad Dev Ji</div>
+                    <h2 class="no-top">Sri Guru Angad Dev Ji </h2>
+                    <p align="center">&nbsp; </p>
+                    <table width="99%" border="0" cellspacing="0" cellpadding="10">
+                        <tbody><tr>
+                            <td align="center" valign="top">
+                                <img src="../../../../assets/img/res/guru2.jpg" alt="bullet" width="148" height="198" border="0"><br>
+                                <div align="center">(1504-1552, Guruship- 1539-1552)&nbsp;</div>
+                            </td>
+                            <td align="left" valign="top"><p><strong>INDEX</strong></p>
+                                <ul>
+                                    <li><a [routerLink]="['./']" fragment="SECLUSION">GURU ANGAD IN SECLUSION</a></li>
+                                    <li><a [routerLink]="['./']" fragment="HUMAYUN">EMPEROR HUMAYUN COMES TO THE GURU</a></li>
+                                    <li><a [routerLink]="['/gurus/guruangad2']" fragment="gurmukhi">GURMUKHI SCRIPT</a></li>
+                                    <li><a [routerLink]="['/gurus/guruangad2']" fragment="amardas">BABA AMAR DAS COMES TO GURU
+                                            ANGAD</a>
+                                    </li>
+                                    <li><a [routerLink]="['/gurus/guruangad3']" fragment="goindwal">CITY OF GOINDWAL</a></li>
+                                    <li><a [routerLink]="['/gurus/guruangad3']" fragment="tapa">GURU ANGAD AND TAPA</a>&nbsp;</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <p align="center"><strong>Fast Facts</strong></p>
+                    <div align="center">
+                        <div class="justify-content-center">
+                            <table width="480" height="93" border="1" cellpadding="4" cellspacing="1" bordercolor="#111111" bordercolorlight="#999999" bordercolordark="#999999" bgcolor="#CCCCCC">
+                                <tbody>
+                                <tr>
+                                    <td width="205" height="21" bgcolor="#FFFFFF"><p><strong>FATHER</strong></p></td>
+                                    <td width="245" height="31" bgcolor="#FFFFFF"><p>Pheru Mal Ji </p></td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="26" bgcolor="#FFFFFF"><p><strong>MOTHER</strong></p></td>
+                                    <td width="245" height="26" bgcolor="#FFFFFF"><p>Daya Kaur Ji </p></td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="24" bgcolor="#FFFFFF"><p><strong>DATE OF BIRTH</strong></p></td>
+                                    <td width="245" height="24" bgcolor="#FFFFFF"><p>03/31/1504 </p></td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="21" bgcolor="#FFFFFF"><p><strong>PLACE OF BIRTH</strong></p></td>
+                                    <td width="245" height="21" bgcolor="#FFFFFF"><p>Mate Ki Saranh, Ferozpur </p></td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="20" bgcolor="#FFFFFF"><p><strong>WIFE</strong></p></td>
+                                    <td width="245" height="20" bgcolor="#FFFFFF"> Khivi Ji</td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="1" bgcolor="#FFFFFF"><p><strong>CHILDREN</strong></p></td>
+                                    <td width="245" height="1" bgcolor="#FFFFFF"><p>Dassu Ji, Dattu Ji, Bibi Amro Ji &amp; Alakhi
+                                            Ji </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="1" bgcolor="#FFFFFF"><p><strong>AGE, YEAR &amp; TIME AT GUR
+                                                GADHI</strong></p>
+                                    </td>
+                                    <td width="245" height="1" bgcolor="#FFFFFF"> 09/07/1539, 12 Years &amp; 9 Months</td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="8" bgcolor="#FFFFFF"><p><strong>REGIMES</strong></p></td>
+                                    <td width="245" height="8" bgcolor="#FFFFFF"> Humanyu, Sher Shah Suri &amp; Islam Shah Suri</td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="31" bgcolor="#FFFFFF"><p><strong>CONTRIBUTION OF BANIES</strong></p>
+                                    </td>
+                                    <td width="245" height="31" bgcolor="#FFFFFF"> 63 Salok in Waran</td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="4" bgcolor="#FFFFFF"><p><strong>AGE</strong></p></td>
+                                    <td width="245" height="4" bgcolor="#FFFFFF"> 48</td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="1" bgcolor="#FFFFFF"><p><strong>JYOTI-JOT DAY</strong></p></td>
+                                    <td width="245" height="1" bgcolor="#FFFFFF"><p>03/29/1552 </p></td>
+                                </tr>
+                                <tr>
+                                    <td width="219" height="3" bgcolor="#FFFFFF"><p><strong>JYOTI JOT PLACE</strong></p></td>
+                                    <td width="245" height="3" bgcolor="#FFFFFF"><p>Khandur Sahib </p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p align="center">&nbsp;</p>
+                    <div [innerHtml]="html | safeHtml"></div>
+                    <br>
+                    <hr>
+                    <div class="navig_right_left">
+                        <div class="clearer"></div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                            <tbody><tr>
+                                <td><a [routerLink]="['/gurus']">Index</a></td>
+                                <td align="center"><a [routerLink]="['/gurus']"></a></td>
+                                <td align="right"><a [routerLink]="['/gurus/guruangad2']">Next</a></td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

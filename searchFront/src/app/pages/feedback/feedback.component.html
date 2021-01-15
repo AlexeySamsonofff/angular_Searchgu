@@ -1,0 +1,72 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div class="contents">
+            <h3 class="top-heading no-top">Send us your valuable feedback </h3>
+            <div class="row">
+
+              <div class="col-md-6 ">
+                <form>
+                  <p>Name:
+                    <small>*</small>
+                    <br>
+                    <input [(ngModel)]="name" name="name" class="form-control" maxlength="30" value="" type="text" required>
+                  </p>
+                  <p>Email ID:
+                    <small>*</small>
+                    <br>
+                    <input [(ngModel)]="emailid" name="emailid" class="form-control" maxlength="100" value="" type="text" required>
+                  </p>
+                  <p>Subject:
+                    <small>*</small>
+                    <br>
+                    <select [(ngModel)]="subject" name="subject" class="form-control">
+                      <option value="Search Gurbani Feedback">Search Gurbani Feedback
+                      </option>
+                    </select>
+                  </p>
+                  <p>Message:
+                    <small>*</small>
+                    <br>
+                    <textarea [(ngModel)]="message" name="message" class="form-control" cols="80" rows="4"
+                      style="font-family:Tahoma,Arial; font-size:12px;" required></textarea>
+                  </p>
+                  <!-- <p>Captcha:
+                    <small>*</small>
+                    <br>
+
+                  </p>
+                  <div class="g-recaptcha" data-sitekey="6Lc4xiYUAAAAADN2imDLDA3MXokYTZz9s7AOC80N" data-theme="light"
+                    data-type="image" data-size="normal">
+                    <re-captcha (resolved)="resolved($event)" siteKey="6Lc4xiYUAAAAADN2imDLDA3MXokYTZz9s7AOC80N"></re-captcha>
+                  </div> -->
+                  <p>
+                    <label><input [(ngModel)]="send_copy" name="send_copy" value="yes" type="checkbox"> Send me a
+                      copy of this mail</label>
+                  </p>
+                  <p>
+                    <input name="submit" class="btn btn-success" value="Send Message" type="button" (click)="send_feedback()">
+                    <br>
+                    <small>* All fields are mandatory</small>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

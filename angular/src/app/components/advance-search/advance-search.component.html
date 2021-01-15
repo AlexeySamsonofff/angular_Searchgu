@@ -1,0 +1,281 @@
+<div class="search_panel">
+  <div class="">
+    <div class="desktop_form" id="myForm">
+      <div class="row" style="display: flex;">
+        <div class="col-md-2 col-sm-2 hidden-xs">
+          <ul class="column-1">
+            <li>&nbsp;</li>
+            <li class="bold"> Find results</li>
+            <li>&nbsp;</li>
+            <li class="bold">Language</li>
+            <div *ngIf="scripture!=='bgv' && scripture!=='dg' && scripture!=='ks' && scripture!=='bnl'"
+              class="additional_filter collapse in" aria-expanded="true">
+              <li class="bold">Author</li>
+              <li class="bold">Raag</li>
+              <li class="bold">Pages</li>
+            </div>
+            <div *ngIf="scripture==='bgv'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="bold">Vaars</li>
+            </div>
+            <div *ngIf="scripture==='dg'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="bold">Pages</li>
+            </div>
+            <div *ngIf="scripture==='ks'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="bold">Kabits</li>
+            </div>
+            <div *ngIf="scripture==='bnl'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="bold">Categories</li>
+              <!-- <li class="bold">Linenos</li> -->
+            </div>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4 hidden-xs">
+          <ul class="column-2">
+            <li class="">
+              <p>Find results with text</p>
+            </li>
+            <li class="">&nbsp;</li>
+            <li class="">
+              <p>Return results</p>
+            </li>
+            <li class="">
+              <p>Find results in language</p>
+            </li>
+            <div *ngIf="scripture!=='bgv' && scripture!=='dg' && scripture !=='ks' && scripture!=='bnl'"
+              class="additional_filter collapse in" aria-expanded="true">
+              <li class="">
+                <p>Find results from text written by</p>
+              </li>
+              <li class="">
+                <p>Find results from text related to rnag</p>
+              </li>
+              <li class="">
+                <p>Find results from page between</p>
+              </li>
+            </div>
+            <div *ngIf="scripture==='bgv'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="">
+                <p>Find results from vaar between</p>
+              </li>
+            </div>
+            <div *ngIf="scripture==='dg'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="">
+                <p>Find results from page between</p>
+              </li>
+            </div>
+            <div *ngIf="scripture==='ks'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="">
+                <p>Find results from kabit between</p>
+              </li>
+            </div>
+            <div *ngIf="scripture==='bnl'" class="additional_filter collapse in" aria-expanded="true">
+              <li class="">
+                <p>Search from</p>
+              </li>
+              <!-- <li class="">
+                                <p>Find results from lineno between</p>
+                            </li> -->
+            </div>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <form id="myForm">
+            <ul class="column-3">
+              <li>
+                <div class="row" style="display: flex;">
+                  <div class="col-md-8 col-sm-6">
+                    <input type="text" value="" name="SearchData" id="outText" #searchText *ngIf="language==='PUNJABI'"
+                      [(ngModel)]="q" (ngModelChange)="handleSearchChange()" class="search-input form-control tt-input"
+                      autocomplete="off" (keypress)="onKey($event);"
+                      style="display: block; position: relative; vertical-align: top; background-color: transparent;"
+                      spellcheck="false" dir="auto">
+                    <input type="text" value="" name="SearchData" id="outText_ascii" *ngIf="language!=='PUNJABI'"
+                      [(ngModel)]="q" (ngModelChange)="handleSearchChange()"
+                      [ngStyle]="{'font-family': language==='PUNJABI-ASC'?'WebAkharThick':''}"
+                      class="search-input form-control tt-input" autocomplete="off"
+                      style="display: block; position: relative; vertical-align: top; background-color: transparent;"
+                      spellcheck="false" dir="auto">
+
+                    <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100;"
+                      (clickOutside)="hideAutoset($event)"
+                      *ngIf="isautocomplete && allwords.length>0 && show_autoset && q!==''">
+                      <div class="tt-dataset tt-dataset-0">
+                        <div class="tt-suggestion tt-selectable" [ngClass]="language==='PUNJABI-ASC'?'punjabi_fonts':''"
+                          *ngFor="let word of allwords; let i=index"
+                          (click)="q=word.word;show_autoset=false;handleSearch()">
+                          {{word.word}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6" style="margin:auto;padding-left:0">
+                    <div style="display:flex;align-items:center;">
+                      <input type="checkbox" id="autocomplete" class="btn search-btn" style="border-radius: 0;"
+                        checked="" name="autocomplete" [(ngModel)]="isautocomplete">
+                      <label style="margin-bottom:0">autocomplete</label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <button class="btn btn-next" [ngStyle]="{'background': footerColor}" style="color: white;"
+                  (click)="handleSearch()">Search</button>
+                <button class="btn btn-next" [ngStyle]="{'background': footerColor}" style="color: white;"
+                  (click)="handleClear()">Clear</button>
+                <button class="btn btn-next" [ngStyle]="{'background': footerColor}" style="color: white;"
+                  (click)="handleReset()">Reset</button>
+                <button class="btn btn-next" [ngStyle]="{'background': footerColor}" style="color: white;"
+                  (click)="additional_flag=!additional_flag">Additional
+                  Filters</button>
+              </li>
+              <li>
+                <select name="Searchtype" class="form-control" id="Searchtype" [(ngModel)]="searchType"
+                  (ngModelChange)="handleSearchTypeChange()">
+                  <option *ngFor="let type of allSearchTypes; let i = index" value="{{type.value}}">
+                    {{type.label}}</option>
+                </select>
+              </li>
+              <li>
+                <select name="language" class="form-control" id="language" [(ngModel)]="language"
+                  (ngModelChange)="handleLanguageChange()">
+                  <option *ngFor="let lan of allLanguages" value="{{lan.value}}">{{lan.label}}
+                  </option>
+                </select>
+              </li>
+              <div class="additional_filter collapse in" *ngIf="additional_flag">
+                <li *ngIf="scripture!=='bgv' && scripture!=='dg' && scripture!=='ks' && scripture!=='bnl'">
+                  <select name="author" class="form-control" [(ngModel)]="selected_author">
+                    <option value="">Any Author</option>
+                    <option *ngFor="let author of allAuthors" value="{{author.ID}}">
+                      {{author.author}}</option>
+                  </select>
+                </li>
+                <li *ngIf="scripture!=='bgv' && scripture!=='dg' && scripture!=='ks' && scripture!=='bnl'">
+                  <select name="raag" class="form-control" [(ngModel)]="selected_raag">
+                    <option value="">Any Raag</option>
+                    <option *ngFor="let raag of allRaags" value="{{raag.id}}">{{raag.name}}</option>
+                  </select>
+                </li>
+                <li *ngIf="scripture==='bnl'">
+                  <select name="bnlSelect" class="form-control" [(ngModel)]="bnlSelect">
+                    <option value="">All Categories</option>
+                    <option *ngFor="let raag of allBnlCategory" value="{{raag.name.replace(' ', '_')}}">{{raag.name}}
+                    </option>
+                  </select>
+                </li>
+                <li></li>
+                <li>
+                  <input style="width: 60px;" type="number" size="5" name="page_from" name="page_from"
+                    [(ngModel)]="page_from">
+                  and
+                  <input style="width: 60px;" type="number" size="5" name="page_to" name="page_to"
+                    [(ngModel)]="page_to">
+                </li>
+              </div>
+            </ul>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="keypad_container" *ngIf="language==='PUNJABI'">
+  <!-- <div class="keypad_container"> -->
+  <div style="margin-bottom:10px">
+    <button id="toggle_keyboard" class="btn btn-primary" (click)="showKeyboard=!showKeyboard">Show Keyboard</button>
+    <span style="margin:5px 0 0 0;padding: 1rem;">You can use either Virtual or Physical Keyboard for Gurmukhi
+      Unicode</span>
+  </div>
+  <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+    <!--    <form id="myForm">-->
+    <!--        <textarea id="outText2" class="hidden" name="message"></textarea>-->
+    <!--        <lt-mirror style="display: none;"><lt-highlighter contenteditable="false" style="display: none;"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="width: 834.188px !important; height: 205px !important; margin-top: 1px !important; margin-left: 11px !important;"><canvas class="lt-highlighter__canvas" width="0" height="0" style="display: none; margin-top: 0px !important; margin-left: 0px !important;"></canvas></lt-div></lt-highlighter><lt-div spellcheck="false" class="lt-mirror__wrapper" data-lt-scroll-top="0" data-lt-scroll-left="0" style="border: 1px solid rgb(187, 187, 187) !important; border-radius: 0px !important; direction: ltr !important; font: 400 20px/30px Arial, Helvetica, sans-serif !important; font-feature-settings: normal !important; font-kerning: auto !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 0px 10px !important; padding: 5px 0px 0px !important; text-align: start !important; text-decoration: none solid rgb(0, 0, 0) !important; text-indent: 0px !important; text-transform: none !important; word-spacing: 0px !important; overflow-wrap: break-word !important; width: 834.188px !important; height: 200px !important;"><lt-div class="lt-mirror__canvas" style="margin-top: 0px !important; margin-left: 0px !important; width: 834.188px !important; height: 200px !important;">ਆਆਆ੧</lt-div></lt-div></lt-mirror>-->
+    <!--        <textarea id="outText" onkeypress="KeyPress(event);" name="message" spellcheck="false" data-gramm="false"></textarea>-->
+    <!--    </form>-->
+
+    <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+
+  </div>
+</div>
+
+<div *ngIf="search_result.length>0">
+  <div class="card mb-4" id="result_div">
+    <div class="card-body">
+      <!-- Nav tabs -->
+      <div>
+        <!--            <p class="bold">Select the Scriptures to search for</p>-->
+        <h2>Search Results</h2>
+      </div>
+      <div id="table_search_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <table class="table table-striped" [svData]="search_result" #sv="svDataTable" [svRowsOnPage]="10"
+          svSortBy="name" svSortOrder="asc">
+
+          <thead>
+            <tr>
+              <td>
+                <div class="row">
+                  <sv-bootstrap-paginator previousText="Previous" nextText="Next" [rowsOnPageSet]="[10, 25, 50]"></sv-bootstrap-paginator>
+                </div>
+                <div class="row">
+                  Showing {{ sv.rowsOnPage *(sv.activePage - 1) + 1 }} to {{ min(sv.rowsOnPage *(sv.activePage), search_result.length) }} of {{ search_result.length}} entries
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <div class="row">
+                  <div class="col-xs-1">
+                    <sv-default-sorter by="id">ID</sv-default-sorter>
+                  </div>
+                  <div class="col-xs-1" *ngIf="scripture!=='bgv' && scripture!=='ks' && scripture!=='bnl'"></div>
+                  <div class="col-xs-5">Phonetic Roman</div>
+                  <div class="col-xs-4">Gurmukhi Unicode</div>
+                </div>
+              </th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of sv.data; let i = index">
+              <td>
+                <div class="row" style="padding: 5px 0px">
+                  <div class="col-xs-1">{{ i + 1 }}</div>
+                  <div class="col-xs-1" *ngIf="scripture!=='bgv' && scripture!=='ks' && scripture!=='bnl'">
+                    <img (click)="item.open=!item.open"
+                      [src]="item.open?'../../../assets/img/details_close.png':'../../../assets/img/details_open.png'"
+                      style="width: 20px;" />
+                  </div>
+                  <div class="col-xs-5">
+                    <a [routerLink]="['/' + item.shabadlink]">{{ item.translit }}</a>
+                  </div>
+                  <div class="col-xs-4">
+                    {{ item.punjabi }}
+                  </div>
+                </div>
+                <div class="col-xs-12" style="padding: 5px 0px; background: white;" *ngIf="item.open">
+                  <a [routerLink]="['/' + item.pageLink]">Go to page</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <div class="row">
+                  Showing {{ sv.rowsOnPage *(sv.activePage - 1) + 1 }} to {{ min(sv.rowsOnPage *(sv.activePage), search_result.length) }} of {{ search_result.length}} entries
+                </div>
+                <div class="row">
+                  <sv-bootstrap-paginator previousText="Previous" nextText="Next" [rowsOnPageSet]="[10, 25, 50]"></sv-bootstrap-paginator>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

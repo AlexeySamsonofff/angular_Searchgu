@@ -1,0 +1,242 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banner.jpg" class="img-responsive">
+      </div>
+
+      <div class="page-content">
+        <div class="container-fluid">
+          <div class="cal-date">
+            <!-- <em>
+              <script language="JavaScript"> document.write(getNanakshahi()) </script>Maghar 30, Samvat
+              -1349 Nānakshāhī
+            </em> -->
+          </div>
+        </div>
+        <h4>Pathway to God: Sri Guru Granth Sahib Ji</h4>
+        <p class="blue">
+          Sri Guru Granth Sahib is indeed unique in its thought, literary expression and the
+          message it continues to
+          communicate centuries after it was written. Exalted thought needs to be transported on
+          the vehicle of language
+          to reach the masses. Poetic expression lifts prose to a higher plane. When verse and
+          music meld, their beauty
+          and sweetness makes mind transcend the humdrum of rational existence.
+        </p>
+        <p class="blue">
+          The sacred verses of Sri Guru Granth Sahib are called Gurbani, which means the Guru's
+          word or the song messages
+          enshrined in Sri Guru Granth Sahib. In Sikhism, the Guru is the "Wisdom of the Word" and
+          not a human or a book.
+          God revealed the Word through the holy men and women from time to time, and the most
+          recent revelations were entered
+          in the text of Sri Guru Granth Sahib.
+        </p>
+        <p class="blue">
+          SearchGurbani.com brings to you a unique and comprehensive approach to explore and
+          experience the word of God.
+          We have the Sri Guru Granth Sahib Ji , Amrit Keertan Gutka , Bhai Gurdaas Vaaran , Kabit
+          Bhai Gurdaas , Bhai Nand
+          Lal Baani and Sri Dasam Granth Sahib. You can explore these scriptures page by page or
+          search for a keyword in
+          either one or all of the scriptures.
+        </p>
+        <h5 class="creag" style="margin-top:5px;margin-bottom:5px" align="center"><b> --::--::--::-- <br>
+          On auspicious occasion of 321st Foundation Day of Khalsa Panth, Vaisakhi 2020, Gateway to Sikhism is proud to launch SearchGurbani.com the Fifth Edition with Instant Gurbani Search and Dynamic Prefernces for every scripture.
+          NEW Sundar Gutka Section and SGGS World Section with Sri Guru Granth Sahib ji with 53 Translations and 22 Transliterations adapted from BaniDB and improved content and functionality under Resources.
+            Go to <a [routerLink]="['/preferences']">Site Preferences</a> for all options
+            available for you.<br> --::--::--::-- </b></h5>
+
+        <app-search-section [showAdvance]="true" [footerColor]="footerColor"></app-search-section>
+
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+
+            <h4 class="cream" align="center">iSearchGurbani4.0 2018 (Windows/Mac/Linux):</h4>
+            <div class="isearch-pc">
+              <div class="image pull-left">
+                <img style="float: left; margin: 10px 10px 10px 10px;" src="../../../assets/img/isg18-icon.png">
+              </div>
+              <h6 style="margin-top:5px;margin-bottom:5px;" class="blue">
+                <a [routerLink]="['/sgdv/isg']">iSearchGurbani ( iSG)</a> is a
+                cross platform software bringing you a simplistic approach to search and explore Gurbani
+                . iSG includes
+                complete Sri Guru Granth Sahib , Bhai Gurdas Vaaran , Kabit Bhai Gurdas, Bhai Nand Lal
+                Baani and Baani's from Sri Dasam Granth Sahib. iSearchGurbani ( iSG) has a built in
+                slideshow/projector feature, which automatically displays text to an additional monitor
+                or projector screen configured as extended monitor.
+                iSearchGurbani v4 is cross platform software, can be installed on Windows/ MAC OSx/
+                Linux.
+
+              </h6>
+              <h5 style="margin-top:5px;margin-bottom:5px;"><a [routerLink]="['/sgdv/isg']" class="bold">NEW FEATURES IN
+                  ISEARCHGURBANI 4.0 (2018 )</a>
+              </h5>
+              <h6 style="margin-top:5px;margin-bottom:5px;" class="blue">
+                <b>New instant Search alogrithm for instant search of shabads</b><br>
+                -Lareevar Gurmukhi with Lareevar Assist<br>
+                -Set Shabad Start: Set the line of Shabad as Asthai, for quick display<br>
+                -Keyboard Shortcuts<br>
+                -Baanis and Hukumnamas<br>
+                -Full Screen Customization: Font Size, Font Color, Background Image or Color.
+                <br>
+                -Set Language Display Order in Full Screen&nbsp;<br>
+                -Secondary ( Pramaan) Search<br>
+                -Display Message to Community ( Full Screen)<br>
+                -Save SGGS Ang/Baani/Searched Shabad as a Favorite.<br>
+              </h6>
+              <h5 class="cream" align="center"><a class="bold" [routerLink]="['/sgdv/isg']">Download iSearchGurbani v4 (
+                  Win/Mac/linux)(September 1, 2018)</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4 class="cream" align="center">iSearchGurbani for Android &amp; iOS (June 2018)</h4>
+            <div class="isearch-app">
+              <div class="col-md-12 no-pad">
+                <div class="image pull-left">
+                  <img style="float: left; margin: 10px 10px 10px 10px;" src="../../../assets/img/icon-60.png">
+                </div>
+                <h6 style="margin-top:5px;margin-bottom:5px;" class="green"><b>SearchGurbani.com proudly
+                    announces the release of iSearchGurbani 2.6.0 for
+                    the
+                    <a href="https://itunes.apple.com/us/app/isearch-gurbani-!/id674467937?ls=1&amp;mt=8">
+                      iPhone &amp; iPad at Apple iTunes store.
+                    </a> and for
+                    <a href="https://play.google.com/store/apps/details?id=com.smartbuzz.vkh.isg&amp;hl=en">
+                      v. 3.1.0 Android Platform at Google Play Store.</a></b>
+                </h6>
+
+                <h6 style="margin-top:5px;margin-bottom:5px;" class="green"><b>iSearchGurbani Features:
+                  </b><br>
+
+                  -SGGS Ang by Ang . SGGS Chapter Index<br>
+                  -SGGS Shabad Index<br>
+                  -Bhai Gurdas Vaaran Index<br>
+                  -Kabit by Kabit<br>
+                  -Sri Dasam Granth Chapter Index<br>
+                  -Sri Dasam Granth Page by Page<br>
+                  -Bhai Nand Lal Baani Index<br>
+                </h6>
+
+                <h6 style="margin-top:5px;margin-bottom:5px;" class="green">
+                  - Daily Nitnem baanis and other Baanis like Sukhmani sahib, Asa di vaar with easy
+                  navigation and pagination.
+                  <br>
+                  - Advanced search of Shabads from Sri Guru Granth Sahib , Bhai Gurdas Vaaran ,
+                  Kabit Bhai Gurdas, Bhai Nand Lal
+                  Baani and Sri Dasam Granth Sahib with First Letter Beginning and Anywhere in
+                  Romanisation and Gurmukhi <br>
+                  - Advanced search with filter of Scripture, raag and Author<br>
+                  - Teekas and Vishraam ( Punctuation), Lareevar also available along with
+                  Gurmukhi, Hindi transliteration,
+                  Romanisation, English transliteration and Translations.<br>
+                  - Customised User preferences for Languages displayed, Gurmukhi font selection,
+                  Font Sizes and Background Themes.
+                  Custom Backgrounds and Customised font colors.<br>
+                  - Save SGGS Ang/Baani/Searched Shabad <br>
+                  - Share your favorite verse in email / Text message/ Facebook or Twitter.
+                </h6>
+
+                <h5 class="cream" align="center">Download <b>NEW VERSION</b> (June 2018) for
+                  <a class="bold" href="https://itunes.apple.com/us/app/isearch-gurbani-!/id674467937?ls=1&amp;mt=8">
+                    iPhone &amp; iPad v 2.6.0</a>
+                  and for<a class="bold"
+                    href="https://play.google.com/store/apps/details?id=com.smartbuzz.vkh.isg&amp;hl=en">
+                    Android v 3.1.0</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="home-search">
+          <div class="container-fluid" align="center">
+            <h4 class="cream">Gurbani Videos </h4>
+            <iframe class="video" src="https://www.youtube.com/embed?listType=user_uploads&amp;list=gurbani"
+              frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+          </div>
+        </div>
+
+        <div class="center">
+          <h4 class="no-top" style="font-size:18px;">--::-- Hukumnamas --::-- </h4>
+          <p></p>
+          <h5><b>
+              --::--&nbsp;&nbsp;&nbsp;
+              <a [routerLink]="['/hukum']">Harmandir Sahib</a>
+              &nbsp;&nbsp;&nbsp;--::--::--::--&nbsp;&nbsp;&nbsp;
+              <a [routerLink]="['/hukumnama/cyber']">Cyber Hukum</a>
+              &nbsp;&nbsp;&nbsp;--::--
+            </b> </h5>
+          <p></p>
+        </div>
+
+
+        <div class="home-search">
+          <div class="container-fluid">
+            <h4>Gurbani Search Tips:</h4>
+
+            <ul class="red">
+              <li>Please click on 'Preferences' tab in Top and Bottom Menu Bar or
+                <a [routerLink]="['/preferences']">-=Here=-</a> to set your
+                languages preferences.
+              </li>
+
+              <li><a href="">Instructions to
+                  Download and install Fonts
+                </a></li>
+              <li>Search option "First Letter Begining" searches for verses beginning with
+                the "first alphabet of the words in the verse in sequence" <br>
+              </li>
+              <li>Search option "First Letter Anywhere" searches for the "first alphabet of the words in
+                sequence" anywhere in the verse including beginning.
+              </li>
+              <li>Search option "Phrase " searches for the exact phrase anywhere in the verse including
+                beginning.
+              </li>
+              <li>Dropdown Suggestion and autocomplete options available for all searches.
+              </li>
+              <li>Pootha Maatha Ki Assees : example keywords: p m k a; pt m k a; pt mt k ; pt mt k as; and
+                so on..
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="center cream">
+          <p></p>
+          <h5 class="bold">--::-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a [routerLink]="['/music/page/1']"><strong>Indian
+                Classical
+                Music and Sikh Kirtan</strong></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            --::-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a [routerLink]="['/compilation/page/1']"><strong>Compilation of
+                Sri Guru Granth Sahib ( Adi Birh
+                Bare)</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--::--
+          </h5>
+          <p></p>
+        </div>
+
+
+        <div class="home-search">
+          <h5 align="center">Please Donate to keep SearchGurbani.com in Chardikala : <a
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=A88CQMEXSYCG8"><strong>Click
+                Here to Donate for development of iSearchGurbani</strong></a></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

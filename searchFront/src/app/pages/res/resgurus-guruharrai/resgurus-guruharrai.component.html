@@ -1,0 +1,158 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div>Home &gt;&gt; Sikh Gurus&gt;&gt; Guru Har Rai Ji</div>
+          <h2 class="no-top">Sri Guru Har Rai Ji </h2>
+          <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td colspan="2" align="left" valign="top">
+                  <p align="center">
+                    <img src="assets/img/res/guru7.jpg" border="0" height="199" width="144"></p>
+                  <p align="center"> &nbsp;(1630-1661, Guruship 1644-1661) </p>
+                  <div align="center"></div>
+                </td>
+                <td align="left" valign="top" width="43%">
+                  <p align="left">INDEX</p>
+                  <ul>
+                    <li><a [routerLink]="['/gurus/guruharrai']" fragment="PREACHING" align="left">GURU'S PREACHING
+                        TOURS:</a></li>
+                    <li><a [routerLink]="['/gurus/guruharrai']" fragment="MUGHAL EMPEROR:" align="left">THE GURU,
+                        HIS SON
+                        RAM RAI AND MUGHAL EMPEROR:</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" align="left" valign="top">
+                  <p align="center">Fast Facts</p>
+                  <div align="center">
+                    <div class="justify-content-center">
+                      <table width="443" height="398" border="0" cellpadding="4" cellspacing="1" bordercolor="#111111"
+                        bordercolorlight="#999999" bordercolordark="#999999" bgcolor="#CCCCCC">
+                        <tbody>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">FATHER </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">Baba Gurdita Ji </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="7" bgcolor="#FFFFFF">
+                              <p align="left">MOTHER </p>
+                            </td>
+                            <td width="25%" height="7" bgcolor="#FFFFFF">
+                              <p align="left">Nihal Kaur Ji </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">DATE OF BIRTH </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left"> 01/16/1630 </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">PLACE OF BIRTH </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">Kiratpur Sahib,
+                                Ropar </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">WIFE </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF"> Ram Kaur Ji, Krishan Kaur ji</td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="38" bgcolor="#FFFFFF">
+                              <p align="left">CHILDREN </p>
+                            </td>
+                            <td width="25%" height="38" bgcolor="#FFFFFF"> Ram Rai Ji &amp; Harkrishan Sahib
+                              Ji
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="38" bgcolor="#FFFFFF"> AGE, YEAR &amp; TIME AT GUR GADHI
+                            </td>
+                            <td width="25%" height="38" bgcolor="#FFFFFF"> 03/08/1644, 17 Years and 6 Months
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">REGIMS </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">Shah Jahan &amp;
+                                Aurangjeb </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left"> CONTRIBUTION OF
+                                BANIES </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left"> None </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">AGE </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">32 </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">JYOTI-JOT DAY </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left"> 10/06/1661 </p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">JYOTI JOT PLACE </p>
+                            </td>
+                            <td width="25%" height="19" bgcolor="#FFFFFF">
+                              <p align="left">Kiratpur Sahib </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" align="left" valign="top">
+                  <p>&nbsp;</p>
+                  <div [innerHtml]="html | safeHtml"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

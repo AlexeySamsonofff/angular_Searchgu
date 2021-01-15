@@ -1,0 +1,158 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div>Home &gt;&gt; Sikh Gurus&gt;&gt; GuruHargobind SahibJi</div>
+          <h2 class="no-top">Sri Guru HarGobind Sahib Ji</h2>
+          <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td colspan="2" align="left" valign="top"></td>
+              </tr>
+              <tr>
+                <td align="center" width="313"><img src="assets/img/res/guru6.jpg" border="0" height="197"
+                    width="143">
+                  <p><strong>(1595-1644, Guruship 1606-1644)</strong></p>
+                </td>
+                <td align="center" valign="top" width="314">
+                  <blockquote>
+                    <p align="left"><strong>INDEX</strong></p>
+                  </blockquote>
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td width="100%" valign="top">
+                          <ul>
+                            <li><a [routerLink]="['/gurus/guruhargobindi']" fragment="1" align="left">AKAL
+                                TAKHAT</a>
+                            </li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi']" fragment="2" align="left">BANDI
+                                CHHOR- THE
+                                GREAT DELIVERER</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi2']" fragment="1" align="left">KAULAN</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi2']" fragment="2" align="left">MUGHAL
+                                FORCES
+                                AND THE GURU</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi2']" fragment="3" align="left">FOUNDATION
+                                OF
+                                SRI HAR GOBINDPUR CITY</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi3']" fragment="1" align="left">THIRD
+                                BATTLE</a>
+                            </li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi3']" fragment="2" align="left">FOURTH
+                                AND LAST
+                                BATTLE</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi3']" fragment="3" align="left">PREACHING
+                                TOURS</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi4']" fragment="1" align="left">GURU'S
+                                FAMILY</a></li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi4']" fragment="2" align="left">BHAI
+                                BUDDHA</a>
+                            </li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi4']" fragment="3" align="left">BHAI
+                                GURDAS</a>
+                            </li>
+                            <li><a [routerLink]="['/gurus/guruhargobindi4']" fragment="4" align="left">GURU AT
+                                KIRATPUR</a></li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>CHILDREN </strong></p>
+                </td>
+                <td height="21" width="314">
+                  <p align="left">Gurdita Ji, Ani Rai, Tegh Bahadur, Atal Rai, Suraj Mal &amp;
+                    Bibi
+                    Viro Ji </p>
+                </td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>AGE, YEAR &amp; TIME AT GUR GADHI </strong></p>
+                </td>
+                <td height="21" width="314">
+                  <p align="left">05/25/1606, 38 Year </p>
+                </td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>REGIMES </strong></p>
+                </td>
+                <td height="21" width="314">
+                  <p align="left">Jahagir &amp; Shah Jahan </p>
+                </td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>CONTRIBUTION OF BANIES </strong></p>
+                </td>
+                <td height="21" width="314"> None</td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>AGE </strong></p>
+                </td>
+                <td height="21" width="314"> 49</td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>JYOTI-JOT DAY </strong></p>
+                </td>
+                <td height="21" width="314">
+                  <p align="left">03/02/1644 </p>
+                </td>
+              </tr>
+              <tr>
+                <td height="21" width="313">
+                  <p align="left"><strong>JYOTI JOT PLACE </strong></p>
+                </td>
+                <td height="21" width="314">
+                  <p align="left">Kiratpur Sahib </p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="left" valign="top">
+                  <p>&nbsp;</p>
+                  <p align="center">&nbsp;</p>
+                  <div align="center"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="left" valign="top">
+                  <div [innerHtml]="html | safeHtml"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <div class="navig_right_left" style="clear:both">
+            <table width="100%" border="0" cellspacing="0" cellpadding="4">
+              <tbody>
+                <tr>
+                  <td width="140"><a [routerLink]="['/gurus']">Index</a></td>
+                  <td align="center"><a [routerLink]="['/gurus']"></a></td>
+                  <td width="140" align="right"><a [routerLink]="['/gurus/guruhargobindi2']">Next</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

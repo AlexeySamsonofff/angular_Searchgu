@@ -1,0 +1,74 @@
+
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body" id="banner">
+      <app-border></app-border>
+      <div class="page-content" style="padding-top: 30px;">
+        <div class="container-fluid">
+          <table width="100%" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <td width="100%" valign="top">
+                  <div class="row">
+                    Find Results : {{searchData}} (<span class="text-capital">{{searchType}}</span>)
+                  </div>
+                  <div class="row center">
+                    <strong>{{ title }}</strong>
+                  </div>
+                  <div class="row center">
+                    <strong>Displaying Records {{page_info.search_results_info['showing_from']}} - {{page_info.search_results_info['showing_to']}} of {{page_info.search_results_info['total_results'] }}.</strong>
+                  </div>
+                  <div class="row text-right">
+                    <pagination [(ngModel)]="cur_page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25" [totalItems]="page_info.search_results_info['total_results']"></pagination>
+                  </div>
+                </td>
+              </tr>
+            </thead>
+            <tbody class="ang-content">
+              <tr *ngFor="let item of page_info.lines; let i = index">
+                <td>
+                  <div class="line" [class.row1]="i%2===0" [class.row-1]="i%2===1">
+                    <p class="subhead"><strong>{{ i + page_info.search_results_info['showing_from'] }}. <a [routerLink]="['/guru-granth-sahib/ang/' + item.pageno + '/line/' + item.lineno]">Ang {{item.pageno}}
+                          Line {{item.pagelineno}}  {{item.raag}} : {{item.author}}</a><br>
+                          <a [routerLink]="['/guru-granth-sahib/shabad/' + item.shabad_id + '/line/' + item.shabadlineno]"> or Go to Shabad</a></strong></p>
+                    <p class="lang_1" [innerHtml]="display(item.punjabi)"></p>
+                    <p class="lang_2">{{ item.translit }}</p>
+                    <p class="lang_3">{{ item.hindi }}</p>
+                    <p class="lang_4">{{ item.english }}</p>
+                  </div>
+                </td>
+              </tr>
+              <tr class='line row1' *ngIf="page_info?.lines?.length===0">
+                <td>
+                  <label>No words found</label>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td width="100%" valign="top">
+                  <div class="row">
+                    Find Results : {{searchData}} (<span class="text-capital">{{searchType}}</span>)
+                  </div>
+                  <div class="row center">
+                    <strong>{{ title }}</strong>
+                  </div>
+                  <div class="row center">
+                    <strong>Displaying Records to {{page_info.search_results_info['showing_to']}} of {{page_info.search_results_info['total_results'] }}.</strong>
+                  </div>
+                  <div class="row text-right">
+                    <pagination [(ngModel)]="cur_page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="25" [totalItems]="page_info.search_results_info['total_results']"></pagination>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+  </div>
+  <app-footer [backColor] = "footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

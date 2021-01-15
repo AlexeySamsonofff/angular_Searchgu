@@ -1,0 +1,255 @@
+<div class="page-content">
+  <h3 class="">{{title}}</h3>
+  <div id="audio_player" *ngIf="!no_audio" class="print-hidden">
+    <audio controls #audio style="margin: 3px auto; width: 165px;">
+      <source src="" type="audio/mpeg">
+    </audio>
+  </div>
+  <div class="utility-bar2 print-hidden">
+    <div class="row" style="padding-bottom: 5px;">
+      <div class="col-md-4 col-xs-4">
+        <div class="ang-paginate">
+          <button class="btn btn-next" [style.background]="showFont ? activeBg : footerColor" style="color: white;"
+            (click)="showFont=!showFont">Font</button>
+          <button class="btn btn-next" [style.background]="showTranslit ? activeBg : footerColor" style="color: white;"
+            (click)="showTranslit=!showTranslit;savePreference()">Phonetic</button>
+          <button class="btn btn-next" [style.background]="showHindi ? activeBg : footerColor" style="color: white;"
+            (click)="showHindi=!showHindi;savePreference()">Hindi</button>
+          <button class="btn btn-next" [style.background]="showEnglish ? activeBg : footerColor" style="color: white;"
+            (click)="showEnglish=!showEnglish;savePreference()">English</button>
+          <span style="cursor: pointer; margin: 5px 5px 0px" (click)="print()" class="fa fa-print"></span>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4 center">
+        <div class="ang-count bold">Displaying Page {{cur_page}} <span> of {{max_page}}</span></div>
+      </div>
+      <div class="col-md-4 col-xs-4 text-right">
+        <div class="ang-paginate">
+          <button class="btn btn-next" *ngIf="cur_page>1" [ngStyle]="{'background': footerColor}" style="color: white;"
+            (click)="goBegin()">Begin</button>
+          <button class="btn btn-next" *ngIf="cur_page>1" [ngStyle]="{'background': footerColor}" style="color: white;"
+            (click)="goBack()">Back</button>
+          <button class="btn btn-next" *ngIf="cur_page<max_page" [ngStyle]="{'background': footerColor}"
+            style="color: white;" (click)="goNext()">Next</button>
+          <button class="btn btn-next" *ngIf="cur_page<max_page" [ngStyle]="{'background': footerColor}"
+            style="color: white;" (click)="goLast()">Last</button>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="showFont" style="margin: 0;padding: 5px" [ngStyle]="{'background': activeBg}">
+      <div class="row">
+        <div class="col-xs-6 col-md-2">
+          <label>Gurmukhi:</label>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <select name="language" class="form-select" (ngModelChange)="savePreference()"
+            [(ngModel)]="font.gurmukhi.name">
+            <option value="AnmolUniBani">
+              Default
+            </option>
+            <option value="RaajaaMediumMedium">
+              Raajaa
+            </option>
+            <option value="RaajaaBoldBold">
+              Raajaa Bold
+            </option>
+            <option value="RaajBold">
+              Raaj
+            </option>
+            <option value="AdhiapakMarkerMedium">
+              Adhiapak
+            </option>
+            <option value="PrabhkiRegular">
+              Prabhki
+            </option>
+            <option value="KarmicSanjMedium">
+              Karmic sanj
+            </option>
+          </select>
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <input type="range" min="5" max="50" [(ngModel)]="font.gurmukhi.size" title="Size"
+            (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-2">
+          <input type="color" [(ngModel)]="font.gurmukhi.color" (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-1">
+          <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('gurmukhi')"
+            style="color: white">Reset</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-2">
+          <label>Phonetic English:</label>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <select name="PhonEnglish" [(ngModel)]="font.phonetic.name" class="form-select"
+            (ngModelChange)="savePreference()">
+            <option value="arial">
+              Default
+            </option>
+            <option value="Puritan20Italic">
+              Puritan
+            </option>
+            <option value="AndikaBasicRegular">
+              Andika
+            </option>
+            <option value="ArchitectsDaughterRegular">
+              Architect
+            </option>
+            <option value="QuattrocentoRomanRegular">
+              Quattrocento
+            </option>
+            <option value="DroidSansRegular">
+              Droid Sans
+            </option>
+            <option value="DroidSerifBold">
+              Droid Bold
+            </option>
+          </select>
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <input type="range" min="5" max="50" [(ngModel)]="font.phonetic.size" title="Size"
+            (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-2">
+          <input type="color" [(ngModel)]="font.phonetic.color" (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-1">
+          <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('phonetic')"
+            style="color: white">Reset</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-2">
+          <label>Hindi:</label>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <select name="HinTrans" [(ngModel)]="font.hindi.name" class="form-select" (ngModelChange)="savePreference()">
+            <option value="arial">
+              Default
+            </option>
+            <option value="JaipurRegular">
+              Jaipur Regular
+            </option>
+            <option value="Gurumaa150Bold">
+              Gurumaa
+              Regular
+            </option>
+            <option value="RaghindiRegular">
+              Raghu Regular
+            </option>
+            <option value="gargiMedium">
+              Gargi Medium
+            </option>
+            <option value="CDACGISTYogeshNormal">
+              Yogesh Normal
+            </option>
+            <option value="CDACGISTSurekhNormal">
+              Surekh Normal
+            </option>
+          </select>
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <input type="range" min="5" max="50" [(ngModel)]="font.hindi.size" title="Size"
+            (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-2">
+          <input type="color" [(ngModel)]="font.hindi.color" (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-1">
+          <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('hindi')"
+            style="color: white">Reset</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-2">
+          <label>English Translation:</label>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <select name="HinTrans" [(ngModel)]="font.english.name" class="form-select"
+            (ngModelChange)="savePreference()">
+            <option value="arial">
+              Default
+            </option>
+            <option value="Puritan20Italic">
+              Puritan
+            </option>
+            <option value="AndikaBasicRegular">
+              Andika
+            </option>
+            <option value="ArchitectsDaughterRegular">
+              Architect
+            </option>
+            <option value="QuattrocentoRomanRegular">
+              Quattrocento
+            </option>
+            <option value="DroidSansRegular">
+              Droid Sans
+            </option>
+            <option value="DroidSerifBold">
+              Droid Bold
+            </option>
+          </select>
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <input type="range" min="5" max="50" [(ngModel)]="font.english.size" title="Size"
+            (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-2">
+          <input type="color" [(ngModel)]="font.english.color" (ngModelChange)="savePreference()">
+        </div>
+        <div class="col-xs-4 col-md-1">
+          <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('english')"
+            style="color: white">Reset</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="ang-content">
+      <div class="content-block row" [ngClass]="i%2==0?'row1':'row-1'"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div class="col-md-10 col-sm-12">
+          <!-- <p>LineID: {{item.lineno}}</p> -->
+          <p class="lang_1" [style.font-family]="font.gurmukhi.name" [style.font-size.px]="font.gurmukhi.size"
+            [style.color]="font.gurmukhi.color">{{item.punjabi}}</p>
+          <p *ngIf="showTranslit" class="lang_2" [style.font-family]="font.phonetic.name" [style.font-size.px]="font.phonetic.size"
+            [style.color]="font.phonetic.color">{{item.translit}}</p>
+          <p *ngIf="showHindi" class="lang_3" [style.font-family]="font.hindi.name" [style.font-size.px]="font.hindi.size"
+            [style.color]="font.hindi.color">{{item.hindi}}</p>
+          <p *ngIf="showEnglish" class="lang_4" [style.font-family]="font.english.name" [style.font-size.px]="font.english.size"
+            [style.color]="font.english.color">{{item.english}}</p>
+        </div>
+        <br class="clearer">
+      </div>
+      <div class="line row11" *ngIf="page_info.lines===0">
+        <p class="english">No lines found</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="utility-bar2 print-hidden">
+    <div class="row">
+      <div class="col-md-4 col-xs-4">
+
+      </div>
+      <div class="col-md-4 col-xs-4 center">
+        <div class="ang-count bold">Displaying Page {{cur_page}} <span> of {{max_page}}</span></div>
+      </div>
+      <div class="col-md-4 col-xs-4 text-right">
+        <div class="ang-paginate">
+          <button class="btn btn-next" *ngIf="cur_page>1" [ngStyle]="{'background': footerColor}" style="color: white;"
+            (click)="goBegin()">Begin</button>
+          <button class="btn btn-next" *ngIf="cur_page>1" [ngStyle]="{'background': footerColor}" style="color: white;"
+            (click)="goBack()">Back</button>
+          <button class="btn btn-next" *ngIf="cur_page<max_page" [ngStyle]="{'background': footerColor}"
+            style="color: white;" (click)="goNext()">Next</button>
+          <button class="btn btn-next" *ngIf="cur_page<max_page" [ngStyle]="{'background': footerColor}"
+            style="color: white;" (click)="goLast()">Last</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

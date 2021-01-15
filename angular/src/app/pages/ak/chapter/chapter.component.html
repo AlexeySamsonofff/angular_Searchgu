@@ -1,0 +1,33 @@
+<div class="comp-container">
+        <app-background [backColor]="backgroundImg"></app-background>
+
+        <app-header></app-header>
+        <app-menu [menuBack]="param"></app-menu>
+        <div class="home-body" id="banner">
+                <app-border></app-border>
+                <div class="page-content">
+                        <h3 class="top-heading">Amrit Keertan Chapter Index</h3>
+                        <div class="contents">
+                                <div class="chapter_index">
+                                        <div class="section_title">
+                                                <span class="col_sl_no">ID</span>
+                                                <span class="col_section_name">Section</span>
+                                                <span class="col_page_no">Page No.</span><br class="clearer">
+                                        </div>
+                                        <div class="section_line line" [ngClass]="{'row1':i%2===0, 'row-1':i%2===1}"
+                                                *ngFor="let item of chapters, let i = index">
+                                                <span class="col_sl_no">{{item.section_id}}</span>
+                                                <a
+                                                        [routerLink]="['/amrit-keertan/chapter/' + item.section_id + '/' + formatName(item.section)]">
+                                                        <span class="col_section_name">{{item.section}}</span></a>
+                                                <a [routerLink]="['/amrit-keertan/page/' + item.pageno]">
+                                                        <span class="col_page_no">{{item.pageno}}</span></a>
+                                                <div class="clearer"></div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

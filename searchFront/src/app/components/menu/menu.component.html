@@ -1,0 +1,247 @@
+<div id="main-menu" class="print-hidden">
+        <nav class="navbar" [ngClass]="menuBack[0]" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="main-navbar">
+                <ul class="nav navbar-nav main-nav">
+                    <li><a [routerLink] = "['/']">Home</a></li>
+                    <li><a [routerLink] = "['/scriptures/search']">Gurbani Search</a></li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['/guru-granth-sahib/introduction']">Guru Granth Sahib</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/guru-granth-sahib/introduction']">Introduction</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-sahib/ang-by-ang']">Ang by Ang</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-sahib/index/chapter']">Chapter Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-sahib/index/author']">Author Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-sahib/world/ang']">SGGS World Languages</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-sahib/search']">Search Guru Granth Sahib</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['/amrit-keertan/introduction']">Amrit Keertan</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/amrit-keertan/introduction']">Introduction</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/page-by-page']">Page by Page</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/index/chapter']">Chapter Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/index/english']">English Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/index/punjabi']">Punjabi Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/index/hindi']">Hindi Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/amrit-keertan/search']">Search Amrit Keertan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a [routerLink]="['/bhai-gurdas-vaaran/introduction']" class="dropdown-toggle" data-toggle="dropdown">Bhai Gurdas Vaaran</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/bhai-gurdas-vaaran/introduction']">Introduction</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-gurdas-vaaran/pauri-by-pauri']">Pauri by Pauri</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-gurdas-vaaran/index/vaar']">Vaar Index</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-gurdas-vaaran/search']">Search Gurdas Vaaran</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a [routerLink]="['/dasam-granth/page-by-page']" class="dropdown-toggle" data-toggle="dropdown">Dasam Granth Sahib</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/dasam-granth/introduction']">Introduction</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/dasam-granth/index/chapter/en']">Chapter Index English</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/dasam-granth/index/chapter/pb']">Chapter Index Punjabi</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/dasam-granth/page-by-page']">Page by Page</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/dasam-granth/search']">Search Dasam Granth</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a [routerLink]="['/kabit-savaiye/kabit-by-kabit']" class="dropdown-toggle" data-toggle="dropdown">Kabit Savaiye</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/kabit-savaiye/kabit-by-kabit']">Kabit by Kabit</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/kabit-savaiye/search']">Search Kabit Savaiye</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li class="dropdown"><a [routerLink]="['/bhai-nand-lal/introduction" class="dropdown-toggle" data-toggle="dropdown">Bhai Nand Lal</a> -->
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Bhai Nand Lal</a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/bhai-nand-lal/ghazal']">Divan-e-Goya : Ghazals</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/quatrains']">Rubaayee</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/zindginama']">Zindginama</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/ganjnama']">Ganjnama</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/jot-bikas']">Jot Bikas (Punjabi)</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/jot-bikas-persian']">Jot Bikas (Persian)</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/rahitnama']">Rahit Nama</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/tankahnama']">Tankah Nama</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhai-nand-lal/search']">Search Bhai Nand
+                                    Lal</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a [routerLink]="['/sundar-gutka']" class="dropdown-toggle" data-toggle="dropdown">Sundar Gutka</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Nitnem</a>
+                                <ul class="dropdown-menu side-dropdown" style="position: absolute; top: 5px;">
+                                    <li><a [routerLink]="['/baanis/japji-sahib']">Japji Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/jaap-sahib']">Jaap Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/tvai-prasadh-savaiye']">
+                                            Tvai Prasadh Savaiye</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/chaupai-sahib']">Chaupai Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/anand-sahib']">Anand Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/rehraas-sahib']">Rehraas Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/kirtan-sohila']">Kirtan Sohila</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Guru Granth Sahib</a>
+                                <ul class="dropdown-menu side-dropdown" style="position: absolute; top: 42px;">
+                                    <li><a [routerLink]="['/baanis/anand-sahib-bhog']">Anand Sahib(Bhog)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/aarti']">Aarti</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/laavan-anand-karaj']">Laavan(Anand Karaj)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/asa-ki-vaar']">Asa Ki Vaar</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/sukhmani-sahib']">Sukhmani Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/sidh-gosht']">Sidh Gosht</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/ramkali-sadh']">Ramkali Sadh</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/dhakanee-oankaar']">Dhakanee Oankaar</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/baavan-akhree']">Baavan Akhree</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/shabad-hazare']">Shabad Hazare</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/baarah-maaha']">Baarah Maaha</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/sukhmana-sahib']">Sukhmana sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/dukh-bhanjani-sahib']">Dukh Bhanjani Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/salok-sehskritee']">Salok Sehskritee</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/gathaa']">Gathaa</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/phunhay-m5']">Phunhay M: 5</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/chaubolay-m5']">Chaubolay M:5</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/salok-kabeer-ji']">Salok Kabeer ji</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/salok-farid-ji']">Salok Farid ji</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/savaiye-m1']">Savaiye M: 1</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/savaiye-m2']">Savaiye M: 2</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/savaiye-m3']">Savaiye M: 3</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/savaiye-m4']">Savaiye M: 4</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/savaiye-m5']">Savaiye M: 5</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/salok-m9']">Salok M: 9</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dasam Granth</a>
+                                <ul class="dropdown-menu side-dropdown" style="position: absolute; top: 79px;">
+                                    <li><a [routerLink]="['/baanis/akal-ustati']">Akal Ustati</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/bachitar-natak']">Bachitar Natak</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/shabad-hazare-paatishahi-10']">Shabad Hazare Paatishahi 10</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/baanis/tvai-prasaadh-savaiye-dheenan-kee']">Tvai prasaadh savai'ye ( Dheenan Kee)</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="divider"></li>
+                            <li class="dropdown-submenu">
+                              <a [routerLink]="['/sundar-gutka']">Sundar Gutka</a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li class="dropdown last_li"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Hukumnama</a>
+                                <ul class="dropdown-menu side-dropdown" style="position: absolute; top: 5px; left: -77%;">
+                                    <li><a [routerLink]="['/hukumnama']">Hukumnama Index</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/hukum']">Sri Darbar Sahib</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/hukumnama/cyber']">Cyber Hukumnama</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sgdv/isg']">iSearchGurbani</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sgdv']">Search Gurbani Desktop Version</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/mahan-kosh']">GurShabad Ratanakar Mahankosh</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/guru-granth-kosh']">Sri Guru Granth Kosh</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sggs-kosh']">SGGS Kosh</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sri-nanak-prakash']">Sri Nanak Prakash</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sri-gur-pratap-suraj-granth']">
+                                    Sri Gur Pratap Suraj Granth</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/faridkot-wala-teeka']">Faridkot Wala Teeka</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/sri-guru-granth-darpan']">Sri Guru Granth Darpan</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/maansarovar']">Maansarovar</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/gurus']">Guru Sahiban</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhagats']">Bhagat Sahiban</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/bhatts']">Bhatt Sahiban</a></li>
+                            <li class="divider"></li>
+                            <li><a [routerLink]="['/raags']">Gurbani Raags</a></li>
+                            <!-- <li class="divider"></li>
+                            <li><a [routerLink]="['/unicode']">Gurbani Fonts</a></li> -->
+                            <!-- <li><a [routerLink]="['/compilation/page']">Compilation</a></li>
+                            <li><a [routerLink]="['/music/page']">Music</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>

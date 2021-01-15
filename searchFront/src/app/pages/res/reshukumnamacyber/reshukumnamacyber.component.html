@@ -1,0 +1,56 @@
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body">
+         <app-border></app-border>
+         <div class="page-content" style="padding-top: 30px;">
+             <div class="container-fluid">
+                 <div style="background-color:#fceaaa" class="center">
+                     <h3 class="no-top maroon">Hukumnama - Ang {{ page_info.pageno}}</h3>
+                     <p class="bold more-bottom">{{page_info.hukumnama_info.title}} in {{page_info.hukumnama_info.raag}}</p>
+                 </div>
+ 
+                 <div id="audio_player" class="text-center">
+                     <object width="165" height="38" align="" id="niftyPlayer_Audio"
+                         codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+                         classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+                         <param
+                             value="https://www.searchgurbani.com/scripts/niftyplayer.swf?file=https://www.searchgurbani.com/audio/hukum/"
+                             name="movie">
+                         <param value="high" name="quality">
+                         <param value="#FFFFFF" name="bgcolor">
+                         <embed width="165" height="38" align=""
+                             pluginspage="http://www.macromedia.com/go/getflashplayer"
+                             type="application/x-shockwave-flash" name="niftyPlayer_Audio" bgcolor="#FFFFFF"
+                             quality="high"
+                             src="https://www.searchgurbani.com/scripts/niftyplayer.swf?file=https://www.searchgurbani.com/audio/hukum/"
+                             style="visibility: visible;">
+ 
+                     </object>
+                 </div>
+                 <div class="clearfix">
+                 </div>
+                 <h6 class="bold">In Gurmukhi</h6>
+                 <div class="line row1" style="justify-content: center">
+                     <p class="lang_1" style="font-size:18px;text-align: center;" [innerHtml]="data['punjabi']">
+                     </p>
+                 </div>
+                 <p><strong>Phonetic English</strong></p>
+                 <div class="line row1" style="justify-content: center">
+                     <p class="lang_2" style="text-align: center;" [innerHtml]="data['translit']"></p>
+                 </div>
+                 <p><strong>English Translation</strong></p>
+                 <div class="line row1">
+                     <p class="lang_3" [innerHtml]="data['english']"></p>
+                 </div>
+                 <p><strong>Punjabi Viakhya</strong></p>
+                 <div class="line row1">
+                     <p class="lang_4" style="font-size:17px;" [innerHtml]="data['ss_para']"></p>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <app-footer [backColor]="footerColor"></app-footer>
+ </div>
+ <app-copyright></app-copyright>

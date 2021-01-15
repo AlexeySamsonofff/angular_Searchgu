@@ -1,0 +1,791 @@
+<div class="page-content" style="padding-top: 30px;">
+  <div style="background-color:#fceaaa" align="center" class="container-fluid">
+    <div style="text-align: -webkit-center">
+      <h3 [innerHtml]="title"></h3>
+    </div>
+    <strong [innerHtml]="subtitle"></strong>
+    <br>
+  </div>
+
+  <div class="row">
+    <div class="utility-bar1" style="margin-top: 20px;">
+      <div class="row" style="margin: 0">
+        <div class="col-md-4 col-sm-4 utility_buttons" style="justify-content: flex-start;">
+          <span id="social-sharing">
+            <button type="button" name="social_sharing" id="social_sharing" [ngStyle]="{'background': footerColor}"
+              style="color: white;" class="btn btn-next social-sharing" data-social="on"
+              (click)="social_flag=!social_flag">Social Sharing On</button>
+          </span>
+          <!-- <a href="https://www.searchgurbani.com/guru-granth-sahib/ang/1/print-view"> -->
+          <a (click)="print()">
+            <i class="fa fa-print" title="Print this page"></i>
+          </a>
+          <!-- <a href="#" class="remember_this" onclick="remember_this();"><i class="fa fa-star"
+                title="Remember this page"></i></a>&nbsp; -->
+          <a (click)="copyText()"><i class="fa fa-copy"></i></a>
+          <!-- <a href="#"><i class="fa fa-code"></i></a> -->
+        </div>
+        <div class="col-md-8 col-sm-8 text-right xs-center">
+          <div class="row" style="margin: 0">
+            <button class="btn btn-next" (click)="showVideo=!showVideo"
+              [ngStyle]="{'background': showVideo?activeBg:footerColor}" *ngIf="page_info.youtubeID"
+              style="color: white; margin-bottom: 5px;">Video {{showVideo?'Off':'On'}}</button>
+            <button class="btn btn-next" (click)="showDisplay=!showDisplay"
+              [ngStyle]="{'background': showDisplay?activeBg:footerColor}"
+              style="color: white; margin-bottom: 5px;">Display</button>
+
+            <button class="btn btn-next" (click)="showFont=!showFont"
+              [ngStyle]="{'background': showFont?activeBg:footerColor}"
+              style="color: white;margin-bottom: 5px;">Font</button>
+
+            <button class="btn btn-next" (click)="toggle_punc()" *ngIf="page_info.scripture!=='ak'"
+              [ngStyle]="{'background': transliteration.punctuation?activeBg:footerColor}"
+              style="color: white;margin-bottom: 5px;">Punctuation</button>
+
+            <button class="btn btn-next"
+              (click)="transliteration.punctuation_assist=!transliteration.punctuation_assist;savePreference()"
+              *ngIf="page_info.scripture!=='ak' && transliteration.punctuation"
+              [ngStyle]="{'background': transliteration.punctuation_assist?activeBg:footerColor}"
+              style="color: white;margin-bottom: 5px;">Punctuation Assist</button>
+
+            <button class="btn btn-next" (click)="toggle_lareevar()"
+              [ngStyle]="{'background': transliteration.lareevar?activeBg:footerColor}"
+              style="color: white;margin-bottom: 5px;">Lareevar</button>
+            <button class="btn btn-next"
+              (click)="transliteration.lareevar_assist=!transliteration.lareevar_assist;savePreference()"
+              *ngIf="transliteration.lareevar"
+              [ngStyle]="{'background': transliteration.lareevar_assist?activeBg:footerColor}"
+              style="color: white;margin-bottom: 5px;">Lareevar Assist</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showDisplay" style="margin: 5px 0px; padding: 5px;" [ngStyle]="{'background': activeBg}">
+    <div class="container-fluid row">
+      <div class="col-md-4">
+        <div class="row center white-text" style="padding-bottom: 5px;">
+          <a class="btn btn-next white-text" [ngStyle]="{'background': footerColor}">Transliteration</a></div>
+        <div class="row center">
+          <a class="btn btn-next white-text active"
+            (click)="transliteration.roman=!transliteration.roman;savePreference()"
+            [ngStyle]="{'background': transliteration.roman?activeBg:footerColor}">Phonetic</a>
+          <a class="btn btn-next white-text active"
+            (click)="transliteration.english=!transliteration.english;savePreference()"
+            [ngStyle]="{'background': transliteration.english?activeBg:footerColor}">English</a>
+          <a [ngStyle]="{'background': transliteration.hindi?activeBg:footerColor}"
+            (click)="transliteration.hindi=!transliteration.hindi;savePreference()"
+            class="btn btn-next white-text">Hindi</a>
+          <a [ngStyle]="{'background': transliteration.shahmukhi?activeBg:footerColor}"
+            (click)="transliteration.shahmukhi=!transliteration.shahmukhi;savePreference()"
+            class="btn btn-next white-text">Shahmukhi</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row center white-text" style="padding-bottom: 5px;">
+          <a class="btn btn-next white-text" [ngStyle]="{'background': footerColor}">Translation</a>
+        </div>
+        <div class="row center" *ngIf="page_info.scripture==='ggs'">
+          <div class="dropdown" style="display: inline-block;">
+            <button [ngStyle]="{'background': footerColor}" class="btn btn-next active dropdown-toggle"
+              style="color: white;" type="button" data-toggle="dropdown">English
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="padding: 0">
+              <li>
+                <a [ngStyle]="{'background': translation.ggs.english?activeBg:footerColor}"
+                  (click)="translation.ggs.english=!translation.ggs.english;savePreference()" class="btn"
+                  style="color: white;margin-bottom: 2px;">Sant Singh Khalsa</a>
+                <a [ngStyle]="{'background': translation.ggs.eng_mms?activeBg:footerColor}"
+                  (click)="translation.ggs.eng_mms=!translation.ggs.eng_mms;savePreference()" class="btn"
+                  style="color: white;">Manmohan Singh</a>
+              </li>
+            </ul>
+          </div>
+          <a [ngStyle]="{'background': translation.ggs.punj_mms?activeBg:footerColor}"
+            (click)="translation.ggs.punj_mms=!translation.ggs.punj_mms;savePreference()" class="btn btn-next"
+            style="color: white;">Punjabi</a>
+          <div class="dropdown" style="display: inline-block;">
+            <button [ngStyle]="{'background': footerColor}" class="btn btn-next active dropdown-toggle"
+              style="color: white;" type="button" data-toggle="dropdown">Teeka
+              <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="padding: 0">
+              <li>
+                <a [ngStyle]="{'background': translation.ggs.ggd?activeBg:footerColor}"
+                  (click)="translation.ggs.ggd=!translation.ggs.ggd;savePreference()" class="btn"
+                  style="color: white;margin-bottom: 2px;">Guru Granth Darpan</a>
+                <a [ngStyle]="{'background': translation.ggs.ft?activeBg:footerColor}"
+                  (click)="translation.ggs.ft=!translation.ggs.ft;savePreference()" class="btn"
+                  style="color: white;margin-bottom: 2px;">Faridkot Teeka</a>
+                <a [ngStyle]="{'background': translation.ggs.fth?activeBg:footerColor}"
+                  (click)="translation.ggs.fth=!translation.ggs.fth;savePreference()" class="btn"
+                  style="color: white;margin-bottom: 2px;">Faridkot Teeka Hindi</a>
+                <a [ngStyle]="{'background': translation.ggs.ss?activeBg:footerColor}"
+                  (click)="translation.ggs.ss=!translation.ggs.ss;savePreference()" class="btn"
+                  style="color: white;">SGPC Shabadrth</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row center" *ngIf="page_info.scripture==='ak'">
+          <a [ngStyle]="{'background': translation.ak.english?activeBg:footerColor}"
+            (click)="translation.ak.english=!translation.ak.english;savePreference()" class="btn btn-next"
+            style="color: white;">English</a>
+        </div>
+        <div class="row center" *ngIf="page_info.scripture==='bgv'">
+          <a [ngStyle]="{'background': translation.bgv.english?activeBg:footerColor}"
+            (click)="translation.bgv.english=!translation.bgv.english;savePreference()" class="btn btn-next"
+            style="color: white;">English</a>
+          <a [ngStyle]="{'background': translation.bgv.teeka?activeBg:footerColor}"
+            (click)="translation.bgv.teeka=!translation.bgv.teeka;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka</a>
+          <a [ngStyle]="{'background': translation.bgv.teeka_roman?activeBg:footerColor}"
+            (click)="translation.bgv.teeka_roman=!translation.bgv.teeka_roman;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka Roman</a>
+          <a [ngStyle]="{'background': translation.bgv.teeka_hindi?activeBg:footerColor}"
+            (click)="translation.bgv.teeka_hindi=!translation.bgv.teeka_hindi;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka Hindi</a>
+        </div>
+        <div class="row center" *ngIf="page_info.scripture==='dg'">
+          <a [ngStyle]="{'background': translation.dg.english?activeBg:footerColor}"
+            (click)="translation.dg.english=!translation.dg.english;savePreference()" class="btn btn-next"
+            style="color: white;">English</a>
+          <a [ngStyle]="{'background': translation.dg.teeka?activeBg:footerColor}"
+            (click)="translation.dg.teeka=!translation.dg.teeka;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka</a>
+        </div>
+        <div class="row center" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1">
+          <a [ngStyle]="{'background': translation.bnl.english?activeBg:footerColor}"
+            (click)="translation.bnl.english=!translation.bnl.english;savePreference()" class="btn btn-next"
+            style="color: white;">English</a>
+          <a [ngStyle]="{'background': translation.bnl.teeka?activeBg:footerColor}"
+            (click)="translation.bnl.teeka=!translation.bnl.teeka;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka</a>
+          <a [ngStyle]="{'background': translation.bnl.teekahindi?activeBg:footerColor}"
+            (click)="translation.bnl.teekahindi=!translation.bnl.teekahindi;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka Hindi</a>
+        </div>
+        <div class="row center" *ngIf="page_info.scripture==='ks'">
+          <a [ngStyle]="{'background': translation.ks.english?activeBg:footerColor}"
+            (click)="translation.ks.english=!translation.ks.english;savePreference()" class="btn btn-next"
+            style="color: white;">English</a>
+          <a [ngStyle]="{'background': translation.ks.teeka?activeBg:footerColor}"
+            (click)="translation.ks.teeka=!translation.ks.teeka;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka</a>
+          <a [ngStyle]="{'background': translation.ks.teeka_roman?activeBg:footerColor}"
+            (click)="translation.ks.teeka_roman=!translation.ks.teeka_roman;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka Roman</a>
+          <a [ngStyle]="{'background': translation.ks.teeka_hindi?activeBg:footerColor}"
+            (click)="translation.ks.teeka_hindi=!translation.ks.teeka_hindi;savePreference()" class="btn btn-next"
+            style="color: white;">Teeka Hindi</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row" style="padding: 5px 0">
+          <div class="col-xs-3 center">
+            <div class="text-white">Split View</div>
+            <div>
+              <a class="btn btn-next" (click)="displayMode.split_view=!displayMode.split_view;savePreference()"
+                [ngStyle]="{'background': displayMode.split_view?activeBg:footerColor}" style="color: white">Enable</a>
+            </div>
+          </div>
+          <div class="col-xs-3 center">
+            <div class="text-white">Dark Mode</div>
+            <div>
+              <a class="btn btn-next"
+                (click)="displayMode.dark_mode=!displayMode.dark_mode;resetFontByDarkMode();savePreference()"
+                [ngStyle]="{'background': displayMode.dark_mode?activeBg:footerColor}" style="color: white">Enable</a>
+            </div>
+          </div>
+          <div class="col-xs-3 center">
+            <div class="text-white">Center</div>
+            <div>
+              <a class="btn btn-next" (click)="displayMode.center_align=!displayMode.center_align;savePreference()"
+                [ngStyle]="{'background': displayMode.center_align?activeBg:footerColor}"
+                style="color: white">Enable</a>
+            </div>
+          </div>
+          <div class="col-xs-3 center">
+            <div class="text-white">&nbsp;</div>
+            <div>
+              <a class="btn btn-next" (click)="resetDisplay()" [style.background-color]="footerColor"
+                style="color: white;">Reset</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="showFont" style="margin: 0;padding: 5px" [ngStyle]="{'background': activeBg}">
+    <div class="row">
+      <div class="col-xs-6 col-md-2">
+        <label>Gurmukhi:</label>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <select name="language" class="form-select" (ngModelChange)="savePreference()" [(ngModel)]="font.gurmukhi.name">
+          <option value="arial">
+            Default
+          </option>
+          <option value="RaajaaMediumMedium">
+            Raajaa
+          </option>
+          <option value="RaajaaBoldBold">
+            Raajaa Bold
+          </option>
+          <option value="RaajBold">
+            Raaj
+          </option>
+          <option value="AdhiapakMarkerMedium">
+            Adhiapak
+          </option>
+          <option value="PrabhkiRegular">
+            Prabhki
+          </option>
+          <option value="KarmicSanjMedium">
+            Karmic sanj
+          </option>
+        </select>
+      </div>
+      <div class="col-xs-4 col-md-3">
+        <input type="range" min="5" max="50" [(ngModel)]="font.gurmukhi.size" title="Size"
+          (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <input type="color" [(ngModel)]="font.gurmukhi.color" (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-1">
+        <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('gurmukhi')"
+          style="color: white">Reset</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-2">
+        <label>Phonetic English:</label>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <select name="PhonEnglish" [(ngModel)]="font.phonetic.name" class="form-select"
+          (ngModelChange)="savePreference()">
+          <option value="arial">
+            Default
+          </option>
+          <option value="Puritan20Italic">
+            Puritan
+          </option>
+          <option value="AndikaBasicRegular">
+            Andika
+          </option>
+          <option value="ArchitectsDaughterRegular">
+            Architect
+          </option>
+          <option value="QuattrocentoRomanRegular">
+            Quattrocento
+          </option>
+          <option value="DroidSansRegular">
+            Droid Sans
+          </option>
+          <option value="DroidSerifBold">
+            Droid Bold
+          </option>
+        </select>
+      </div>
+      <div class="col-xs-4 col-md-3">
+        <input type="range" min="5" max="50" [(ngModel)]="font.phonetic.size" title="Size"
+          (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <input type="color" [(ngModel)]="font.phonetic.color" (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-1">
+        <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('phonetic')"
+          style="color: white">Reset</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-2">
+        <label>Hindi:</label>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <select name="HinTrans" [(ngModel)]="font.hindi.name" class="form-select" (ngModelChange)="savePreference()">
+          <option value="arial">
+            Default
+          </option>
+          <option value="JaipurRegular">
+            Jaipur Regular
+          </option>
+          <option value="Gurumaa150Bold">
+            Gurumaa
+            Regular
+          </option>
+          <option value="RaghindiRegular">
+            Raghu Regular
+          </option>
+          <option value="gargiMedium">
+            Gargi Medium
+          </option>
+          <option value="CDACGISTYogeshNormal">
+            Yogesh Normal
+          </option>
+          <option value="CDACGISTSurekhNormal">
+            Surekh Normal
+          </option>
+        </select>
+      </div>
+      <div class="col-xs-4 col-md-3">
+        <input type="range" min="5" max="50" [(ngModel)]="font.hindi.size" title="Size"
+          (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <input type="color" [(ngModel)]="font.hindi.color" (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-1">
+        <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('hindi')"
+          style="color: white">Reset</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-2">
+        <label>English Translation:</label>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <select name="HinTrans" [(ngModel)]="font.english.name" class="form-select" (ngModelChange)="savePreference()">
+          <option value="arial">
+            Default
+          </option>
+          <option value="Puritan20Italic">
+            Puritan
+          </option>
+          <option value="AndikaBasicRegular">
+            Andika
+          </option>
+          <option value="ArchitectsDaughterRegular">
+            Architect
+          </option>
+          <option value="QuattrocentoRomanRegular">
+            Quattrocento
+          </option>
+          <option value="DroidSansRegular">
+            Droid Sans
+          </option>
+          <option value="DroidSerifBold">
+            Droid Bold
+          </option>
+        </select>
+      </div>
+      <div class="col-xs-4 col-md-3">
+        <input type="range" min="5" max="50" [(ngModel)]="font.english.size" title="Size"
+          (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <input type="color" [(ngModel)]="font.english.color" (ngModelChange)="savePreference()">
+      </div>
+      <div class="col-xs-4 col-md-1">
+        <a class="center" [ngStyle]="{'background': footerColor}" (click)="resetFont('english')"
+          style="color: white">Reset</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" *ngIf="page_info.youtubeID && showVideo">
+    <div class="container-fluid"  align="center" style="padding-top: 10px;">
+      <iframe class="shabad-youtube video" [src]="getYoutubeUrl(page_info.youtubeID)"
+      frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="ang-content" [style.text-align]="displayMode.center_align?'center':'left'"
+      *ngIf="!displayMode.split_view">
+      <div class="content-block row"
+        [ngClass]="page_info.highlight_line==item[important_field]?'hl2':displayMode.dark_mode?'dark':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div class="col-md-12 col-sm-12">
+          <p class="lang1" [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+            *ngIf="page_info.scripture==='ak'" [style.font-size.px]="font.gurmukhi.size"
+            [style.font-family]="font.gurmukhi.name" [style.color]="font.gurmukhi.color"
+            [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+          </p>
+          <p class="lang1" [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+            *ngIf="page_info.scripture!=='ak' && !transliteration.punctuation" [style.color]="font.gurmukhi.color"
+            [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+            [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+          </p>
+          <p class="lang1" [ngClass]="transliteration.punctuation_assist?'punc_assist_'+lareevar_assist_id:''"
+            *ngIf="page_info.scripture!=='ak' && transliteration.punctuation" [style.color]="font.gurmukhi.color"
+            [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+            [innerHtml]="display(item.punctuation)">
+          </p>
+
+          <p class="lang2" *ngIf="transliteration.roman" [style.color]="font.phonetic.color"
+            [style.font-size.px]="font.phonetic.size" [style.font-family]="font.phonetic.name">{{item.translit}}</p>
+
+          <p class="lang3" *ngIf="transliteration.english">{{item.roman}}</p>
+
+          <p class="lang4" [style.color]="font.hindi.color" [style.font-size.px]="font.hindi.size"
+            [style.font-family]="font.hindi.name" *ngIf="transliteration.hindi">{{item.hindi}}</p>
+          <p class="lang5 shahmukhi" *ngIf="transliteration.shahmukhi">{{item.urdu}}</p>
+
+          <p class="lang6" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ggs' && translation.ggs?.english">
+            {{item.english}}</p>
+          <p class="lang7" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ak' && translation.ak?.english">
+            {{item.english}}</p>
+          <p class="lang8" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name" *ngIf="page_info.scripture==='bgv' && translation.bgv?.english">
+            {{item.english}}</p>
+          <p class="lang7" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name" *ngIf="page_info.scripture==='dg' && translation.dg?.english">
+            {{item.english}}</p>
+          <p class="lang6" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ks' && translation.ks?.english">
+            {{item.english}}</p>
+          <p class="lang5" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name"
+            *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl?.english">
+            {{item.english}}</p>
+
+
+          <p class="lang4" *ngIf="page_info.scripture==='ggs' && translation.ggs?.eng_mms">{{item.eng_mms}}</p>
+          <p class="lang3" *ngIf="page_info.scripture==='ggs' && translation.ggs?.punj_mms">{{item.punj_mms}}</p>
+          <div class="lang2" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ggd">
+            <p class="ggs_ggd">{{ item.ss_line }}</p>
+            <p class="ggs_ggd">{{ item.ss_pad }}</p>
+          </div>
+          <div class="lang1" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ft">
+            <p class="ggs_fwt">{{item.fwt}}</p>
+            <p class="ggs_fwt">{{item.fwt_2}}</p>
+            <p class="ggs_fwt">{{item.fwt_3}}</p>
+          </div>
+          <p class="lang2 ggs_fwt_hindi" *ngIf="page_info.scripture==='ggs' && translation.ggs?.fth">{{item.fwt_hindi}}</p>
+          <div *ngIf="page_info.scripture==='ggs' && translation.ggs?.ss" class="lang3">
+            <p class="ggs_ss">{{item.sgpc_1}}</p>
+            <p class="ggs_ss">{{item.sgpc_2}}</p>
+            <p class="ggs_ss">{{item.sgpc_3}}</p>
+          </div>
+          <p class="lang4 bgv_teeka" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka">{{item.teeka}}</p>
+          <p class="lang4 bgv_teeka_roman" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_roman">{{item.teeka_roman}}</p>
+          <p class="lang4 bgv_teeka_hindi" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_hindi">{{item.teeka_hindi}}</p>
+          <p class="lang4 dg_teeka" *ngIf="page_info.scripture==='dg' && translation.dg?.teeka">{{item.teeka}}</p>
+          <p class="lang4 ks_teeka" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka">{{item.teeka_punjabi}}</p>
+          <p class="lang4 ks_teeka_roman" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_roman">{{item.teeka_roman}}</p>
+          <p class="lang4 ks_teeka_hindi" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_hindi">{{item.teeka_hindi}}</p>
+
+          <p class="lang5 bnl_teeka" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl.teeka">
+            {{item.teeka}}</p>
+          <p class="lang6 bnl_teeka_hindi" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl.teekahindi">
+            {{item.teekahindi}}</p>
+          <div *ngIf="staticPreference?staticPreference.show_attributes:true">
+            <p class="line_info" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1">
+              {{item.attributes}}
+            </p>
+            <p class="line_info" *ngIf="page_info.scripture==='dg'">{{item.lattrib}}</p>
+            <p class="line_info" *ngIf="page_info.scripture==='ggs'">{{item.pattrib}} <br>
+              {{ item.raag + ' ' + item.author}}</p>
+            <p class="line_info" *ngIf="page_info.scripture==='ak'">{{ item.lattrib }}
+              <br>{{item.raag + ' ' + item.author }}
+            </p>
+            <p class="line-info" *ngIf="page_info.scripture==='bgv'">
+              {{item.attributes}}
+            </p>
+            <p class="line-info" *ngIf="page_info.scripture==='ks'">
+              {{item.attributes}}
+            </p>
+          </div>
+        </div>
+        <!-- <div class="col-md-12" *ngIf="social_flag && social_enable"> -->
+        <div class="col-md-12" *ngIf="social_flag">
+          <div class="row text-right xs-center" style="padding: 0 10px">
+            <a class="btn btn-next" [ngStyle]="{'background': footerColor}"
+              *ngIf="['ggs'].indexOf(page_info.scripture)>-1"
+              [routerLink]="['/' + page_info.remember_me_url + '/ang/' + item.pageno + '/line/' + item.lineno ]"
+              style="color: white; margin-bottom: 5px;">Ang View</a>
+
+            <a class="btn btn-next" [ngStyle]="{'background': footerColor}"
+              *ngIf="['ak','dg'].indexOf(page_info.scripture)>-1 || pageType==='bnl'"
+              style="color: white;margin-bottom: 5px;"
+              [routerLink]="['/' + page_info.remember_me_url + '/page/' + (item.pageID - off) + '/line/' + item.pagelineID ]">Page
+              View</a>
+
+            <a class="btn btn-next" [ngStyle]="{'background': footerColor}"
+              *ngIf="['ggs', 'dg'].indexOf(page_info.scripture)>-1 || pageType==='bnl'"
+              [routerLink]="['/' + page_info.remember_me_url + '/verse/' + item.verseID]"
+              style="color: white;margin-bottom: 5px;">Verse View</a>
+            <span style="margin-right: 5px;">Share to</span>
+            <!-- <a class="btn btn-next" [ngStyle]="{'background': footerColor}" style="color: white;margin-bottom: 5px;"><span class="fa fa-facebook"></span></a> -->
+            <share-buttons [theme]="'default'" [description]="getShareText(item)" [title]="page_info.meta_title"
+              [include]="['facebook','twitter','telegram','whatsapp','sms','email']" [show]="6" [showIcon]="true"
+              [showText]="false" [size]="-4" [url]="getShareLink(item)" [autoSetMeta]="false">
+            </share-buttons>
+          </div>
+        </div>
+
+        <br class="clearer">
+      </div>
+    </div>
+
+    <div class="ang-content" [style.text-align]="displayMode.center_align?'center':'left'"
+      *ngIf="displayMode.split_view">
+      <div class="content-block row" *ngIf="page_info.scripture==='ak'" [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+            [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+            [style.color]="font.gurmukhi.color"
+            [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+          </p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture!=='ak' && !transliteration.punctuation"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+            [style.color]="font.gurmukhi.color" [style.font-size.px]="font.gurmukhi.size"
+            [style.font-family]="font.gurmukhi.name"
+            [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+          </p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture!=='ak' && transliteration.punctuation"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [ngClass]="transliteration.punctuation_assist?'punc_assist_'+lareevar_assist_id:''"
+            [style.color]="font.gurmukhi.color" [style.font-size.px]="font.gurmukhi.size"
+            [style.font-family]="font.gurmukhi.name" [innerHtml]="display(item.punctuation)">
+          </p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="transliteration.roman" [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="lang_1" [style.color]="font.phonetic.color" [style.font-size.px]="font.phonetic.size"
+            [style.font-family]="font.phonetic.name">{{item.translit}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="transliteration.english" [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="lang3">{{item.roman}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="transliteration.hindi" [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+
+          <p class="" [style.color]="font.hindi.color" [style.font-size.px]="font.hindi.size"
+            [style.font-family]="font.hindi.name">{{item.hindi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="transliteration.shahmukhi" [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="lang_1">{{item.urdu}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ak' && translation.ak?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='dg' && translation.dg?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row"
+        *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl?.english"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+            [style.font-family]="font.english.name">
+            {{item.english}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.eng_mms"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+
+          <p class="lang_1">{{item.eng_mms}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.punj_mms"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="lang_1">{{item.punj_mms}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ggd"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <div class="lang_1">
+            <p class="ggs_ggd">{{ item.ss_line }}</p>
+            <p class="ggs_ggd">{{ item.ss_pad }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ft"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <div class="lang_1">
+            <p class="ggs_fwt">{{item.fwt}}</p>
+            <p class="ggs_fwt">{{item.fwt_2}}</p>
+            <p class="ggs_fwt">{{item.fwt_3}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.fth"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="ggs_fwt_hindi">{{item.fwt_hindi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ss"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <div>
+            <p class="ggs_ss">{{item.sgpc_1}}</p>
+            <p class="ggs_ss">{{item.sgpc_2}}</p>
+            <p class="ggs_ss">{{item.sgpc_3}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="bgv_teeka">{{item.teeka}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_roman"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="bgv_teeka_roman">{{item.teeka_roman}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_hindi"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="bgv_teeka_hindi">{{item.teeka_hindi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='dg' && translation.dg?.teeka"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="dg_teeka">{{item.teeka}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="ks_teeka">{{item.teeka_punjabi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_roman"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="ks_teeka_roman">{{item.teeka_roman}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_hindi"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="ks_teeka_hindi">{{item.teeka_hindi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl.teeka"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+
+          <p class="bnl_teeka">
+            {{item.teeka}}</p>
+        </div>
+      </div>
+      <div class="content-block row"
+        *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1 && translation.bnl.teekahindi"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <p class="bnl_teeka_hindi">
+            {{item.teekahindi}}</p>
+        </div>
+      </div>
+      <div class="content-block row" *ngIf="staticPreference?staticPreference.show_attributes:true"
+        [ngClass]="displayMode.dark_mode?'dark':''">
+        <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+          *ngFor="let item of page_info.lines, let i = index">
+          <div>
+            <p class="line_info" *ngIf="page_info.meta_title.indexOf('Bhai Nand Lal')>-1">
+              {{item.attributes}}
+            </p>
+            <p class="line_info" *ngIf="page_info.scripture==='dg'">{{item.lattrib}}</p>
+            <p class="line_info" *ngIf="page_info.scripture==='ggs'">{{item.pattrib}} <br>
+              {{ item.raag + ' ' + item.author}}</p>
+            <p class="line_info" *ngIf="page_info.scripture==='ak'">{{ item.lattrib }} <br>
+              <br>{{item.raag + ' ' + item.author }}
+            </p>
+            <p class="line-info" *ngIf="page_info.scripture==='bgv'">
+              {{item.attributes}}
+            </p>
+            <p class="line-info" *ngIf="page_info.scripture==='ks'">
+              {{item.attributes}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

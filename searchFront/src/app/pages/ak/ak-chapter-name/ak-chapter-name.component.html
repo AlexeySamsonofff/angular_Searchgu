@@ -1,0 +1,48 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body" id="banner">
+        <app-border></app-border>
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contents">
+                            <div class="options no-top top-heading center" style="margin-top: 20px;">
+                                <h3 class="bold small-bottom no-top"><strong>Amrit Keertan - Shabads</strong></h3>
+                                <h2>Chapter: {{shabads_info.chapter_name&&shabads_info.chapter_name[0].section}}</h2>
+                            </div>
+                            <br>
+
+                            <ul class="inline-block highlight-li center" style="list-style: none;">
+                                <li><a [routerLink]="['/amrit-keertan/index/chapter']"
+                                        class="button">Chapter Index</a></li>
+                            </ul>
+                            <br>
+                            <div class="chapter_index">
+                                <div class="section_title">
+                                    <span class="col_sl_no">No.</span>
+                                    <span class="col_section_name">Shabad Title</span>
+                                    <span class="col_page_no">Page No.</span><br class="clearer">
+                                </div>
+                                <div class="section_line line row11" *ngFor="let item of shabads_info.shabads; let i = index">
+                                    <span class="col_sl_no">{{ i + 1 }}</span>
+                                    <a [routerLink]="['/amrit-keertan/shabad/' + item.shabad_id + '/' + format_shabad_name(item.shabad_name)]"><span
+                                            class="col_section_name">{{item.shabad_name}}</span></a>
+                                    <a [routerLink]="['/amrit-keertan/page/' + item.pageno]"><span
+                                            class="col_page_no">{{item.pageno}}</span></a>
+                                    <div class="clearer"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

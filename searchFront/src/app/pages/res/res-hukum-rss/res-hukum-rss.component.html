@@ -1,0 +1,19 @@
+<!-- <rss version="2.0">
+  <channel>
+      <title>{{ page_info.feed_name }}</title>
+      <link> {{ page_info.feed_url }}</link>
+      <description>{{ page_info.page_description }}</description>
+      <language>{{ page_info.page_language }}</language>
+      <copyright>Copyright {{ gmdate("Y", time()) }}</copyright>
+      <generator>FeedCreator 1.7.3</generator>
+      <item *ngFor="let post of page_info.posts">
+        <title>{{ "Harmandir Sahib Hukumnama : " + date('D d F, Y', strtotime($post->date_hukam)); }}</title>
+        <title>{{ "Harmandir Sahib Hukumnama : " + dateFormat('D d F, Y', post.date_hukam) }}</title>
+        <link>{{makeUrl('hukum/index/?dt=' . $post->date_hukam)}}</link>
+        <guid>{{makeUrl('hukum/index/?dt=' . $post->date_hukam)}}</guid>
+        <description>{{ post.contentEnglish }} </description>
+        <pubDate>{{ post.date_hukam }}</pubDate>
+      </item>
+  </channel>
+</rss> -->
+<p>hi</p>

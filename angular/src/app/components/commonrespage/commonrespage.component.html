@@ -1,0 +1,127 @@
+<div class="page-content" style="padding-top: 30px;">
+  <div class="container-fluid">
+    <div class="contents">
+      <div class="row">
+        <h3 class="col-md-6 top-heading no-top">{{ title }}</h3>
+        <div class="col-md-6 text-right">
+          <ul class="list-inline flex-center-end">
+            <li>
+              <button [style.background-color]="textAlign==='center'?activeBg:footerColor" style="color: white;" (click)="setAlign('center')">Center</button>
+            </li>
+            <li>
+              <button [style.background-color]="textAlign==='left'?activeBg:footerColor"  style="color: white;" [ngClass]="textAlign==='left'?'active':''" (click)="setAlign('left')">Left</button>
+            </li>
+            <li>
+              <input class="form-control" name="fontSize" (ngModelChange)="setFontSize()" [(ngModel)]="fontSize" type="range" min="5" max="40">
+            </li>
+            <li>
+              <button (click)="print()" [style.background-color]="footerColor" style="color: white;">
+                <i class="fa fa-print" title="Print this page"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="utility-bar2">
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <div class="ang-search ang-paginate">
+              <form name="goto_page" id="goto_page" (submit)="onSearch()">
+                Goto Page&nbsp;<input name="page_no" [(ngModel)]="pageno" id="page_no" type="text" style="width: 22%"
+                  maxlength="5" class="form-control" value="1">
+                <input type="submit" name="Submit" value="Go" class="btn btn-next">
+              </form>
+            </div>
+          </div>
+          <div class="col-md-8 col-sm-8 text-right">
+            <div class="ang-paginate">
+              <a *ngIf="book_lang==='gurmukhi' || book_lang===''" style="color: white;"
+                [routerLink]="['/'+baseUrl+'/page/' + pageno + '/hindi']" [ngStyle]="{'background': footerColor}" class="btn btn-next">View in Hindi</a>
+              <a *ngIf="book_lang!=='gurmukhi' && book_lang!==''" [ngStyle]="{'background': footerColor}" style="color: white;"
+                [routerLink]="['/'+baseUrl+'/page/' + pageno + '/gurmukhi']" class="btn btn-next">View in Gurmukhi</a>
+              <a [routerLink]="['/'+baseUrl]" class="btn btn-next" style="color: white;" [ngStyle]="{'background': footerColor}">Search Page</a>
+              <a *ngIf="!noChapter" [routerLink]="['/'+baseUrl+'/chapters/' + volumeno]" style="color: white;"
+              [ngStyle]="{'background': footerColor}" class="btn btn-next">Chapter Index</a>
+              <button (click)="begin()" *ngIf="pageno>1" class="btn btn-next" style="color: white;" [ngStyle]="{'background': footerColor}">Begin</button>
+              <button (click)="previous()" *ngIf="pageno>1" class="btn btn-next" style="color: white;" [ngStyle]="{'background': footerColor}">Back</button>
+              <button (click)="next()" *ngIf="pageno<maxPage" class="btn btn-next" style="color: white;" [ngStyle]="{'background': footerColor}">Next</button>
+              <button (click)="last()" *ngIf="pageno<maxPage" class="btn btn-next" style="color: white;" [ngStyle]="{'background': footerColor}">Last</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-xs-12">
+            <div class="displaying_page_default">
+              <h5 class="bold center">Displaying Page {{pageno}} of {{maxPage}} from Volume
+                {{volumeno}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page">
+        <div class="line" [ngClass]="i%2===0?'row1':'row-1'" style="display: block;"
+          *ngFor="let item of pageInfo.lines; let i = index">
+          <p class="lang_1b" [style.font-size.px]="fontSize" style="font-size: 20px;font-weight: bold;" [ngClass]="'text-' + textAlign" [innerHtml]="displayContent(item[display_field])"></p>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <ul class="list-inline flex-center-end">
+          <li>
+            <button [style.background-color]="textAlign==='center'?activeBg:footerColor" style="color: white;" (click)="setAlign('center')">Center</button>
+          </li>
+          <li>
+            <button [style.background-color]="textAlign==='left'?activeBg:footerColor"  style="color: white;" [ngClass]="textAlign==='left'?'active':''" (click)="setAlign('left')">Left</button>
+          </li>
+          <li>
+            <input class="form-control" name="fontSize" (ngModelChange)="setFontSize()" [(ngModel)]="fontSize" type="range" min="5" max="40">
+          </li>
+          <li>
+            <!-- <a (click)="'width=600,height=400,scrollbars=yes,menubar=no,status=yes,resizable=yes,screenx=0,screeny=0'); return false;"> -->
+              <button (click)="print()" [style.background-color]="footerColor" style="color: white;">
+                <i class="fa fa-print" title="Print this page"></i>
+              </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="utility-bar2">
+        <div class="row">
+
+          <div class="col-md-4 col-sm-4">
+            <div class="ang-search ang-paginate">
+              <form name="goto_page" id="goto_page" (submit)="onSearch()">
+                Goto Page<input name="page_no" [(ngModel)]="pageno" id="page_no" type="text" style="width: 22%"
+                  maxlength="5" class="form-control" value="1">
+                <input type="submit" name="Submit" value="Go" class="btn btn-next">
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-sm-8 text-right">
+            <div class="ang-paginate">
+              <a *ngIf="book_lang==='gurmukhi' || book_lang===''" style="color: white;" [ngStyle]="{'background': footerColor}" (click)="viewHindi()" class="btn btn-next">View in
+                Hindi</a>
+              <a *ngIf="book_lang!=='gurmukhi' && book_lang!==''" (click)="viewGurmukhi()" style="color: white;" [ngStyle]="{'background': footerColor}" class="btn btn-next">View in
+                Gurmukhi</a>
+              <a [routerLink]="['/'+baseUrl]" [ngStyle]="{'background': footerColor}" style="color: white;" class="btn btn-next">Search Page</a>
+              <a *ngIf="!noChapter" [ngStyle]="{'background': footerColor}" style="color: white;" [routerLink]="['/'+baseUrl+'/chapters/1']" class="btn btn-next">Chapter
+                Index</a>
+              <button [ngStyle]="{'background': footerColor}" style="color: white;" (click)="begin()" *ngIf="pageno>1" class="btn btn-next">Begin</button>
+              <button [ngStyle]="{'background': footerColor}" style="color: white;" (click)="previous()" *ngIf="pageno>1" class="btn btn-next">Back</button>
+              <button [ngStyle]="{'background': footerColor}" style="color: white;" (click)="next()" *ngIf="pageno<maxPage" class="btn btn-next">Next</button>
+              <button [ngStyle]="{'background': footerColor}" style="color: white;" (click)="last()" *ngIf="pageno<maxPage" class="btn btn-next">Last</button>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-xs-12">
+            <div class="displaying_page_default">
+              <h5 class="bold center">Displaying Page {{pageno}} of {{maxPage}} from Volume
+                {{volumeno}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

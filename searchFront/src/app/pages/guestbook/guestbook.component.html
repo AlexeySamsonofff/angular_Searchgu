@@ -1,0 +1,56 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+    <div class="main-body">
+      <div class="container-fluid" id="banner">
+        <img src="../../../assets/img/banner.jpg" class="img-responsive">
+      </div>
+      <div class="page-content">
+        <div class="container-fluid">
+          <div class="contents">
+            <h2 class="top-heading no-top">Guestbook</h2>
+            <br>
+            <div>
+              <a type="button" class="btn btn-info" [routerLink]="['/guestbook/post']">Post To
+                Guestbook </a>
+            </div>
+            <br>
+            <p class="pagination_links"></p>
+            <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="10" [totalItems]="pageInfo.comments_count"></pagination>
+            <p></p>
+            <div id="guestbook">
+              <div id="comments"><br>
+
+                <div *ngFor="let item of pageInfo.comments; let i = index" class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><strong>{{item.name}}</strong> <em> said on </em>
+                      {{item.updated}}</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h3 [innerHtml]="item.message"></h3>
+                  </div>
+                </div>
+                <p class="pagination_links"></p>
+                <pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)" [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" boundaryLinks="true" [itemsPerPage]="10" [totalItems]="pageInfo.comments_count"></pagination>
+                <p></p>
+              </div>
+              <br>
+              <div>
+                <a type="button" class="btn btn-info" [routerLink]="['/guestbook/post']">Post To
+                  Guestbook </a>
+              </div>
+              <br>
+              <div class="clearer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

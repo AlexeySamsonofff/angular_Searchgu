@@ -1,0 +1,18 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body" id="banner">
+        <app-border></app-border>
+        <div class="container-fluid">
+            <img src="../../../assets/img/banners/banner01.jpg" class="img-responsive">
+        </div>
+
+        <div class="page-content">
+            <app-search-section [showAdvance]="false" [addFilter]="true" [footerColor]="footerColor"></app-search-section>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+    <app-copyright></app-copyright>
+</div>

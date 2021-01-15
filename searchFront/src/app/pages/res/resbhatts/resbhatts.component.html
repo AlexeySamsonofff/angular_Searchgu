@@ -1,0 +1,62 @@
+
+<div class="comp-container">
+     <app-background [backColor]="backgroundImg"></app-background>
+
+     <app-header></app-header>
+     <app-menu [menuBack]="param"></app-menu>
+     <div class="home-body" id="banner">
+         <app-border></app-border>
+         <div class="container-fluid">
+             <img src="assets/img/banner.jpg" class="img-responsive">
+         </div>
+         <div class="page-content">
+         <div class="">
+              <div class="contents">
+                  <h3 class="top-heading no-top">Bhatt &amp; Bards </h3>
+                  <hr>
+                  <p class="">
+                      <strong>Bhatts &amp; Bards in Sri Guru Granth Sahib ji</strong>
+                  </p>
+                  <div class="row links">
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                          <ul class="list-group">
+                              <li><a [routerLink]="['/bhatts/bhatt-kalshar']"> Kalshar</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-salh']">Salh</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-mathura']">Mathura</a></li>
+                              <li><a [routerLink]="['/bhatts/satta']">Satta and Balwand</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                          <ul class="list-group">
+                              <li><a [routerLink]="['/bhatts/bhatt-jalap']">Jalap</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-bhalh']">Bhalh</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-balh']">Bal</a></li>
+                              <li><a [routerLink]="['/bhatts/mardana']">Bhai Mardana Ji</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                          <ul class="list-group">
+                              <li><a [routerLink]="['/bhatts/bhatt-kirat']">Kirat</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-nalh']">Nal</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-haribans']">Harbans</a></li>
+                              <li></li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                          <ul class="list-group">
+                              <li><a [routerLink]="['/bhatts/bhatt-bhika']">Bhika</a></li>
+                              <li><a [routerLink]="['/bhatts/bhatt-gyand']">Gyand</a></li>
+                                  <li><a [routerLink]="['/bhatts/sunderbaba']">Baba Sunder ji</a></li>
+                              <li></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div [innerHtml]="html | safeHtml"></div>
+
+              </div>
+          </div>
+      </div>
+     </div>
+     <app-footer [backColor] = "footerColor"></app-footer>
+ </div>
+ <app-copyright></app-copyright>

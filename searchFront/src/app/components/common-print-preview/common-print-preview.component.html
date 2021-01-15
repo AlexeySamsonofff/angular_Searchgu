@@ -1,0 +1,418 @@
+<div class="row" style="padding-top: 20px;">
+  <div class="col-md-6 text-left">
+    <button (click)="print()" class="btn btn-default print-hidden"><i class="fa fa-print"></i> Print Page</button>
+  </div>
+  <div class="col-md-6 text-right">
+    SearchGurbani.com
+  </div>
+</div>
+
+<div class="row">
+  <h3 class="col-md-12">{{title}}</h3>
+</div>
+<div class="row" *ngIf="page_info.scripture==='bgv'">
+  <div class="col-md-4 col-sm-4"></div>
+  <div class="col-md-4 col-sm-4" style="text-align: center">
+    <h3>{{page_info.pauri_info[0]?.pauri_name_roman}}<br>{{page_info.pauri_info[0]?.pauri_name_punjabi}}</h3>
+  </div>
+  <div class="col-md-4 col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="ang-count bold">
+      <h6 class="text-bold text-center" *ngIf="page_info.scripture!=='bgv'">Displaying {{getLabel()}} {{cur_page}}
+        <span> of
+          {{max_page}}</span></h6>
+      <h6 class="text-bold text-center" *ngIf="page_info.scripture==='bgv'">Displaying Vaar {{vaar_no}}, Pauri
+        {{cur_page}} of
+        {{max_page}}</h6>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="ang-content" [style.text-align]="displayMode.center_align?'center':'left'"
+    *ngIf="!displayMode.split_view">
+    <div class="content-block row"
+      [ngClass]="page_info.highlight_line==item[important_field]?'hl2':displayMode.dark_mode?'dark':''"
+      *ngFor="let item of page_info.lines, let i = index">
+      <div class="col-md-12 col-sm-12">
+        <p class="lang1" [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+          *ngIf="page_info.scripture==='ak'" [style.font-size.px]="font.gurmukhi.size"
+          [style.font-family]="font.gurmukhi.name" [style.color]="font.gurmukhi.color"
+          [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+        </p>
+        <p class="lang1" [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+          *ngIf="page_info.scripture!=='ak' && !transliteration.punctuation" [style.color]="font.gurmukhi.color"
+          [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+          [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+        </p>
+        <p class="lang1" [ngClass]="transliteration.punctuation_assist?'punc_assist_'+lareevar_assist_id:''"
+          *ngIf="page_info.scripture!=='ak' && transliteration.punctuation" [style.color]="font.gurmukhi.color"
+          [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+          [innerHtml]="display(item.punctuation)">
+        </p>
+
+        <p class="lang2" *ngIf="transliteration.roman" [style.color]="font.phonetic.color"
+          [style.font-size.px]="font.phonetic.size" [style.font-family]="font.phonetic.name">{{item.translit}}</p>
+
+        <p class="lang3" *ngIf="transliteration.english">{{item.roman}}</p>
+
+        <p class="lang4" [style.color]="font.hindi.color" [style.font-size.px]="font.hindi.size"
+          [style.font-family]="font.hindi.name" *ngIf="transliteration.hindi">{{item.hindi}}</p>
+        <p class="lang5 shahmukhi" *ngIf="transliteration.shahmukhi">{{item.urdu}}</p>
+
+        <p class="lang6" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ggs' && translation.ggs?.english">
+          {{item.english}}</p>
+        <p class="lang7" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ak' && translation.ak?.english">
+          {{item.english}}</p>
+        <p class="lang8" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="page_info.scripture==='bgv' && translation.bgv?.english">
+          {{item.english}}</p>
+        <p class="lang7" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="page_info.scripture==='dg' && translation.dg?.english">
+          {{item.english}}</p>
+        <p class="lang6" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="page_info.scripture==='ks' && translation.ks?.english">
+          {{item.english}}</p>
+        <p class="lang5" [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+          'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.english">
+          {{item.english}}</p>
+
+
+        <p class="lang4" *ngIf="page_info.scripture==='ggs' && translation.ggs?.eng_mms">{{item.eng_mms}}</p>
+        <p class="lang3" *ngIf="page_info.scripture==='ggs' && translation.ggs?.punj_mms">{{item.punj_mms}}</p>
+        <div class="lang2" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ggd">
+          <p class="ggs_ggd">{{ item.ss_line }}</p>
+          <p class="ggs_ggd">{{ item.ss_pad }}</p>
+        </div>
+        <div class="lang1" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ft">
+          <p class="ggs_fwt">{{item.fwt}}</p>
+          <p class="ggs_fwt">{{item.fwt_2}}</p>
+          <p class="ggs_fwt">{{item.fwt_3}}</p>
+        </div>
+        <p class="lang2 ggs_fwt_hindi" *ngIf="page_info.scripture==='ggs' && translation.ggs?.fth">{{item.fwt_hindi}}
+        </p>
+        <div *ngIf="page_info.scripture==='ggs' && translation.ggs?.ss" class="lang3">
+          <p class="ggs_ss">{{item.sgpc_1}}</p>
+          <p class="ggs_ss">{{item.sgpc_2}}</p>
+          <p class="ggs_ss">{{item.sgpc_3}}</p>
+        </div>
+        <p class="lang4 bgv_teeka" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka">{{item.teeka}}</p>
+        <p class="lang4 bgv_teeka_roman" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_roman">
+          {{item.teeka_roman}}</p>
+        <p class="lang4 bgv_teeka_hindi" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_hindi">
+          {{item.teeka_hindi}}</p>
+        <p class="lang4 dg_teeka" *ngIf="page_info.scripture==='dg' && translation.dg?.teeka">{{item.teeka}}</p>
+        <p class="lang4 ks_teeka" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka">{{item.teeka_punjabi}}</p>
+        <p class="lang4 ks_teeka_roman" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_roman">
+          {{item.teeka_roman}}</p>
+        <p class="lang4 ks_teeka_hindi" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_hindi">
+          {{item.teeka_hindi}}</p>
+
+        <p class="lang5 bnl_teeka" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+        'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.teeka">
+          {{item.teeka}}</p>
+        <p class="lang6 bnl_teeka_hindi" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+        'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.teekahindi">
+          {{item.teekahindi}}</p>
+        <div *ngIf="staticPreference?staticPreference.show_attributes:true">
+          <p class="line_info" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+          'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1">
+            {{item.attributes}}
+          </p>
+          <p class="line_info" *ngIf="page_info.scripture==='dg'">{{item.lattrib}}</p>
+          <p class="line_info" *ngIf="page_info.scripture==='ggs'">{{item.pattrib}} <br>
+            {{ item.raag + ' ' + item.author}}</p>
+          <p class="line_info" *ngIf="page_info.scripture==='ak'">{{ item.lattrib }} <br>
+            <a
+              [routerLink]="['/amrit-keertan/shabad/' + item.shabdID + '/' +  formatName(item.shabad_name)  + '/line/' + item.lineno]">Shabad:
+              {{item.shabad_name}}</a>
+            <br>{{item.raag + ' ' + item.author }}
+          </p>
+          <p class="line-info" *ngIf="page_info.scripture==='bgv'">
+            {{item.attributes}}
+          </p>
+          <p class="line-info" *ngIf="page_info.scripture==='ks'">
+            {{item.lattrib}}
+          </p>
+        </div>
+      </div>
+
+      <br class="clearer">
+    </div>
+  </div>
+
+  <div class="ang-content" [style.text-align]="displayMode.center_align?'center':'left'" *ngIf="displayMode.split_view">
+    <div class="content-block row" *ngIf="page_info.scripture==='ak'" [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+          [style.font-size.px]="font.gurmukhi.size" [style.font-family]="font.gurmukhi.name"
+          [style.color]="font.gurmukhi.color"
+          [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+        </p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture!=='ak' && !transliteration.punctuation"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [ngClass]="transliteration.lareevar_assist?'lareevar_assist_'+lareevar_assist_id:''"
+          [style.color]="font.gurmukhi.color" [style.font-size.px]="font.gurmukhi.size"
+          [style.font-family]="font.gurmukhi.name"
+          [innerHtml]="transliteration.lareevar?removeSpace(item.punjabi):display(item.punjabi)">
+        </p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture!=='ak' && transliteration.punctuation"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [ngClass]="transliteration.punctuation_assist?'punc_assist_'+lareevar_assist_id:''"
+          [style.color]="font.gurmukhi.color" [style.font-size.px]="font.gurmukhi.size"
+          [style.font-family]="font.gurmukhi.name" [innerHtml]="display(item.punctuation)">
+        </p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="transliteration.roman" [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="lang_1" [style.color]="font.phonetic.color" [style.font-size.px]="font.phonetic.size"
+          [style.font-family]="font.phonetic.name">{{item.translit}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="transliteration.english" [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="lang3">{{item.roman}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="transliteration.hindi" [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+
+        <p class="" [style.color]="font.hindi.color" [style.font-size.px]="font.hindi.size"
+          [style.font-family]="font.hindi.name">{{item.hindi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="transliteration.shahmukhi" [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="shahmukhi">{{item.urdu}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ak' && translation.ak?.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='dg' && translation.dg?.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+      'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.english"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p [style.color]="font.english.color" [style.font-size.px]="font.english.size"
+          [style.font-family]="font.english.name">
+          {{item.english}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.eng_mms"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+
+        <p class="lang_1">{{item.eng_mms}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.punj_mms"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="lang_1">{{item.punj_mms}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ggd"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div class="lang_1">
+          <p class="ggs_ggd">{{ item.ss_line }}</p>
+          <p class="ggs_ggd">{{ item.ss_pad }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ft"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div class="lang_1">
+          <p class="ggs_fwt">{{item.fwt}}</p>
+          <p class="ggs_fwt">{{item.fwt_2}}</p>
+          <p class="ggs_fwt">{{item.fwt_3}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.fth"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="ggs_fwt_hindi">{{item.fwt_hindi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ggs' && translation.ggs?.ss"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div>
+          <p class="ggs_ss">{{item.sgpc_1}}</p>
+          <p class="ggs_ss">{{item.sgpc_2}}</p>
+          <p class="ggs_ss">{{item.sgpc_3}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="bgv_teeka">{{item.teeka}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_roman"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="bgv_teeka_roman">{{item.teeka_roman}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='bgv' && translation.bgv?.teeka_hindi"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="bgv_teeka_hindi">{{item.teeka_hindi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='dg' && translation.dg?.teeka"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="dg_teeka">{{item.teeka}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="ks_teeka">{{item.teeka_punjabi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_roman"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="ks_teeka_roman">{{item.teeka_roman}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="page_info.scripture==='ks' && translation.ks?.teeka_hindi"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="ks_teeka_hindi">{{item.teeka_hindi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+          'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.teeka"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+
+        <p class="bnl_teeka">
+          {{item.teeka}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+          'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1 && translation.bnl.teekahindi"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <p class="bnl_teeka_hindi">
+          {{item.teekahindi}}</p>
+      </div>
+    </div>
+    <div class="content-block row" *ngIf="staticPreference?staticPreference.show_attributes:true"
+      [ngClass]="displayMode.dark_mode?'dark':''">
+      <div class="col-md-12 col-sm-12" [ngClass]="page_info.highlight_line==item[important_field]?'hl2':''"
+        *ngFor="let item of page_info.lines, let i = index">
+        <div>
+          <p class="line_info" *ngIf="['ghazal','quatrains','zindginama','rahitnama','tankahnama',
+            'ganjnama','jot_bikas','jot_bikas_persian'].indexOf(page_info.scripture)>-1">
+            {{item.attrib}}
+          </p>
+          <p class="line_info" *ngIf="page_info.scripture==='dg'">{{item.lattrib}}</p>
+          <p class="line_info" *ngIf="page_info.scripture==='ggs'">{{item.pattrib}} <br>
+            {{ item.raag + ' ' + item.author}}</p>
+          <p class="line_info" *ngIf="page_info.scripture==='ak'">{{ item.lattrib }} <br>
+            <a
+              [routerLink]="['/amrit-keertan/shabad/' + item.shabad_id + '/' +  formatName(item.shabad_name)  + '/line/' + item.lineno]">Shabad:
+              {{item.shabad_name}}</a>
+            <br>{{item.raag + ' ' + item.author }}
+          </p>
+
+          <p class="line-info" *ngIf="page_info.scripture==='bgv'">
+            {{item.attributes}}
+          </p>
+          <p class="line-info" *ngIf="page_info.scripture==='ks'">
+            {{item.attributes}}
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

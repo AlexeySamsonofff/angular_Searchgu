@@ -1,0 +1,263 @@
+@font-face {
+  font-family: "ArchitectsDaughterRegular";
+  src: url("/assets/static/fonts/english/ArchitectsDaughter-webfont.eot");
+  src: url("/assets/static/fonts/english/ArchitectsDaughter-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/ArchitectsDaughter-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/ArchitectsDaughter-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/ArchitectsDaughter-webfont.svg#webfontRPduMdrp") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "AndikaBasicRegular";
+  src: url("/assets/static/fonts/english/AndBasR-webfont.eot");
+  src: url("/assets/static/fonts/english/AndBasR-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/AndBasR-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/AndBasR-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/AndBasR-webfont.svg#webfontW4v6cis4") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Puritan20Italic";
+  src: url("/assets/static/fonts/english/Puritan_Italic-webfont.eot");
+  src: url("/assets/static/fonts/english/Puritan_Italic-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/Puritan_Italic-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/Puritan_Italic-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/Puritan_Italic-webfont.svg#webfontYOd515f0") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "QuattrocentoRomanRegular";
+  src: url("/assets/static/fonts/english/Quattrocento-Regular-webfont.eot");
+  src: url("/assets/static/fonts/english/Quattrocento-Regular-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/Quattrocento-Regular-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/Quattrocento-Regular-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/Quattrocento-Regular-webfont.svg#webfontBTOW8Fhb") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "DroidSansRegular";
+  src: url("/assets/static/fonts/english/DroidSans-webfont.eot");
+  src: url("/assets/static/fonts/english/DroidSans-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/DroidSans-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/DroidSans-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/DroidSans-webfont.svg#webfont6rGBoMAO") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "DroidSerifItalic";
+  src: url("/assets/static/fonts/english/DroidSerif-Italic-webfont.eot");
+  src: url("/assets/static/fonts/english/DroidSerif-Italic-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/DroidSerif-Italic-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/DroidSerif-Italic-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/DroidSerif-Italic-webfont.svg#webfont4lS4gXFH") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "DroidSerifBold";
+  src: url("/assets/static/fonts/english/DroidSerif-Bold-webfont.eot");
+  src: url("/assets/static/fonts/english/DroidSerif-Bold-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/english/DroidSerif-Bold-webfont.woff") format("woff"),
+    url("/assets/static/fonts/english/DroidSerif-Bold-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/english/DroidSerif-Bold-webfont.svg#webfontqbKC8c64") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "WebAkharSlim";
+  src: url("/assets/static/fonts/gurmukhi/webakharslim-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/webakharslim-webfont.eot?#iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/webakharslim-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/webakharslim-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/webakharslim-webfont.svg#webfontYlivuWlh") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "WebAkharThick";
+  src: url("/assets/static/fonts/WebAkharThick.eot");
+  src: url("/assets/static/fonts/WebAkharThick.eot?#iefix") format("eot"),
+    url("/assets/static/fonts/WebAkharThick.woff") format("woff"), url("/assets/static/fonts/WebAkharThick.ttf") format("truetype"),
+    url("/assets/static/fonts/WebAkharThick.svg#webfontYlivuWlh") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "AdhiapakMarkerMedium";
+  src: url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.svgz#webfontb3wIdmAV") format("svg"),
+    url("/assets/static/fonts/gurmukhi/ghwadhm5-webfont.svg#webfontb3wIdmAV") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "PrabhkiRegular";
+  src: url("/assets/static/fonts/gurmukhi/prabhki-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/prabhki-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/prabhki-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/prabhki-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/prabhki-webfont.svgz#webfontMuctCQAJ") format("svg"),
+    url("/assets/static/fonts/gurmukhi/prabhki-webfont.svg#webfontMuctCQAJ") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "RaajMediumRegular";
+  src: url("/assets/static/fonts/gurmukhi/raaj___5-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/raaj___5-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/raaj___5-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/raaj___5-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/raaj___5-webfont.svg#webfontqMpNrqaM") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "RaajBold";
+  src: url("/assets/static/fonts/gurmukhi/raaj___7-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/raaj___7-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/raaj___7-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/raaj___7-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/raaj___7-webfont.svg#webfontT6D2OFku") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "RaajaaMediumMedium";
+  src: url("/assets/static/fonts/gurmukhi/raajaa_5-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/raajaa_5-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/raajaa_5-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/raajaa_5-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/raajaa_5-webfont.svg#webfontMdtv73k3") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "RaajaaBoldBold";
+  src: url("/assets/static/fonts/gurmukhi/raajaa_7-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/raajaa_7-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/raajaa_7-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/raajaa_7-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/raajaa_7-webfont.svg#webfontGFlr4Bdi") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "KarmicSanjMedium";
+  src: url("/assets/static/fonts/gurmukhi/karmic_5-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/karmic_5-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/gurmukhi/karmic_5-webfont.woff") format("woff"),
+    url("/assets/static/fonts/gurmukhi/karmic_5-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/gurmukhi/karmic_5-webfont.svg#webfont0hRui4VC") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "AnmolUniBani";
+  src: url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.eot");
+  src: url("/assets/static/fonts/gurmukhi/AnmolUniBani.ttf") format("truetype");
+  // src: url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.eot?#iefix") format("embedded-opentype"),
+  // url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.woff") format("woff"),
+  // url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.eot") format("eot"),
+  // // url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.ttf") format("truetype"),
+  // url("/assets/static/fonts/gurmukhi/anmolunibani-webfont.svg#AnmolUniBaniRegular") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "gargiMedium";
+  src: url("/assets/static/fonts/hindi/gargi-webfont.eot");
+  src: url("/assets/static/fonts/hindi/gargi-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/gargi-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/gargi-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/gargi-webfont.svg#webfontDUG6LJe9") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "CDACGISTYogeshNormal";
+  src: url("/assets/static/fonts/hindi/cdacotygn-webfont.eot");
+  src: url("/assets/static/fonts/hindi/cdacotygn-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/cdacotygn-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/cdacotygn-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/cdacotygn-webfont.svg#webfontEkNsFCL5") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "CDACGISTYogeshBold";
+  src: url("/assets/static/fonts/hindi/cdacotygb-webfont.eot");
+  src: url("/assets/static/fonts/hindi/cdacotygb-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/cdacotygb-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/cdacotygb-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/cdacotygb-webfont.svg#webfontSTwWxgNs") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "CDACGISTSurekhNormal";
+  src: url("/assets/static/fonts/hindi/cdacsrnt-webfont.eot");
+  src: url("/assets/static/fonts/hindi/cdacsrnt-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/cdacsrnt-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/cdacsrnt-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/cdacsrnt-webfont.svg#webfont3CTy3gDk") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "CDACGISTSurekhBold";
+  src: url("/assets/static/fonts/hindi/cdacsrbt-webfont.eot");
+  src: url("/assets/static/fonts/hindi/cdacsrbt-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/cdacsrbt-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/cdacsrbt-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/cdacsrbt-webfont.svg#webfontlufwLHjW") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "RaghindiRegular";
+  src: url("/assets/static/fonts/hindi/raghu-webfont.eot");
+  src: url("/assets/static/fonts/hindi/raghu-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/raghu-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/raghu-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/raghu-webfont.svg#webfont0dguES9p") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "Gurumaa150Bold";
+  src: url("/assets/static/fonts/hindi/gurumaa-150b-webfont.eot");
+  src: url("/assets/static/fonts/hindi/gurumaa-150b-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/gurumaa-150b-webfont.woff") format("woff"),
+  url("/assets/static/fonts/hindi/gurumaa-150b-webfont.ttf") format("truetype"),
+  url("/assets/static/fonts/hindi/gurumaa-150b-webfont.svg#webfont3tbdr6g6") format("svg");
+  /* font-weight: 400; */
+  // font-style: normal;
+}
+@font-face {
+  font-family: "Gurumaa150Regular";
+  src: url("/assets/static/fonts/hindi/gurumaa-1.50-webfont.eot");
+  src: url("/assets/static/fonts/hindi/gurumaa-1.50-webfont.eot?iefix") format("eot"),
+  url("/assets/static/fonts/hindi/gurumaa-1.50-webfont.woff") format("woff"),
+    url("/assets/static/fonts/hindi/gurumaa-1.50-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/hindi/gurumaa-1.50-webfont.svg#webfontrob2J27r") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}
+@font-face {
+  font-family: "JaipurRegular";
+  src: url("/assets/static/fonts/hindi/jaipur__-webfont.eot");
+  src: url("/assets/static/fonts/hindi/jaipur__-webfont.eot?iefix") format("eot"),
+    url("/assets/static/fonts/hindi/jaipur__-webfont.woff") format("woff"),
+    url("/assets/static/fonts/hindi/jaipur__-webfont.ttf") format("truetype"),
+    url("/assets/static/fonts/hindi/jaipur__-webfont.svg#webfontD474BUia") format("svg");
+  /* font-weight: 400; */
+  font-style: normal;
+}

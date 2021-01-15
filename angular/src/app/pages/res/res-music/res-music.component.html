@@ -1,0 +1,97 @@
+<div class="comp-container">
+  <app-background [backColor]="backgroundImg"></app-background>
+  <app-header></app-header>
+  <app-menu [menuBack]="param"></app-menu>
+  <div class="home-body">
+    <app-border></app-border>
+
+    <div class="page-content" style="padding-top: 30px;">
+      <div class="container-fluid">
+        <div class="contents">
+          <h3 class="top-heading no-top">Indian Classical Music and Sikh Kirtan</h3>
+          <div class="utility-bar1 text-right">
+            <a (click)="print()"><i
+                class="fa fa-print" title="Print this page"></i></a>
+          </div>
+
+          <div class="utility-bar2">
+            <div class="utility-bar2">
+              <div class="row">
+                <div class="col-md-4 col-sm-6">
+                  <div class="ang-search" style="display: inline-flex; align-items: center;">
+                      Goto Page&nbsp;
+                      <input name="page_no" style="width: 20%;" id="page_no" [(ngModel)]="pageno" type="text" class="form-control" maxlength="5">
+                      <input type="button" name="Submit" value="Go" class="btn btn-go" (click)="goToPage()">
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-6 text-right">
+                  <div class="ang-paginate">
+                    <a [routerLink]="['/music/page/1']" class="btn btn-next">Book Index</a>
+                    <a *ngIf="pageno>1" (click)="begin()" class="btn btn-next">Begin</a>
+                    <a *ngIf="pageno>1" (click)="back()" class="btn btn-next">Back</a>
+                    <a *ngIf="pageno<maxPage" (click)="next()" class="btn btn-next">Next</a>
+                    <a *ngIf="pageno<maxPage" (click)="last()" class="btn btn-next">Last</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 center">
+                  <div class="bold">
+                    Displaying Page {{ pageno }} of {{ maxPage }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page">
+              <div class="page_data" *ngFor="let line of pageInfo.lines; let i = index">
+                <p class="blue" [innerHtml]="display(line?.text)">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="utility-bar1 text-right">
+          <!-- <a href="https://www.searchgurbani.com/music/page/1/print_view" -->
+          <a (click)="print()"><i
+              class="fa fa-print" title="Print this page"></i></a>
+        </div>
+
+        <div class="utility-bar2">
+          <div class="utility-bar2">
+            <div class="row">
+              <div class="col-md-4 col-sm-6">
+                <div class="ang-search" style="display: inline-flex; align-items: center;">
+                    Goto Page&nbsp;
+                    <input name="page_no" style="width: 20%;" id="page_no" [(ngModel)]="pageno" type="text" class="form-control" maxlength="5" value="1">
+                    <input type="button" name="Submit" value="Go" class="btn btn-go" (click)="goToPage()">
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-6 text-right">
+                <div class="ang-paginate">
+                  <a [routerLink]="['/music/page/1']" class="btn btn-next">Book Index</a>
+                  <a *ngIf="pageno>1" (click)="begin()" class="btn btn-next">Begin</a>
+                  <a *ngIf="pageno>1" (click)="back()" class="btn btn-next">Back</a>
+                  <a *ngIf="pageno<maxPage" (click)="next()" class="btn btn-next">Next</a>
+                  <a *ngIf="pageno<maxPage" (click)="last()" class="btn btn-next">Last</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 center">
+                <div class="bold">
+                  Displaying Page {{ pageno }} of {{ maxPage }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>

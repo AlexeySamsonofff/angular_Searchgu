@@ -1,0 +1,31 @@
+.hl2 {
+  // background: #eccb53 !important
+}
+
+.content-block {
+  p {
+    word-break: break-word;
+  }
+}
+
+.content-block:nth-child(odd) {
+  background: #ffecec;
+}
+
+.content-block:nth-child(even) {
+  background: #fff;
+}
+
+.content-block.hl2 {
+  // background: #eccb53 !important
+}
+
+.content-block.dark:nth-child(odd) {
+  background: #000000;
+  color: white;
+}
+
+.content-block.dark:nth-child(even) {
+  background: #262626;
+  color: white;
+}

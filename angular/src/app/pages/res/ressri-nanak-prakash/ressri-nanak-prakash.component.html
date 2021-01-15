@@ -1,0 +1,105 @@
+<div class="comp-container">
+    <app-background [backColor]="backgroundImg"></app-background>
+    <app-header></app-header>
+    <app-menu [menuBack]="param"></app-menu>
+    <div class="home-body">
+        <app-border></app-border>
+        <div class="main-body">
+            <div class="container-fluid" id="banner">
+                <img src="../../../assets/img/banner.jpg" class="img-responsive">
+            </div>
+            <div class="page-content">
+                <div class="container-fluid">
+                    <h3 class="small-bottom bold center no-top"><strong>Sri Nanak Prakash</strong></h3>
+                    <hr>
+                    <div>
+                        <p class="blue">‘Sri Gur Partap Suraj Granth’ authored by ‘Kavi Churamani’ Bhai Santokh
+                            Singh ji, Doyen of Nirmala Sect, popularly known as ‘Suraj Parkash’ is a voluminous
+                            classical
+                            medieval source of Sikh History and Philosophy. Its ‘Katha’ (Religious Discourse) in almost
+                            all
+                            prominent Gurdwaras is the gauge of its authenticity and popularity among the Sikh masses.
+                            In verse, Bhai Sahib’s
+                            great classic writing ‘Sri Nanak Parkash’ is the first part of Sri Guru Partap Suraj Granth
+                            in which
+                            detailed history of Sri Guru Nanak Dev ji is highlighted. </p>
+                        <p class="blue">Bhai Santokh Singh's monumental work in Braj verse portraying in comprehensive
+                            detail the lives of
+                            the Ten Gurus of the Sikh faith and the career of Banda Singh Bahadur. Besides being an
+                            historical narrative of
+                            great significance, it is an outstanding creation in the style epic, and is the most
+                            voluminous of all poetic
+                            compositions in Hindi/Punjabi literature. Its language is Braj Bhasa which was the literary
+                            Hindi of that time
+                            though its script is Gurmukhi. Notwithstanding certain drawbacks which scholars with
+                            training in modern
+                            historiography may point out, it remains the most valuable source book on Sikh history of
+                            the period of the
+                            Gurus and, indeed, on the very roots of the entire Sikh tradition. For the massive flow of
+                            its poetry, the vast
+                            range of its figures and images and for the abundance of detail, Sri Gur Pratap Suraj
+                            Granth, Suraj Prakash in
+                            shorter, popular form, is worthy to rank with the classics in this genre.</p>
+                    </div>
+                    <div class="subhead bold">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <a [routerLink]="['/sri-nanak-prakash/chapters/1']">Section 1 Chapter
+                                    Index </a>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <a [routerLink]="['/sri-nanak-prakash/chapters/2']">Section 2 Chapter
+                                    Index </a>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <a [routerLink]="['/sri-nanak-prakash/page']">Browse Page by Page</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <h3 class="maroon small-bottom center">Sri Nanak Prakash</h3>
+
+                        <form method="post"
+                            name="frmResourcesSearch" class="general-page-auto-search" id="myForm">
+                            <div class="row">
+                                <input type="hidden" name="table_name" id="table_name" value="Sri Nanak Prakash">
+
+                                <div class="col-sm-3 col-xs-6 col-sm-offset-4">
+                                    <input type="text" class="form-control browse-search tt-input" #searchText
+                                            id="outText" name="keyword" value="" [(ngModel)]="q"
+                                            (keypress)="onKey($event);" autocomplete="off" spellcheck="false" dir="auto"
+                                            style="position: relative; vertical-align: top; background-color: white;">
+                                </div>
+                                <div class="col-sm-1 col-xs-6">
+                                    <button class="btn search-btn bl" (click)="do_search()">Search</button>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="punjabi-keypad">
+
+                                    <div class="keypad_container">
+                                        <div style="margin-bottom:10px">
+                                            <button id="toggle_keyboard" class="btn btn-primary"
+                                                (click)="showKeyboard=!showKeyboard">Show Keyboard</button>&nbsp;&nbsp;
+                                            <span style="margin:5px 0 0 0">You can use either Virtual or Physical
+                                                Keyboard for Gurmukhi Unicode</span>
+                                        </div>
+                                        <div id="keypad" class="collapse in" *ngIf="showKeyboard">
+                                            <app-punjabi-keyboard (addChar)="onKeyPush()"></app-punjabi-keyboard>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+                <div align="center" id="amrit_keetrtan">
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer [backColor]="footerColor"></app-footer>
+</div>
+<app-copyright></app-copyright>
